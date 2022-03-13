@@ -1,3 +1,3 @@
 ## E-Commerce Backend
 
-An Ecommerce App on cakes and muffins made with React and mockbee as mock backend
+An Ecommerce App made with React and mockbee as mock backend
