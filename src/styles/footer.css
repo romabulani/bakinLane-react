@@ -1,0 +1,36 @@
+@import "./globalbakin.css";
+.footer-container {
+  background-color: var(--gray-color);
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.footer-header {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.footer-icon {
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+.icon-style {
+  color: var(--default-color);
+  font-size: 1.7rem;
+}
+
+.icon-style:hover {
+  color: var(--primary-color);
+}
+.copywright {
+  font-size: 0.75rem;
+}
+
+.footer-item {
+  display: inline-block;
+}
+
+.keyword {
+  font-weight: bolder;
+}
