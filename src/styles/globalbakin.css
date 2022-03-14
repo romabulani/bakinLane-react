@@ -10,6 +10,10 @@
   width: 100%;
 }
 
+.middle-content {
+  flex-grow: 1;
+}
+
 .keyword {
   color: var(--primary-color);
 }
