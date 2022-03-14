@@ -59,7 +59,7 @@ function HeroSection() {
           <h4 className="heading4 text-center">
             Hurry!! Upto 30% OFF on most of the products!!
           </h4>
-          <button className="btn btn-primary">BUY NOW</button>
+          <button className="btn btn-primary hero-btn">BUY NOW</button>
         </div>
         <div className="hero-img">
           <img
