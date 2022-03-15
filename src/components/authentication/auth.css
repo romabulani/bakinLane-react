@@ -1,0 +1,41 @@
+.auth-container,
+.logout-container {
+  border-radius: 5px;
+  box-shadow: var(--default-shadow);
+  height: fit-content;
+  margin: 1rem;
+  max-width: 30rem;
+  padding: 1rem;
+  row-gap: 0.5rem;
+}
+
+.content-container {
+  flex-grow: 1;
+}
+
+.form-auth {
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.heading4 {
+  padding-top: 1rem;
+}
+
+.logout-container {
+  box-shadow: unset;
+  align-items: flex-start;
+}
+
+.btn-primary,
+.input-primary {
+  display: block;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.btn-link-primary,
+#terms-conditions {
+  display: inline-block;
+  margin: 0.5rem;
+}
