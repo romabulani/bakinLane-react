@@ -1,0 +1,27 @@
+.pagewrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.pagewrapper > main {
+  flex-grow: 1;
+}
+
+.flex-column-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-row-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.badge-number {
+  background-color: var(--error-color);
+  right: -0.625rem;
+}
