@@ -1,5 +1,5 @@
 /* Navigation */
-@import "./globalbakin.css";
+@import "../../styles/globalbakin.css";
 .nav-container {
   align-items: center;
   box-shadow: 0 0 0.625rem var(--shadow-color);

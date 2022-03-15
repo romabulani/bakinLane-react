@@ -1,5 +1,5 @@
-import "../styles/nav.css";
-import logo from "../assets/images/logo.webp";
+import "./nav.css";
+import logo from "../../assets/images/logo.webp";
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

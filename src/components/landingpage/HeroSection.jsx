@@ -1,4 +1,4 @@
-import "../styles/landingpage.css";
+import "./landingpage.css";
 
 function HeroSection() {
   const trendingItems = [

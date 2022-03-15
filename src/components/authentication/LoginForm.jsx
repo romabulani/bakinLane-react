@@ -1,4 +1,4 @@
-import "../styles/auth.css";
+import "./auth.css";
 
 function LoginForm() {
   return (

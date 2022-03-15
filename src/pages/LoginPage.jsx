@@ -1,9 +1,9 @@
 import "../styles/globalbakin.css";
-import { Footer } from "../components/Footer";
-import { Navigation } from "../components/Navigation";
-import { LoginForm } from "../components/LoginForm";
+import { Footer } from "../components/shared/Footer";
+import { Navigation } from "../components/shared/Navigation";
+import { LoginForm } from "../components/authentication/LoginForm";
 
-function Login() {
+function LoginPage() {
   return (
     <div className="pagewrapper">
       <Navigation />
@@ -15,4 +15,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;

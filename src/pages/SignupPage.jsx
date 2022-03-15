@@ -1,6 +1,6 @@
-import { SignupForm } from "../components/SignupForm";
-import { Footer } from "../components/Footer";
-import { Navigation } from "../components/Navigation";
+import { SignupForm } from "../components/authentication/SignupForm";
+import { Footer } from "../components/shared/Footer";
+import { Navigation } from "../components/shared/Navigation";
 
 function SignupPage() {
   return (

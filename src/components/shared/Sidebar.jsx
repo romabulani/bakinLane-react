@@ -1,4 +1,4 @@
-import "../styles/nav.css";
+import "./nav.css";
 function Sidebar() {
   return (
     <div className="sidebar-container">

@@ -1,4 +1,4 @@
-@import "./globalbakin.css";
+@import "../../styles/globalbakin.css";
 .footer-container {
   background-color: var(--gray-color);
   margin-top: 1rem;
