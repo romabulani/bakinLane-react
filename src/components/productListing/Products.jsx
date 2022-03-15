@@ -6,11 +6,13 @@ function Products() {
   const productsData = products;
   console.log(productsData);
   return (
-    <div className="cards">
+    <div className="product-cards">
       {productsData.map((product) => (
-        <div className="card card-default-product" key={product._id}>
-          <div className="card-img-container">
-            <img src={product.imageUrl} alt="cake" className="card-img" />
+        <div className="card-default-product" key={product._id}>
+          <div className="card-img-icon-container">
+            <div className="card-img-container">
+              <img src={product.imageUrl} alt="cake" className="card-img" />
+            </div>
             <FontAwesomeIcon
               icon={faHeart}
               className="wishlist-icon card-icon"
