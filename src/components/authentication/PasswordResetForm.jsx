@@ -13,7 +13,7 @@ function PasswordResetForm() {
               className="input-primary border-box"
               required
             />
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary btn-auth">
               RESET PASSWORD
             </button>
             <div>
