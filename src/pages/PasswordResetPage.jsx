@@ -1,7 +1,5 @@
+import { Navigation, Footer, PasswordResetForm } from "../components";
 import "../styles/globalbakin.css";
-import { Footer } from "../components/shared/Footer";
-import { Navigation } from "../components/shared/Navigation";
-import { PasswordResetForm } from "../components/authentication/PasswordResetForm";
 
 function PasswordResetPage() {
   return (
@@ -15,4 +13,4 @@ function PasswordResetPage() {
   );
 }
 
-export default PasswordResetPage;
+export { PasswordResetPage };

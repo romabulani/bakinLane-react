@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./landingpage.css";
 
 function HeroSection() {
@@ -59,7 +60,9 @@ function HeroSection() {
           <h4 className="heading4 text-center">
             Hurry!! Upto 30% OFF on most of the products!!
           </h4>
-          <button className="btn btn-primary hero-btn">BUY NOW</button>
+          <Link to="/products" style={{ textDecoration: "none" }}>
+            <button className="btn btn-primary hero-btn">BUY NOW</button>
+          </Link>
         </div>
         <div className="hero-img">
           <img

@@ -1,7 +1,5 @@
+import { Navigation, Footer, LoginForm } from "../components";
 import "../styles/globalbakin.css";
-import { Footer } from "../components/shared/Footer";
-import { Navigation } from "../components/shared/Navigation";
-import { LoginForm } from "../components/authentication/LoginForm";
 
 function LoginPage() {
   return (
@@ -15,4 +13,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export { LoginPage };

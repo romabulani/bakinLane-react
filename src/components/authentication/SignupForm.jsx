@@ -4,7 +4,7 @@ function SignupForm() {
   return (
     <main className="content-container">
       <div className="flex-row-center">
-        <div className="auth-container flex-column-center">
+        <div className="auth-container flex-column-center signup-container">
           <h4 className="heading4">SIGN UP</h4>
           <form action="" className="form-auth">
             <input
@@ -41,7 +41,7 @@ function SignupForm() {
             <label htmlFor="terms-conditions">
               I accept all terms and conditions
             </label>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary btn-auth">
               SIGN UP
             </button>
             <div>

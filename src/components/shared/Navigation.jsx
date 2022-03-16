@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./nav.css";
 import logo from "../../assets/images/logo.webp";
-import { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,15 +19,15 @@ function Navigation() {
       <nav className="nav-container">
         <div className="brand">
           <img src={logo} alt="muffin-logo" className="logo" />
-          <a href="#" className="brand-name">
+          <Link to="/" className="brand-name">
             Bakin Lane
-          </a>
-          <a href="#" className="nav-item">
+          </Link>
+          <Link to="/" className="nav-item">
             Home
-          </a>
-          <a href="#" className="nav-item">
+          </Link>
+          <Link to="/products" className="nav-item">
             Buy Now
-          </a>
+          </Link>
         </div>
         <div className="nav-right">
           <div className="searchbar-container" aria-label="search">
@@ -42,38 +43,38 @@ function Navigation() {
           </div>
           <div className="nav-icons-container">
             <div className="nav-item nav-icon">
-              <a href="#" rel="noreferrer" aria-label="wishlist">
-                <div className="badge">
+              <div className="badge">
+                <Link to="/wishlist">
                   <FontAwesomeIcon
                     icon={faHeart}
                     className="icon-style"
                   ></FontAwesomeIcon>
-                  <span className="badge-icon badge-number badge-right badge-lg">
-                    3
-                  </span>
-                </div>
-              </a>
+                </Link>
+                <span className="badge-icon badge-number badge-right badge-lg">
+                  3
+                </span>
+              </div>
             </div>
             <div className="nav-item nav-icon">
-              <a href="#" rel="noreferrer" aria-label="cart">
-                <div className="badge">
+              <div className="badge">
+                <Link to="/cart">
                   <FontAwesomeIcon
                     icon={faCartShopping}
                     className="icon-style"
                   ></FontAwesomeIcon>
-                  <span className="badge-icon badge-number badge-right badge-lg">
-                    2
-                  </span>
-                </div>
-              </a>
+                </Link>
+                <span className="badge-icon badge-number badge-right badge-lg">
+                  2
+                </span>
+              </div>
             </div>
             <div className="nav-item nav-icon icon-person">
-              <a href="#" rel="noreferrer" aria-label="user">
+              <Link to="/signup">
                 <FontAwesomeIcon
                   icon={faUser}
                   className="icon-style"
                 ></FontAwesomeIcon>
-              </a>
+              </Link>
             </div>
             <div
               className="nav-item nav-icon icon-hamburger"

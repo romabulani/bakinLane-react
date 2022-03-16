@@ -1,14 +1,27 @@
 import "./App.css";
-import { Filters } from "./components/productListing/Filters";
-import { ProductList } from "./components/productListing/ProductList";
-// import { LandingPage } from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import PasswordResetPage from "./pages/PasswordResetPage";
-import SignupPage from "./pages/SignupPage";
+import { Route, Routes } from "react-router-dom";
+import {
+  CartPage,
+  LandingPage,
+  LoginPage,
+  PasswordResetPage,
+  ProductListingPage,
+  SignupPage,
+  WishlistPage,
+} from "./pages";
+
 function App() {
   return (
     <div className="App">
-      <ProductList />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/passwordreset" element={<PasswordResetPage />} />
+        <Route path="/products" element={<ProductListingPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
+      </Routes>
     </div>
   );
 }

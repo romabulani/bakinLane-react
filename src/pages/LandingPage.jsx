@@ -1,6 +1,4 @@
-import { Footer } from "../components/shared/Footer";
-import { HeroSection } from "../components/landingpage/HeroSection";
-import { Navigation } from "../components/shared/Navigation";
+import { Navigation, Footer, HeroSection } from "../components";
 import "../styles/globalbakin.css";
 
 function LandingPage() {

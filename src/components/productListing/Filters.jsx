@@ -1,5 +1,5 @@
-import "./productlist.css";
 import { useState } from "react";
+import "./productlist.css";
 
 function Filters() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
@@ -13,7 +13,7 @@ function Filters() {
           {showMobileFilters ? (
             <a
               href="#"
-              class="btn-link btn-link-primary"
+              className="btn-link btn-link-primary"
               onClick={() => setShowMobileFilters(!showMobileFilters)}
             >
               APPLY
@@ -21,7 +21,7 @@ function Filters() {
           ) : (
             <span>FILTERS</span>
           )}
-          <a href="#" class="btn-link btn-link-primary">
+          <a href="#" className="btn-link btn-link-primary">
             CLEAR
           </a>
         </div>
@@ -236,7 +236,7 @@ function Filters() {
           FILTERS
         </div>
         <div>
-          <a href="#" class="btn-link btn-link-primary">
+          <a href="#" className="btn-link btn-link-primary">
             CLEAR
           </a>
         </div>

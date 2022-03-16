@@ -1,6 +1,5 @@
-import { SignupForm } from "../components/authentication/SignupForm";
-import { Footer } from "../components/shared/Footer";
-import { Navigation } from "../components/shared/Navigation";
+import { Navigation, Footer, SignupForm } from "../components";
+import "../styles/globalbakin.css";
 
 function SignupPage() {
   return (
@@ -14,4 +13,4 @@ function SignupPage() {
   );
 }
 
-export default SignupPage;
+export { SignupPage };
