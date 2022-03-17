@@ -1,56 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { categories } from "../../backend/db/categories";
+import { useFilters, useProductsData } from "../../contexts";
 import "./landingpage.css";
 
 function HeroSection() {
-  const trendingItems = [
-    {
-      title: "2 Tier Strawberry Wedding Cake",
-      imageUrl:
-        "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015328/ecommerce/strawberrycake3.webp",
-      price: 2000,
-    },
-    {
-      title: "Cherry Decorated Chocolate Cake",
-      imageUrl:
-        "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014777/ecommerce/chocolatecake3.webp",
-      price: 750,
-    },
-    {
-      title: "Ferrero Rocher Chocolate Muffin",
-      imageUrl:
-        "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014336/ecommerce/chocolatemuffin1.webp",
-      price: 100,
-    },
+  const { productsData } = useProductsData();
+  const trendingItems = productsData
+    .filter((item) => item.isBestSeller)
+    .slice(0, 4);
+  const feauredCategories = categories;
+  const { dispatch } = useFilters();
+  let navigate = useNavigate();
 
-    {
-      title: "3 Tier Strawberry Cake",
-      imageUrl:
-        "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015328/ecommerce/strawberrycake2.webp",
-      price: 1500,
-    },
-  ];
-  const feauredCategories = [
-    {
-      title: "Chocolate",
-      imageUrl:
-        "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647262271/ecommerce/chocolate.webp",
-    },
-    {
-      title: "Strawberry",
-      imageUrl:
-        "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647262272/ecommerce/strawberry.webp",
-    },
-    {
-      title: "Pineapple",
-      imageUrl:
-        "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647262271/ecommerce/pineapple.webp",
-    },
-    {
-      title: "Vanilla",
-      imageUrl:
-        "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647262271/ecommerce/vanilla.webp",
-    },
-  ];
+  const routeChange = (item) => {
+    dispatch({
+      type: "CATEGORY_FILTER",
+      payload: { category: item.title },
+    });
+    navigate("/products");
+  };
+
   return (
     <>
       <div className="hero-container">
@@ -60,9 +29,12 @@ function HeroSection() {
           <h4 className="heading4 text-center">
             Hurry!! Upto 30% OFF on most of the products!!
           </h4>
-          <Link to="/products" style={{ textDecoration: "none" }}>
-            <button className="btn btn-primary hero-btn">BUY NOW</button>
-          </Link>
+          <button
+            className="btn btn-primary hero-btn"
+            onClick={() => navigate("/products")}
+          >
+            BUY NOW
+          </button>
         </div>
         <div className="hero-img">
           <img
@@ -77,7 +49,7 @@ function HeroSection() {
         <h3 className="align-center heading3">Trending</h3>
         <div className="cards">
           {trendingItems.map((item) => (
-            <div className="card card-default zoom">
+            <div className="card card-default zoom" key={item.id}>
               <div className="card-img-container">
                 <img src={item.imageUrl} alt="cake" className="card-img" />
               </div>
@@ -92,7 +64,11 @@ function HeroSection() {
         <h3 className="align-center heading3">Featured Categories</h3>
         <div className="cards">
           {feauredCategories.map((item) => (
-            <div className="card card-text-overlay zoom">
+            <div
+              className="card card-text-overlay zoom"
+              key={item._id}
+              onClick={() => routeChange(item)}
+            >
               <div className="card-img-container">
                 <img src={item.imageUrl} alt="cake" className="card-img" />
                 <div className="card-header-bold">{item.title}</div>

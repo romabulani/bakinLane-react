@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import "./nav.css";
 import logo from "../../assets/images/logo.webp";
@@ -18,16 +18,28 @@ function Navigation() {
     <>
       <nav className="nav-container">
         <div className="brand">
-          <img src={logo} alt="muffin-logo" className="logo" />
+          <Link to="/">
+            <img src={logo} alt="muffin-logo" className="logo" />
+          </Link>
           <Link to="/" className="brand-name">
             Bakin Lane
           </Link>
-          <Link to="/" className="nav-item">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "nav-item nav-active" : "nav-item"
+            }
+          >
             Home
-          </Link>
-          <Link to="/products" className="nav-item">
+          </NavLink>
+          <NavLink
+            to="/products"
+            className={({ isActive }) =>
+              isActive ? "nav-item nav-active" : "nav-item"
+            }
+          >
             Buy Now
-          </Link>
+          </NavLink>
         </div>
         <div className="nav-right">
           <div className="searchbar-container" aria-label="search">

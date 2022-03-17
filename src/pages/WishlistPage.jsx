@@ -1,6 +1,10 @@
 import { Navigation, Footer } from "../components";
 function WishlistPage() {
-  return <div></div>;
+  return (
+    <div>
+      <Navigation />
+    </div>
+  );
 }
 
 export { WishlistPage };
