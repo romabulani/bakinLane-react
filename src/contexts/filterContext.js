@@ -43,22 +43,30 @@ const filteredData = (state) => {
   if (!state.isOutOfStock) productsData = funcInStock(productsData);
 
   // cakes and muffins
-  const itemCategories = Object.keys(state.items).filter((k) => state.items[k]);
+
+  // getting keys with values true, keys are category names of items
+  const itemCategories = Object.keys(state.items).filter(
+    (key) => state.items[key]
+  );
   if (itemCategories.length > 0) {
     productsData = funcItemCategory(productsData, itemCategories);
   }
 
   //flavor categories
+
+  // getting keys with values true, keys are category names of flavors
   const flavorCategories = Object.keys(state.flavors).filter(
-    (k) => state.flavors[k]
+    (key) => state.flavors[key]
   );
   if (flavorCategories.length > 0) {
     productsData = funcFlavorCategory(productsData, flavorCategories);
   }
 
   // price range categories
+
+  // getting keys with values true, keys are category names of price range
   const priceRangeCategories = Object.keys(state.priceRange).filter(
-    (k) => state.priceRange[k]
+    (key) => state.priceRange[key]
   );
 
   if (priceRangeCategories.length > 0) {

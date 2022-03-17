@@ -4,6 +4,11 @@ import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useFilters } from "../../contexts";
 function Products() {
   const { filteredData } = useFilters();
+  function getOriginalPrice(price, offerPercentage) {
+    return Math.round(
+      Number(price) + (Number(offerPercentage) / 100) * Number(price)
+    );
+  }
   return (
     <div className="product-cards">
       {filteredData.map((product) => (
@@ -25,11 +30,9 @@ function Products() {
               <>
                 <span className="strikethrough card-title">
                   {" "}
-                  ₹
-                  {Math.round(
-                    Number(product.price) +
-                      (Number(product.offerPercentage) / 100) *
-                        Number(product.price)
+                  ₹{getOriginalPrice(
+                    product.price,
+                    product.offerPercentage
                   )}{" "}
                 </span>
                 <span className="card-title offer">

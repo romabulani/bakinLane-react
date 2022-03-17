@@ -5,6 +5,10 @@ import "./productlist.css";
 function Filters() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const { state, dispatch } = useFilters();
+
+  const dispatchHandler = (typeOfState, typeofACtion) =>
+    dispatch({ type: typeOfState, payload: typeofACtion });
+
   return (
     <>
       <section
@@ -23,11 +27,7 @@ function Filters() {
           )}
           <button
             className="btn-link btn-link-primary btn-no-decoration"
-            onClick={() =>
-              dispatch({
-                type: "CLEAR_FILTERS",
-              })
-            }
+            onClick={() => dispatchHandler("CLEAR_FILTERS")}
           >
             CLEAR
           </button>
@@ -43,9 +43,7 @@ function Filters() {
               className="small-text"
               name="priceSort"
               checked={state.sortBy === "highToLow"}
-              onChange={() =>
-                dispatch({ type: "SORT", payload: { sortBy: "highToLow" } })
-              }
+              onChange={() => dispatchHandler("SORT", { sortBy: "highToLow" })}
             />
             <label htmlFor="highToLow" className="gray-text small-text">
               Price High to Low
@@ -59,9 +57,7 @@ function Filters() {
               className="small-text"
               name="priceSort"
               checked={state.sortBy === "lowToHigh"}
-              onChange={() =>
-                dispatch({ type: "SORT", payload: { sortBy: "lowToHigh" } })
-              }
+              onChange={() => dispatchHandler("SORT", { sortBy: "lowToHigh" })}
             />
             <label htmlFor="lowToHigh" className="gray-text small-text">
               Price Low to High
@@ -80,10 +76,7 @@ function Filters() {
               name="priceCategory"
               checked={state.priceRange.under500}
               onChange={() =>
-                dispatch({
-                  type: "PRICERANGE_FILTER",
-                  payload: { priceRange: "under500" },
-                })
+                dispatchHandler("PRICERANGE_FILTER", { priceRange: "under500" })
               }
             />
             <label className="gray-text small-text" htmlFor="under500">
@@ -99,9 +92,8 @@ function Filters() {
               name="priceCategory"
               checked={state.priceRange.price500To1000}
               onChange={() =>
-                dispatch({
-                  type: "PRICERANGE_FILTER",
-                  payload: { priceRange: "price500To1000" },
+                dispatchHandler("PRICERANGE_FILTER", {
+                  priceRange: "price500To1000",
                 })
               }
             />
@@ -118,9 +110,8 @@ function Filters() {
               name="priceCategory"
               checked={state.priceRange.price1000To1500}
               onChange={() =>
-                dispatch({
-                  type: "PRICERANGE_FILTER",
-                  payload: { priceRange: "price1000To1500" },
+                dispatchHandler("PRICERANGE_FILTER", {
+                  priceRange: "price1000To1500",
                 })
               }
             />
@@ -137,9 +128,8 @@ function Filters() {
               name="priceCategory"
               checked={state.priceRange.price1500To2000}
               onChange={() =>
-                dispatch({
-                  type: "PRICERANGE_FILTER",
-                  payload: { priceRange: "price1500To2000" },
+                dispatchHandler("PRICERANGE_FILTER", {
+                  priceRange: "price1500To2000",
                 })
               }
             />
@@ -159,12 +149,7 @@ function Filters() {
               className="small-text"
               name="itemCategory"
               checked={state.items.Cake}
-              onChange={() =>
-                dispatch({
-                  type: "ITEMS_FILTER",
-                  payload: { item: "Cake" },
-                })
-              }
+              onChange={() => dispatchHandler("ITEMS_FILTER", { item: "Cake" })}
             />
             <label className="gray-text small-text" htmlFor="item-cakes">
               Cakes
@@ -179,10 +164,7 @@ function Filters() {
               name="itemCategory"
               checked={state.items.Muffin}
               onChange={() =>
-                dispatch({
-                  type: "ITEMS_FILTER",
-                  payload: { item: "Muffin" },
-                })
+                dispatchHandler("ITEMS_FILTER", { item: "Muffin" })
               }
             />
             <label htmlFor="item-muffins" className="gray-text small-text">
@@ -203,10 +185,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors.Chocolate}
               onChange={() =>
-                dispatch({
-                  type: "CATEGORY_FILTER",
-                  payload: { category: "Chocolate" },
-                })
+                dispatchHandler("CATEGORY_FILTER", { category: "Chocolate" })
               }
             />
             <label
@@ -225,10 +204,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors.Vanilla}
               onChange={() =>
-                dispatch({
-                  type: "CATEGORY_FILTER",
-                  payload: { category: "Vanilla" },
-                })
+                dispatchHandler("CATEGORY_FILTER", { category: "Vanilla" })
               }
             />
             <label htmlFor="category-vanilla" className="gray-text small-text">
@@ -244,10 +220,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors["Red Velvet"]}
               onChange={() =>
-                dispatch({
-                  type: "CATEGORY_FILTER",
-                  payload: { category: "Red Velvet" },
-                })
+                dispatchHandler("CATEGORY_FILTER", { category: "Red Velvet" })
               }
             />
             <label
@@ -266,10 +239,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors.Pineapple}
               onChange={() =>
-                dispatch({
-                  type: "CATEGORY_FILTER",
-                  payload: { category: "Pineapple" },
-                })
+                dispatchHandler("CATEGORY_FILTER", { category: "Pineapple" })
               }
             />
             <label
@@ -288,10 +258,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors.Strawberry}
               onChange={() =>
-                dispatch({
-                  type: "CATEGORY_FILTER",
-                  payload: { category: "Strawberry" },
-                })
+                dispatchHandler("CATEGORY_FILTER", { category: "Strawberry" })
               }
             />
             <label
@@ -313,11 +280,7 @@ function Filters() {
               className="small-text"
               name="flavorCategory"
               checked={state.isOutOfStock}
-              onChange={() =>
-                dispatch({
-                  type: "TOGGLE_STOCK",
-                })
-              }
+              onChange={() => dispatchHandler("TOGGLE_STOCK")}
             />
             <label className="gray-text small-text" htmlFor="outOfStock">
               Include Out of Stock
@@ -336,11 +299,7 @@ function Filters() {
         <div>
           <button
             className="btn-link btn-link-primary btn-no-decoration"
-            onClick={() =>
-              dispatch({
-                type: "CLEAR_FILTERS",
-              })
-            }
+            onClick={() => dispatchHandler("CLEAR_FILTERS")}
           >
             CLEAR
           </button>

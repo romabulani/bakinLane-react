@@ -15,7 +15,7 @@ const ProductsDataProvider = ({ children }) => {
       []
     );
   } catch (e) {
-    console.log("Error", e);
+    console.log("ProductsDataProvider : Error in fetching products", e);
   }
 
   return (
