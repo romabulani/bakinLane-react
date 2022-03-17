@@ -1,5 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import { MockAPI } from "./components";
 import {
   CartPage,
   LandingPage,
@@ -21,6 +22,7 @@ function App() {
         <Route path="/products" element={<ProductListingPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/mock-api" element={<MockAPI />} />
       </Routes>
     </div>
   );
