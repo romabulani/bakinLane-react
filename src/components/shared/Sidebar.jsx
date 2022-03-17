@@ -1,22 +1,23 @@
+import { Link } from "react-router-dom";
 import "./nav.css";
 function Sidebar() {
   return (
     <div className="sidebar-container">
-      <a href="#" className="sidenav-item">
+      <Link to="/" className="sidenav-item">
         Home
-      </a>
-      <a href="#" className="sidenav-item">
+      </Link>
+      <Link to="/products" className="sidenav-item">
         Buy Now
-      </a>
-      <a href="#" className="sidenav-item">
+      </Link>
+      <Link to="/signup" className="sidenav-item">
         Profile
-      </a>
-      <a href="#" className="sidenav-item">
+      </Link>
+      <Link to="/signup" className="sidenav-item">
         Addresses
-      </a>
-      <a href="#" className="sidenav-item">
+      </Link>
+      <Link to="/signup" className="sidenav-item">
         Settings
-      </a>
+      </Link>
     </div>
   );
 }
