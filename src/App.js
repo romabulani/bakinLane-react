@@ -11,20 +11,24 @@ import {
   SignupPage,
   WishlistPage,
 } from "./pages";
+import { useAuth } from "./contexts";
 
 function App() {
+  const { authToken } = useAuth();
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/passwordreset" element={<PasswordResetPage />} />
+        {authToken && (
+          <Route path="/passwordreset" element={<PasswordResetPage />} />
+        )}
         <Route path="/products" element={<ProductListingPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/mock-api" element={<MockAPI />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        {authToken && <Route path="/profile" element={<ProfilePage />} />}
       </Routes>
     </div>
   );
