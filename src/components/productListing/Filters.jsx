@@ -1,3 +1,5 @@
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useFilters } from "../../contexts";
 import "./productlist.css";
@@ -6,8 +8,10 @@ function Filters() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const { state, dispatch } = useFilters();
 
-  const dispatchHandler = (typeOfState, typeofACtion) =>
-    dispatch({ type: typeOfState, payload: typeofACtion });
+  const dispatchHandler = (typeOfState, typeofAction) => {
+    console.log("typeofAction");
+    dispatch({ type: typeOfState, payload: typeofAction });
+  };
 
   return (
     <>
@@ -61,6 +65,73 @@ function Filters() {
             />
             <label htmlFor="lowToHigh" className="gray-text small-text">
               Price Low to High
+            </label>
+          </div>
+          <hr />
+        </div>
+
+        <div className="filter-rating">
+          <span className="filter-heading">RATING</span>
+          <div>
+            <input
+              type="radio"
+              id="4andAbove"
+              className="small-text"
+              name="ratingCategory"
+              checked={state.ratingCategory === "4andAbove"}
+              onChange={() =>
+                dispatchHandler("RATING", { ratingCategory: "4andAbove" })
+              }
+            />
+            <label htmlFor="4andAbove" className="gray-text small-text">
+              4{" "}
+              <FontAwesomeIcon
+                icon={faStar}
+                className="rating-star"
+              ></FontAwesomeIcon>{" "}
+              and above
+            </label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              id="3andAbove"
+              className="small-text"
+              name="ratingCategory"
+              checked={state.ratingCategory === "3andAbove"}
+              onChange={() =>
+                dispatchHandler("RATING", { ratingCategory: "3andAbove" })
+              }
+            />
+            <label htmlFor="3andAbove" className="gray-text small-text">
+              3{" "}
+              <FontAwesomeIcon
+                icon={faStar}
+                className="rating-star"
+              ></FontAwesomeIcon>{" "}
+              and above
+            </label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              id="2andAbove"
+              className="small-text"
+              name="ratingCategory"
+              checked={state.ratingCategory === "2andAbove"}
+              onChange={() =>
+                dispatchHandler("RATING", { ratingCategory: "2andAbove" })
+              }
+            />
+            <label htmlFor="2andAbove" className="gray-text small-text">
+              2{" "}
+              <FontAwesomeIcon
+                icon={faStar}
+                className="rating-star"
+              ></FontAwesomeIcon>{" "}
+              and above
             </label>
           </div>
           <hr />

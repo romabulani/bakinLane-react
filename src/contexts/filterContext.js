@@ -5,6 +5,9 @@ import {
   funcInStock,
   funcItemCategory,
   funcPriceRangeCategory,
+  funcRating2AndAbove,
+  funcRating3AndAbove,
+  funcRating4AndAbove,
   funcSortHighToLow,
   funcSortLowToHigh,
 } from "../utilities/filterFunctions";
@@ -30,6 +33,7 @@ const initialState = {
   },
   isOutOfStock: true,
   sortBy: "",
+  ratingCategory: "",
 };
 
 const filteredData = (state) => {
@@ -72,6 +76,14 @@ const filteredData = (state) => {
   if (priceRangeCategories.length > 0) {
     productsData = funcPriceRangeCategory(productsData, priceRangeCategories);
   }
+
+  if (state.ratingCategory === "4andAbove")
+    productsData = funcRating4AndAbove(productsData);
+  else if (state.ratingCategory === "3andAbove")
+    productsData = funcRating3AndAbove(productsData);
+  else if (state.ratingCategory === "2andAbove")
+    productsData = funcRating2AndAbove(productsData);
+
   return productsData;
 };
 

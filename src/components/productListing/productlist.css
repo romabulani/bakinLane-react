@@ -30,7 +30,8 @@
 .filter-rating,
 .filter-items,
 .filter-categories,
-.filter-price-range {
+.filter-price-range,
+.filter-rating {
   display: flex;
   flex-direction: column;
   margin: 1rem;

@@ -17,7 +17,9 @@ function Products() {
             <div className="card-img-container">
               <img src={product.imageUrl} alt="cake" className="card-img" />
             </div>
-            {product.isBestSeller && <span class="card-badge">Trending</span>}
+            {product.isBestSeller && (
+              <span className="card-badge">Trending</span>
+            )}
             <FontAwesomeIcon
               icon={faHeart}
               className="wishlist-icon card-icon"

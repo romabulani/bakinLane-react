@@ -38,6 +38,13 @@ export const handleFilters = (state, action) => {
         sortBy: action.payload.sortBy,
       };
 
+    case "RATING":
+      console.log(action.payload);
+      return {
+        ...state,
+        ratingCategory: action.payload.ratingCategory,
+      };
+
     case "CLEAR_FILTERS":
       return initialState;
 

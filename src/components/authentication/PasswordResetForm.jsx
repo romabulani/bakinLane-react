@@ -1,4 +1,5 @@
 import "./auth.css";
+import { Link } from "react-router-dom";
 
 function PasswordResetForm() {
   return (
@@ -6,23 +7,21 @@ function PasswordResetForm() {
       <div className="flex-row-center">
         <div className="auth-container flex-column-center">
           <h4 className="heading4">RESET PASSWORD</h4>
-          <form action="" className="form-auth">
+          <div action="" className="form-auth">
             <input
               type="email"
               placeholder="Enter email"
               className="input-primary border-box"
               required
             />
-            <button type="submit" className="btn btn-primary btn-auth">
-              RESET PASSWORD
-            </button>
+            <button className="btn btn-primary btn-auth">RESET PASSWORD</button>
             <div>
               <span>Already have an account?</span>
-              <a href="#" className="btn-link btn-link-primary">
+              <Link to="/login" className="btn-link btn-link-primary">
                 Login here
-              </a>
+              </Link>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </main>

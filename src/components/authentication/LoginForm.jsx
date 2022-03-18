@@ -1,40 +1,89 @@
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../contexts";
+import { loginService } from "../../services";
 import "./auth.css";
 
 function LoginForm() {
+  const { setAuthToken, setAuthUser } = useAuth();
+  const navigate = useNavigate();
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+
+  const loginHandler = async (e) => {
+    try {
+      let response;
+      if (e.target.innerText === "Login with Test Credentials") {
+        setLoginData({
+          email: "adarshbalika@gmail.com",
+          password: "adarshBalika123",
+        });
+        response = await loginService(
+          "adarshbalika@gmail.com",
+          "adarshBalika123"
+        );
+      } else response = await loginService(loginData.email, loginData.password);
+      const user = JSON.stringify(response.foundUser);
+      const tokenResponse = response.encodedToken;
+      setAuthToken(tokenResponse);
+      setAuthUser(response.foundUser);
+      localStorage.setItem("authToken", tokenResponse);
+      localStorage.setItem("authUser", user);
+      navigate("/products");
+    } catch (e) {
+      console.log("loginHandler: Error in Login");
+    }
+  };
+
   return (
     <main className="content-container">
       <div className="flex-row-center">
         <div className="auth-container flex-column-center">
           <h4 className="heading4">LOGIN</h4>
-          <form className="form-auth">
+          <div className="form-auth">
             <input
               type="email"
               placeholder="Enter email"
               className="input-primary border-box"
-              required
+              value={loginData.email}
+              onChange={(e) =>
+                setLoginData((loginData) => ({
+                  ...loginData,
+                  email: e.target.value,
+                }))
+              }
             />
             <input
               type="password"
               placeholder="Enter password"
               className="input-primary border-box"
-              required
+              value={loginData.password}
+              onChange={(e) =>
+                setLoginData((loginData) => ({
+                  ...loginData,
+                  password: e.target.value,
+                }))
+              }
             />
-            <button type="submit" className="btn btn-primary btn-auth">
-              LOGIN
+            <button className="btn btn-primary btn-auth">Login</button>
+            <button
+              className="btn btn-outline-primary btn-auth"
+              onClick={loginHandler}
+            >
+              Login with Test Credentials
             </button>
             <div>
               <span>Don't have an account?</span>
-              <a href="#" className="btn-link btn-link-primary">
+              <Link to="/signup" className="btn-link btn-link-primary">
                 Create One
-              </a>
+              </Link>
             </div>
             <div>
               <span>Forgot Password?</span>
-              <a href="#" className="btn-link btn-link-primary">
+              <Link to="/passwordReset" className="btn-link btn-link-primary">
                 Reset here
-              </a>
+              </Link>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </main>
