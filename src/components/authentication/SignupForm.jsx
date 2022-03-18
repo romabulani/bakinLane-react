@@ -1,4 +1,5 @@
 import "./auth.css";
+import { Link } from "react-router-dom";
 
 function SignupForm() {
   return (
@@ -6,7 +7,7 @@ function SignupForm() {
       <div className="flex-row-center">
         <div className="auth-container flex-column-center signup-container">
           <h4 className="heading4">SIGN UP</h4>
-          <form action="" className="form-auth">
+          <div action="" className="form-auth">
             <input
               type="text"
               placeholder="Enter First Name"
@@ -41,16 +42,14 @@ function SignupForm() {
             <label htmlFor="terms-conditions">
               I accept all terms and conditions
             </label>
-            <button type="submit" className="btn btn-primary btn-auth">
-              SIGN UP
-            </button>
+            <button className="btn btn-primary btn-auth">SIGN UP</button>
             <div>
               <span>Already have an account?</span>
-              <a href="login.html" className="btn-link btn-link-primary">
+              <Link to="/login" className="btn-link btn-link-primary">
                 Login here
-              </a>
+              </Link>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </main>
