@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./nav.css";
 import logo from "../../assets/images/logo.webp";
@@ -11,9 +11,15 @@ import {
   faBars,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../../contexts";
 
 function Navigation() {
+  const { authToken } = useAuth();
   const [sidebar, setSidebar] = useState(false);
+  const navigate = useNavigate();
+  const isUserLoggedIn = (to) =>
+    authToken ? navigate(to) : navigate("/login");
+
   return (
     <>
       <nav className="nav-container">
@@ -56,12 +62,12 @@ function Navigation() {
           <div className="nav-icons-container">
             <div className="nav-item nav-icon">
               <div className="badge">
-                <Link to="/wishlist">
-                  <FontAwesomeIcon
-                    icon={faHeart}
-                    className="icon-style"
-                  ></FontAwesomeIcon>
-                </Link>
+                {}
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className="icon-style"
+                  onClick={() => isUserLoggedIn("/wishlist")}
+                ></FontAwesomeIcon>
                 <span className="badge-icon badge-number badge-right badge-lg">
                   3
                 </span>
@@ -69,24 +75,22 @@ function Navigation() {
             </div>
             <div className="nav-item nav-icon">
               <div className="badge">
-                <Link to="/cart">
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    className="icon-style"
-                  ></FontAwesomeIcon>
-                </Link>
+                <FontAwesomeIcon
+                  icon={faCartShopping}
+                  className="icon-style"
+                  onClick={() => isUserLoggedIn("/cart")}
+                ></FontAwesomeIcon>
                 <span className="badge-icon badge-number badge-right badge-lg">
                   2
                 </span>
               </div>
             </div>
             <div className="nav-item nav-icon icon-person">
-              <Link to="/signup">
-                <FontAwesomeIcon
-                  icon={faUser}
-                  className="icon-style"
-                ></FontAwesomeIcon>
-              </Link>
+              <FontAwesomeIcon
+                icon={faUser}
+                className="icon-style"
+                onClick={() => isUserLoggedIn("/profile")}
+              ></FontAwesomeIcon>
             </div>
             <div
               className="nav-item nav-icon icon-hamburger"

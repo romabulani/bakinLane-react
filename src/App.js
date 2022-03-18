@@ -7,6 +7,7 @@ import {
   LoginPage,
   PasswordResetPage,
   ProductListingPage,
+  ProfilePage,
   SignupPage,
   WishlistPage,
 } from "./pages";
@@ -20,9 +21,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/passwordreset" element={<PasswordResetPage />} />
         <Route path="/products" element={<ProductListingPage />} />
-        <Route path="/cart" element={<CartPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/mock-api" element={<MockAPI />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </div>
   );
