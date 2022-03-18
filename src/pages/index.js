@@ -5,3 +5,4 @@ export { PasswordResetPage } from "./PasswordResetPage";
 export { ProductListingPage } from "./ProductListingPage";
 export { SignupPage } from "./SignupPage";
 export { WishlistPage } from "./WishlistPage";
+export { ProfilePage } from "./ProfilePage";

@@ -1,0 +1,8 @@
+.logout-container {
+  border-radius: 5px;
+  height: fit-content;
+  margin: 1rem;
+  max-width: 30rem;
+  padding: 6rem;
+  row-gap: 0.5rem;
+}
