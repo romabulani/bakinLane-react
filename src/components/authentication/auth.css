@@ -30,15 +30,11 @@
   align-items: flex-start;
 }
 
-.btn-primary,
-.input-primary {
-  display: block;
-  margin: 1rem 0;
-}
-
 .btn-auth,
 .input-primary {
   width: 100%;
+  display: block;
+  margin: 1rem 0;
 }
 
 .btn-link-primary,
