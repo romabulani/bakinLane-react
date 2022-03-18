@@ -1,5 +1,3 @@
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react/cjs/react.production.min";
-
 const funcSortHighToLow = (items) =>
   [...items].sort(function (a, b) {
     return b.price - a.price;
@@ -9,6 +7,15 @@ const funcSortLowToHigh = (items) =>
   [...items].sort(function (a, b) {
     return a.price - b.price;
   });
+
+const funcRating4AndAbove = (items) =>
+  items.filter((item) => Number(item.rating) >= 4);
+
+const funcRating3AndAbove = (items) =>
+  items.filter((item) => Number(item.rating) >= 3);
+
+const funcRating2AndAbove = (items) =>
+  items.filter((item) => Number(item.rating) >= 2);
 
 const funcItemCategory = (items, categoryArray) =>
   items.filter((item) => categoryArray.includes(item.item));
@@ -28,4 +35,7 @@ export {
   funcItemCategory,
   funcFlavorCategory,
   funcPriceRangeCategory,
+  funcRating2AndAbove,
+  funcRating3AndAbove,
+  funcRating4AndAbove,
 };
