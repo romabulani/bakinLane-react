@@ -133,6 +133,7 @@
 
 .cart-empty-container {
   display: flex;
+  margin: 3rem;
 }
 
 .cart-empty-container > .btn {

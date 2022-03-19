@@ -12,11 +12,14 @@ function Products() {
   const navigate = useNavigate();
 
   const cartHandler = async (e, product) => {
-    if (e.target.innerText === "Add To Cart") {
-      const response = await addToCart(authToken, product);
-      dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
-    } else {
-      navigate("/cart");
+    if (!authToken) navigate("/login");
+    else {
+      if (e.target.innerText === "Add To Cart") {
+        const response = await addToCart(authToken, product);
+        dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
+      } else {
+        navigate("/cart");
+      }
     }
   };
 
@@ -24,7 +27,7 @@ function Products() {
     const filteredItem = state.cart.filter(
       (cartItem) => product._id === cartItem._id
     );
-    if (filteredItem.length > 0) return "Go To Cart";
+    if (filteredItem.length > 0) return "Go To Cart ->";
     else return "Add To Cart";
   };
 
