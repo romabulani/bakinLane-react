@@ -1,5 +1,3 @@
-import { initialState } from "../contexts";
-
 export const reducer = (state, action) => {
   switch (action.type) {
     case "CATEGORY_FILTER":
@@ -39,14 +37,41 @@ export const reducer = (state, action) => {
       };
 
     case "RATING":
-      console.log(action.payload);
       return {
         ...state,
         ratingCategory: action.payload.ratingCategory,
       };
 
     case "CLEAR_FILTERS":
-      return initialState;
+      return {
+        ...state,
+        flavors: {
+          Chocolate: false,
+          Vanilla: false,
+          "Red Velvet": false,
+          Pineapple: false,
+          Strawberry: false,
+        },
+        items: {
+          Cake: false,
+          Muffin: false,
+        },
+        priceRange: {
+          under500: false,
+          price500To1000: false,
+          price1000To1500: false,
+          price1500To2000: false,
+        },
+        isOutOfStock: true,
+        sortBy: "",
+        ratingCategory: "",
+      };
+
+    case "CART_OPERATION":
+      return {
+        ...state,
+        cart: [...action.payload.cart],
+      };
 
     default:
       return state;

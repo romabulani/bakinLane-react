@@ -109,4 +109,4 @@ const DataProvider = ({ children }) => {
 
 const useData = () => useContext(DataContext);
 
-export { DataProvider, useData, initialState };
+export { DataProvider, useData };
