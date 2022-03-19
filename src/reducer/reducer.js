@@ -1,6 +1,6 @@
-import { initialState } from "./filterContext";
+import { initialState } from "../contexts";
 
-export const handleFilters = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case "CATEGORY_FILTER":
       const category = action.payload.category;

@@ -1,9 +1,9 @@
 import "./productlist.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
-import { useFilters } from "../../contexts";
+import { useData } from "../../contexts";
 function Products() {
-  const { filteredData } = useFilters();
+  const { data } = useData();
   function getOriginalPrice(price, offerPercentage) {
     return Math.round(
       Number(price) + (Number(offerPercentage) / 100) * Number(price)
@@ -11,7 +11,7 @@ function Products() {
   }
   return (
     <div className="product-cards">
-      {filteredData.map((product) => (
+      {data.map((product) => (
         <div className="card-default-product" key={product._id}>
           <div className="card-img-icon-container">
             <div className="card-img-container">
