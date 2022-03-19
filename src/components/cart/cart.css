@@ -75,6 +75,7 @@
   align-items: center;
   cursor: pointer;
   display: inline-flex;
+  font-size: 1.5rem;
   height: 2rem;
   justify-content: center;
   padding: 5px;
@@ -153,7 +154,6 @@
 .coupon-button:hover {
   background-color: var(--gray-color);
   color: unset;
-  /* width: 100%; */
 }
 /* Media Queries */
 @media only screen and (max-width: 768px) {

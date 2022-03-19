@@ -65,17 +65,17 @@ function CartItem() {
                       </div>
                       <div className="cart-quantity-buttons">
                         <button
-                          className="button-increase"
-                          onClick={() => updateQuantity(item, "increment")}
-                        >
-                          +
-                        </button>
-                        <span className="quantity-display">{item.qty}</span>
-                        <button
                           className="button-decrease"
                           onClick={() => updateQuantity(item, "decrement")}
                         >
                           -
+                        </button>
+                        <span className="quantity-display">{item.qty}</span>
+                        <button
+                          className="button-increase"
+                          onClick={() => updateQuantity(item, "increment")}
+                        >
+                          +
                         </button>
                       </div>
                     </div>
