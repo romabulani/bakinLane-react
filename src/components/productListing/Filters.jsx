@@ -9,7 +9,6 @@ function Filters() {
   const { state, dispatch } = useData();
 
   const dispatchHandler = (typeOfState, typeofAction) => {
-    console.log("typeofAction");
     dispatch({ type: typeOfState, payload: typeofAction });
   };
 

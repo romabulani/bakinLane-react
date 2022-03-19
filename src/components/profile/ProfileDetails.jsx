@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../contexts";
 import { useNavigate } from "react-router-dom";
 import "./profile.css";
@@ -6,6 +6,9 @@ import "./profile.css";
 function ProfileDetails() {
   const { setAuthToken, authUser, setAuthUser } = useAuth();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.authUser) setAuthUser(JSON.parse(localStorage.authUser));
+  }, []);
   function logoutHandler() {
     localStorage.removeItem("authToken");
     localStorage.removeItem("authUser");
