@@ -1,15 +1,14 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { useFilters } from "../../contexts";
+import { useData } from "../../contexts";
 import "./productlist.css";
 
 function Filters() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const { state, dispatch } = useFilters();
+  const { state, dispatch } = useData();
 
   const dispatchHandler = (typeOfState, typeofAction) => {
-    console.log("typeofAction");
     dispatch({ type: typeOfState, payload: typeofAction });
   };
 

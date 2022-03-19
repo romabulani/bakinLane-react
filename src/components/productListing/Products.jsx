@@ -1,17 +1,39 @@
 import "./productlist.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
-import { useFilters } from "../../contexts";
+import { useAuth, useData } from "../../contexts";
+import { addToCart } from "../../services";
+import { useNavigate } from "react-router-dom";
+import { getOriginalPrice } from "../../utilities";
+
 function Products() {
-  const { filteredData } = useFilters();
-  function getOriginalPrice(price, offerPercentage) {
-    return Math.round(
-      Number(price) + (Number(offerPercentage) / 100) * Number(price)
+  const { data, state, dispatch } = useData();
+  const { authToken } = useAuth();
+  const navigate = useNavigate();
+
+  const cartHandler = async (e, product) => {
+    if (!authToken) navigate("/login");
+    else {
+      if (e.target.innerText === "Add To Cart") {
+        const response = await addToCart(authToken, product);
+        dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
+      } else {
+        navigate("/cart");
+      }
+    }
+  };
+
+  const getButtonText = (product) => {
+    const filteredItem = state.cart.filter(
+      (cartItem) => product._id === cartItem._id
     );
-  }
+    if (filteredItem.length > 0) return "Go To Cart ->";
+    else return "Add To Cart";
+  };
+
   return (
     <div className="product-cards">
-      {filteredData.map((product) => (
+      {data.map((product) => (
         <div className="card-default-product" key={product._id}>
           <div className="card-img-icon-container">
             <div className="card-img-container">
@@ -62,8 +84,11 @@ function Products() {
                 OUT OF STOCK
               </button>
             ) : (
-              <button className="btn btn-outline-primary card-button">
-                ADD TO CART
+              <button
+                className="btn btn-outline-primary card-button"
+                onClick={(e) => cartHandler(e, product)}
+              >
+                {getButtonText(product)}
               </button>
             )}
           </div>
@@ -73,4 +98,4 @@ function Products() {
   );
 }
 
-export { Products };
+export { Products, getOriginalPrice };

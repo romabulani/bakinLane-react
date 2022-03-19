@@ -11,10 +11,11 @@ import {
   faBars,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { useAuth } from "../../contexts";
+import { useAuth, useData } from "../../contexts";
 
 function Navigation() {
   const { authToken } = useAuth();
+  const { state } = useData();
   const [sidebar, setSidebar] = useState(false);
   const navigate = useNavigate();
   const isUserLoggedIn = (to) =>
@@ -69,7 +70,7 @@ function Navigation() {
                   onClick={() => isUserLoggedIn("/wishlist")}
                 ></FontAwesomeIcon>
                 <span className="badge-icon badge-number badge-right badge-lg">
-                  3
+                  {3}
                 </span>
               </div>
             </div>
@@ -80,9 +81,11 @@ function Navigation() {
                   className="icon-style"
                   onClick={() => isUserLoggedIn("/cart")}
                 ></FontAwesomeIcon>
-                <span className="badge-icon badge-number badge-right badge-lg">
-                  2
-                </span>
+                {state.cart.length > 0 && (
+                  <span className="badge-icon badge-number badge-right badge-lg">
+                    {state.cart.length}
+                  </span>
+                )}
               </div>
             </div>
             <div className="nav-item nav-icon icon-person">

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { categories } from "../../backend/db/categories";
-import { useFilters, useProductsData } from "../../contexts";
+import { useData, useProductsData } from "../../contexts";
 import "./landingpage.css";
 
 function HeroSection() {
@@ -9,7 +9,7 @@ function HeroSection() {
     .filter((item) => item.isBestSeller)
     .slice(0, 4);
   const feauredCategories = categories;
-  const { dispatch } = useFilters();
+  const { dispatch } = useData();
   let navigate = useNavigate();
 
   const routeChange = (item) => {

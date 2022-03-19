@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: "adacf514-e472-48f5-a954-3914af19a68c",
     title: "Heavenly Chocolate Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014312/ecommerce/chocolatecake1.webp",
@@ -23,7 +23,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "2dc5b435-fb06-435e-bf58-6dfbc07d039c",
     title: "Jungle Theme Vanilla Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015508/ecommerce/vanillacake01.webp",
@@ -39,7 +39,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "e30bf9e2-ccb0-4fba-83f6-545eb42ad8b9",
     title: "2 Tier Strawberry Wedding Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015328/ecommerce/strawberrycake3.webp",
@@ -55,7 +55,7 @@ export const products = [
     priceCategory: "price1500To2000",
   },
   {
-    _id: uuid(),
+    _id: "64f0cb99-7dfe-4017-aac3-ff7529e962f1",
     title: "Cherry Chocolate Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014777/ecommerce/chocolatecake3.webp",
@@ -71,7 +71,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "46411b13-71fb-4990-9566-394aca1cfab7",
     title: "Blueberry Vanilla Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015509/ecommerce/vanillacake04.webp",
@@ -87,7 +87,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "449a8cbb-f45b-4b84-8f62-15af8bb26ef2",
     title: "Red Velvet Tall Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014954/ecommerce/redvelvetcake3.webp",
@@ -103,7 +103,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "9b9ec13d-b01a-4238-9bfe-f23736d865b1",
     title: "Fresh Pineapple Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014828/ecommerce/pineapplemuffin1.webp",
@@ -119,7 +119,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "bde678ad-e3a7-4c91-b811-16fb62c45ff1",
     title: "Choco Lava Chocolate Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014336/ecommerce/chocolatemuffin2.webp",
@@ -135,7 +135,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "285bb183-255f-4882-8a4c-042b395bc34a",
     title: "Christmas Theme Vanilla Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015508/ecommerce/vanillacake2.webp",
@@ -151,7 +151,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "73cc28f7-0747-47a3-90e0-7bc4ed4cda95",
     title: "Tall Pineapple Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014828/ecommerce/pineapplecake2.webp",
@@ -167,7 +167,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "2e2396e7-6ccb-4a38-abfd-c8a29c575a66",
     title: "Plain Vanilla Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015509/ecommerce/vanillamuffin2.webp",
@@ -183,7 +183,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "ca77aa39-0467-4441-9171-6de6ec9fc529",
     title: "Ferrero Rocher Chocolate Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014336/ecommerce/chocolatemuffin1.webp",
@@ -199,7 +199,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "6737fefe-3407-429f-b64a-7ea8b6a1f6be",
     title: "3 Tier Strawberry Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015328/ecommerce/strawberrycake2.webp",
@@ -215,7 +215,7 @@ export const products = [
     priceCategory: "price1000To1500",
   },
   {
-    _id: uuid(),
+    _id: "64f17c65-777a-419b-b2a0-e0ac10c9bb15",
     title: "Red Velvet Heart Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014954/ecommerce/redvelvetcake1.webp",
@@ -231,7 +231,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "ed044363-56b2-4e52-a23d-b48cdc99c9fc",
     title: "Christmas Theme Chocolate Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014335/ecommerce/chocolatecake2.webp",
@@ -247,7 +247,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "2b927c7d-c0a2-42c4-86a6-8fc7c16bfcd3",
     title: "Chocolate Rose Designer Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014336/ecommerce/chocolatecake4.webp",
@@ -263,7 +263,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "90bc497e-ca53-44d1-8f5d-d22e58d03518",
     title: "Red Velvet Choco Chips Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014954/ecommerce/redvelvetmuffin2.webp",
@@ -279,7 +279,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "0f81624c-eb60-4961-897f-220d861d7867",
     title: "Mouthwatering Strawberry Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015328/ecommerce/strawberrymuffin1.webp",
@@ -295,7 +295,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "a3443a70-eed5-4f82-9ef5-49f42399b31e",
     title: "Exotic Pineapple Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014827/ecommerce/pineapplecake1.webp",
@@ -311,7 +311,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "6f58eccf-aaac-409e-8ac5-09e734f6870c",
     title: "Cream Red Velvet Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014954/ecommerce/redvelvetmuffin1.webp",
@@ -327,7 +327,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "a4319767-91bc-490b-ae7c-4239c5df0d0e",
     title: "Tall Fresh Strawberry Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015328/ecommerce/strawberrycake1.webp",
@@ -343,7 +343,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "37209e0f-e4f9-454f-bc47-0f5f2b76daff",
     title: "Creamy Vanilla Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015509/ecommerce/vanillamuffin1.webp",
@@ -359,7 +359,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "d38f1a9c-8509-412d-9720-08c69ce5cf8d",
     title: "Red Velvet Round Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014954/ecommerce/redvelvetcake2.webp",
@@ -375,7 +375,7 @@ export const products = [
     priceCategory: "price500To1000",
   },
   {
-    _id: uuid(),
+    _id: "71bb8d50-fb9c-4113-9dda-e282dadd07c1",
     title: "Fresh Pineapple Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647014828/ecommerce/pineapplecake3.webp",
@@ -391,7 +391,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "50dae991-4266-4b3a-90cc-aeabc9eabbf3",
     title: "Creamy Strawberry Muffin",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015328/ecommerce/strawberrymuffin2.webp",
@@ -407,7 +407,7 @@ export const products = [
     priceCategory: "under500",
   },
   {
-    _id: uuid(),
+    _id: "5770c56d-1284-4acb-8534-4d083c5adc6d",
     title: "Designer Vanilla Cake",
     imageUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1647015508/ecommerce/vanillacake3.webp",

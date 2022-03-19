@@ -1,3 +1,3 @@
-export { ProductsDataProvider, useProductsData } from "./dataContext";
-export { FilterProvider, useFilters } from "./filterContext";
+export { ProductsDataProvider, useProductsData } from "./productContext";
+export { DataProvider, useData } from "./dataContext";
 export { AuthProvider, useAuth } from "./authContext";
