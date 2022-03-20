@@ -1,4 +1,4 @@
-import { Navigation, Footer, Cart } from "../components";
+import { Navigation, Footer, Cart } from "components";
 
 function CartPage() {
   return (

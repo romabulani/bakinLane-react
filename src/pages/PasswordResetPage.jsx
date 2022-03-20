@@ -1,5 +1,5 @@
-import { Navigation, Footer, PasswordResetForm } from "../components";
-import "../styles/globalbakin.css";
+import { Navigation, Footer, PasswordResetForm } from "components";
+import "styles/globalbakin.css";
 
 function PasswordResetPage() {
   return (

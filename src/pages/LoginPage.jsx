@@ -1,6 +1,5 @@
-import { useLocation } from "react-router-dom";
-import { Navigation, Footer, LoginForm } from "../components";
-import "../styles/globalbakin.css";
+import { Navigation, Footer, LoginForm } from "components";
+import "styles/globalbakin.css";
 
 function LoginPage() {
   return (

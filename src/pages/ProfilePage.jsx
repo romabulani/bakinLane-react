@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer, Navigation, ProfileDetails } from "../components";
+import { Footer, Navigation, ProfileDetails } from "components";
 
 function ProfilePage() {
   return (
