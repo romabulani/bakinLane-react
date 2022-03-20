@@ -1,64 +1,46 @@
 import React from "react";
 import "./wishlist.css";
-import { useAuth, useData } from "../../contexts";
+import { useData } from "contexts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { getOriginalPrice } from "../../utilities";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
-import { addToCart, removeFromWishlist } from "../../services";
+import { useCartSummary, useOperations } from "hooks";
 
 function WishlistItem() {
-  const { state, dispatch } = useData();
-  const { authToken } = useAuth();
+  const { state } = useData();
   const navigate = useNavigate();
-
-  const getButtonText = (item) => {
-    const filteredItem = state.cart.filter(
-      (cartItem) => item._id === cartItem._id
-    );
-    filteredItem.length > 0 ? "Go To Cart ->" : "Add To Cart";
-  };
-
-  const cartHandler = async (e, item) => {
-    if (e.target.innerText === "Add To Cart") {
-      const response = await addToCart(authToken, item);
-      dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
-    } else navigate("/cart");
-  };
-
-  const wishlistHandler = async (item) => {
-    const response = await removeFromWishlist(item._id, authToken);
-    dispatch({
-      type: "WISHLIST_OPERATION",
-      payload: { wishlist: response.wishlist },
-    });
-  };
+  const { getOriginalPrice } = useCartSummary();
+  const { getButtonText, wishlistHandler, cartHandler } = useOperations();
 
   return (
     <div>
       <div className="flex-row-center">
         {state.wishlist.length > 0 &&
-          [...state.wishlist].reverse().map((item) => (
-            <div className="card card-default wishlist-card" key={item._id}>
+          [...state.wishlist].reverse().map((product) => (
+            <div className="card card-default wishlist-card" key={product._id}>
               <div className="card-img-container wishlist-img-container">
-                <img src={item.imageUrl} alt="cake" className="card-img" />
+                <img src={product.imageUrl} alt="cake" className="card-img" />
                 <FontAwesomeIcon
                   icon={faCircleXmark}
                   className="wishlist-close-btn gray-text"
-                  onClick={() => wishlistHandler(item)}
+                  onClick={() => wishlistHandler(product)}
                 ></FontAwesomeIcon>
               </div>
-              <div className="card-header">{item.title}</div>
+              <div className="card-header">{product.title}</div>
               <div className="card-title">
-                ₹ {item.price}
-                {item.offerPercentage > 0 && (
+                ₹ {product.price}
+                {product.offerPercentage > 0 && (
                   <>
                     <span className="strikethrough card-title">
                       {" "}
-                      ₹{getOriginalPrice(item.price, item.offerPercentage)}{" "}
+                      ₹
+                      {getOriginalPrice(
+                        product.price,
+                        product.offerPercentage
+                      )}{" "}
                     </span>
                     <span className="card-title offer">
-                      ({item.offerPercentage}% OFF){" "}
+                      ({product.offerPercentage}% OFF){" "}
                     </span>
                   </>
                 )}
@@ -66,9 +48,9 @@ function WishlistItem() {
               <div className="wishlist-card-buttons">
                 <button
                   className="btn btn-outline-primary wishlist-card-button"
-                  onClick={(e) => cartHandler(e, item)}
+                  onClick={(e) => cartHandler(e, product)}
                 >
-                  {getButtonText(item)}
+                  {getButtonText(product)}
                 </button>
               </div>
             </div>

@@ -1,13 +1,13 @@
 import { faTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useData } from "../../contexts";
-import { getDiscount, getMRP, getTotalPrice } from "../../utilities";
+import { useData } from "contexts";
 import "./cart.css";
+import { useCartSummary } from "hooks";
 
 function CartSummary() {
   const { state } = useData();
-
+  const { getTotalPrice, getMRP, getDiscount } = useCartSummary();
   return (
     <div className="cart-price gray-text">
       <h5 className="heading5">COUPONS</h5>

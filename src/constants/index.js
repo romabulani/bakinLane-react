@@ -1,0 +1,9 @@
+export const CHOCOLATE = "Chocolate";
+export const VANILLA = "Vanilla";
+export const RED_VELVET = "Red Velvet";
+export const PINEAPPLE = "Pineapple";
+export const STRAWBERRY = "Strawberry";
+export const CAKE = "Cake";
+export const MUFFIN = "Muffin";
+export const CART_OPERATION = "CART_OPERATION";
+export const WISHLIST_OPERATION = "WISHLIST_OPERATION";
