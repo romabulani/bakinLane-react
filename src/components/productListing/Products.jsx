@@ -2,7 +2,7 @@ import "./productlist.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useAuth, useData } from "../../contexts";
-import { addToCart } from "../../services";
+import { addToCart, addToWishlist, removeFromWishlist } from "../../services";
 import { useNavigate } from "react-router-dom";
 import { getOriginalPrice } from "../../utilities";
 
@@ -17,9 +17,23 @@ function Products() {
       if (e.target.innerText === "Add To Cart") {
         const response = await addToCart(authToken, product);
         dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
-      } else {
-        navigate("/cart");
-      }
+      } else navigate("/cart");
+    }
+  };
+
+  const isWishlisted = (product) =>
+    state.wishlist.find((item) => item._id === product._id);
+
+  const wishlistHandler = async (product) => {
+    if (!authToken) navigate("/login");
+    else {
+      const response = isWishlisted(product)
+        ? await removeFromWishlist(product._id, authToken)
+        : await addToWishlist(authToken, product);
+      dispatch({
+        type: "WISHLIST_OPERATION",
+        payload: { wishlist: response.wishlist },
+      });
     }
   };
 
@@ -44,7 +58,10 @@ function Products() {
             )}
             <FontAwesomeIcon
               icon={faHeart}
-              className="wishlist-icon card-icon"
+              className={`card-icon ${
+                isWishlisted(product) ? "filled-wishlist-icon" : "wishlist-icon"
+              }`}
+              onClick={() => wishlistHandler(product)}
             ></FontAwesomeIcon>
           </div>
           <div className="card-header">{product.title}</div>
@@ -75,7 +92,7 @@ function Products() {
             </span>{" "}
             | {product.totalRatings}
           </div>
-          <div className="card-buttons">
+          <div className="card-buttons product-card-buttons">
             {product.isOutOfStock ? (
               <button
                 className="btn btn-outline-primary card-button btn-outOfStock"

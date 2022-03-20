@@ -86,12 +86,16 @@
 .card-button {
   margin: 0.5rem;
   position: absolute;
-  width: 80%;
+  width: 90%;
   bottom: 0px;
 }
 
-.card-icon.heart-wishlist {
+.filled-wishlist-icon {
   color: var(--error-color);
+  font-size: 1.4rem;
+  position: absolute;
+  right: 2px;
+  top: 2px;
 }
 
 .wishlist-icon {
@@ -115,8 +119,10 @@
   width: 100%;
   height: 100%;
 }
-.card-buttons {
+.product-card-buttons {
+  align-items: center;
   padding: 5px;
+  justify-content: center;
 }
 
 .card-title {

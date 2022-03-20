@@ -73,6 +73,12 @@ export const reducer = (state, action) => {
         cart: [...action.payload.cart],
       };
 
+    case "WISHLIST_OPERATION":
+      return {
+        ...state,
+        wishlist: [...action.payload.wishlist],
+      };
+
     default:
       return state;
   }

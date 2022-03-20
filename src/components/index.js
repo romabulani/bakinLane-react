@@ -8,3 +8,4 @@ export { Footer } from "./shared/Footer";
 export { MockAPI } from "./shared/MockAPI";
 export { ProfileDetails } from "./profile/ProfileDetails";
 export { Cart } from "./cart/Cart";
+export { Wishlist } from "./wishlist/Wishlist";

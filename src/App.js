@@ -21,9 +21,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        {authToken && (
-          <Route path="/passwordreset" element={<PasswordResetPage />} />
-        )}
+        <Route path="/passwordreset" element={<PasswordResetPage />} />
         <Route path="/products" element={<ProductListingPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/mock-api" element={<MockAPI />} />
