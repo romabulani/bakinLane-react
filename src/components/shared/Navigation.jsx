@@ -68,7 +68,7 @@ function Navigation() {
                   className="icon-style"
                   onClick={() => isUserLoggedIn("/wishlist")}
                 ></FontAwesomeIcon>
-                {state.wishlist.length > 0 && (
+                {authToken && state.wishlist.length > 0 && (
                   <span className="badge-icon badge-number badge-right badge-lg">
                     {state.wishlist.length}
                   </span>
@@ -82,7 +82,7 @@ function Navigation() {
                   className="icon-style"
                   onClick={() => isUserLoggedIn("/cart")}
                 ></FontAwesomeIcon>
-                {state.cart.length > 0 && (
+                {authToken && state.cart.length > 0 && (
                   <span className="badge-icon badge-number badge-right badge-lg">
                     {state.cart.length}
                   </span>

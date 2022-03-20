@@ -17,9 +17,7 @@ function Products() {
       if (e.target.innerText === "Add To Cart") {
         const response = await addToCart(authToken, product);
         dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
-      } else {
-        navigate("/cart");
-      }
+      } else navigate("/cart");
     }
   };
 
@@ -29,10 +27,9 @@ function Products() {
   const wishlistHandler = async (product) => {
     if (!authToken) navigate("/login");
     else {
-      let response;
-      if (isWishlisted(product))
-        response = await removeFromWishlist(product._id, authToken);
-      else response = await addToWishlist(authToken, product);
+      const response = isWishlisted(product)
+        ? await removeFromWishlist(product._id, authToken)
+        : await addToWishlist(authToken, product);
       dispatch({
         type: "WISHLIST_OPERATION",
         payload: { wishlist: response.wishlist },

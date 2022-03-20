@@ -19,7 +19,7 @@ const addToWishlist = async (authToken, product) => {
   try {
     const response = await axios.post(
       "/api/user/wishlist",
-      { product: product },
+      { product },
       {
         headers: { authorization: authToken },
       }

@@ -16,8 +16,7 @@ function WishlistItem() {
     const filteredItem = state.cart.filter(
       (cartItem) => item._id === cartItem._id
     );
-    if (filteredItem.length > 0) return "Go To Cart ->";
-    else return "Add To Cart";
+    filteredItem.length > 0 ? "Go To Cart ->" : "Add To Cart";
   };
 
   const cartHandler = async (e, item) => {
