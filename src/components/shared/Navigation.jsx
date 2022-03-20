@@ -63,15 +63,16 @@ function Navigation() {
           <div className="nav-icons-container">
             <div className="nav-item nav-icon">
               <div className="badge">
-                {}
                 <FontAwesomeIcon
                   icon={faHeart}
                   className="icon-style"
                   onClick={() => isUserLoggedIn("/wishlist")}
                 ></FontAwesomeIcon>
-                <span className="badge-icon badge-number badge-right badge-lg">
-                  {3}
-                </span>
+                {state.wishlist.length > 0 && (
+                  <span className="badge-icon badge-number badge-right badge-lg">
+                    {state.wishlist.length}
+                  </span>
+                )}
               </div>
             </div>
             <div className="nav-item nav-icon">
