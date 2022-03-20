@@ -5,3 +5,8 @@ export {
   updateQuantityInCart,
   removeFromCart,
 } from "./cartService";
+export {
+  getWishlist,
+  addToWishlist,
+  removeFromWishlist,
+} from "./wishlistService";
