@@ -1,3 +1,15 @@
+import {
+  CHOCOLATE,
+  VANILLA,
+  RED_VELVET,
+  STRAWBERRY,
+  PINEAPPLE,
+  CAKE,
+  MUFFIN,
+  CART_OPERATION,
+  WISHLIST_OPERATION,
+} from "../constants";
+
 export const reducer = (state, action) => {
   switch (action.type) {
     case "CATEGORY_FILTER":
@@ -46,15 +58,15 @@ export const reducer = (state, action) => {
       return {
         ...state,
         flavors: {
-          Chocolate: false,
-          Vanilla: false,
-          "Red Velvet": false,
-          Pineapple: false,
-          Strawberry: false,
+          [CHOCOLATE]: false,
+          [VANILLA]: false,
+          [RED_VELVET]: false,
+          [PINEAPPLE]: false,
+          [STRAWBERRY]: false,
         },
         items: {
-          Cake: false,
-          Muffin: false,
+          [CAKE]: false,
+          [MUFFIN]: false,
         },
         priceRange: {
           under500: false,
@@ -67,13 +79,13 @@ export const reducer = (state, action) => {
         ratingCategory: "",
       };
 
-    case "CART_OPERATION":
+    case CART_OPERATION:
       return {
         ...state,
         cart: [...action.payload.cart],
       };
 
-    case "WISHLIST_OPERATION":
+    case WISHLIST_OPERATION:
       return {
         ...state,
         wishlist: [...action.payload.wishlist],

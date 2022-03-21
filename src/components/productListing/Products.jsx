@@ -1,49 +1,14 @@
 import "./productlist.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
-import { useAuth, useData } from "../../contexts";
-import { addToCart, addToWishlist, removeFromWishlist } from "../../services";
-import { useNavigate } from "react-router-dom";
-import { getOriginalPrice } from "../../utilities";
+import { useCartSummary, useOperations } from "hooks";
+import { useData } from "contexts";
 
 function Products() {
-  const { data, state, dispatch } = useData();
-  const { authToken } = useAuth();
-  const navigate = useNavigate();
-
-  const cartHandler = async (e, product) => {
-    if (!authToken) navigate("/login");
-    else {
-      if (e.target.innerText === "Add To Cart") {
-        const response = await addToCart(authToken, product);
-        dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
-      } else navigate("/cart");
-    }
-  };
-
-  const isWishlisted = (product) =>
-    state.wishlist.find((item) => item._id === product._id);
-
-  const wishlistHandler = async (product) => {
-    if (!authToken) navigate("/login");
-    else {
-      const response = isWishlisted(product)
-        ? await removeFromWishlist(product._id, authToken)
-        : await addToWishlist(authToken, product);
-      dispatch({
-        type: "WISHLIST_OPERATION",
-        payload: { wishlist: response.wishlist },
-      });
-    }
-  };
-
-  const getButtonText = (product) => {
-    const filteredItem = state.cart.filter(
-      (cartItem) => product._id === cartItem._id
-    );
-    if (filteredItem.length > 0) return "Go To Cart ->";
-    else return "Add To Cart";
-  };
+  const { data } = useData();
+  const { getButtonText, cartHandler, isWishlisted, toggleWishlist } =
+    useOperations();
+  const { getOriginalPrice } = useCartSummary();
 
   return (
     <div className="product-cards">
@@ -61,7 +26,7 @@ function Products() {
               className={`card-icon ${
                 isWishlisted(product) ? "filled-wishlist-icon" : "wishlist-icon"
               }`}
-              onClick={() => wishlistHandler(product)}
+              onClick={() => toggleWishlist(product)}
             ></FontAwesomeIcon>
           </div>
           <div className="card-header">{product.title}</div>
@@ -115,4 +80,4 @@ function Products() {
   );
 }
 
-export { Products, getOriginalPrice };
+export { Products };

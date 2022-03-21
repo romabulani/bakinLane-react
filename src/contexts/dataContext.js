@@ -1,29 +1,28 @@
 import { createContext, useContext, useReducer } from "react";
 import { useProductsData } from "./productContext";
+import * as utilFunctions from "utilities";
+import { reducer } from "reducer";
 import {
-  funcFlavorCategory,
-  funcInStock,
-  funcItemCategory,
-  funcPriceRangeCategory,
-  funcRating2AndAbove,
-  funcRating3AndAbove,
-  funcRating4AndAbove,
-  funcSortHighToLow,
-  funcSortLowToHigh,
-} from "../utilities/filterFunctions";
-import { reducer } from "../reducer";
+  CHOCOLATE,
+  VANILLA,
+  RED_VELVET,
+  PINEAPPLE,
+  STRAWBERRY,
+  CAKE,
+  MUFFIN,
+} from "../constants";
 
 const initialState = {
   flavors: {
-    Chocolate: false,
-    Vanilla: false,
-    "Red Velvet": false,
-    Pineapple: false,
-    Strawberry: false,
+    [CHOCOLATE]: false,
+    [VANILLA]: false,
+    [RED_VELVET]: false,
+    [PINEAPPLE]: false,
+    [STRAWBERRY]: false,
   },
   items: {
-    Cake: false,
-    Muffin: false,
+    [CAKE]: false,
+    [MUFFIN]: false,
   },
   priceRange: {
     under500: false,
@@ -39,8 +38,19 @@ const initialState = {
 };
 
 const getData = (state) => {
-  let { productsData } = useProductsData();
+  const {
+    funcFlavorCategory,
+    funcInStock,
+    funcItemCategory,
+    funcPriceRangeCategory,
+    funcRating2AndAbove,
+    funcRating3AndAbove,
+    funcRating4AndAbove,
+    funcSortHighToLow,
+    funcSortLowToHigh,
+  } = utilFunctions;
 
+  let { productsData } = useProductsData();
   if (state.sortBy === "highToLow")
     productsData = funcSortHighToLow(productsData);
   else if (state.sortBy === "lowToHigh")

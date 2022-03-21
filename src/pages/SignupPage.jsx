@@ -1,5 +1,5 @@
-import { Navigation, Footer, SignupForm } from "../components";
-import "../styles/globalbakin.css";
+import { Navigation, Footer, SignupForm } from "components";
+import "styles/globalbakin.css";
 
 function SignupPage() {
   return (

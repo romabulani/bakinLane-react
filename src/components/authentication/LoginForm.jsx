@@ -1,39 +1,12 @@
+import { useAuthHandlers } from "hooks";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../../contexts";
-import { loginService } from "../../services";
+import { Link } from "react-router-dom";
+
 import "./auth.css";
 
 function LoginForm() {
-  const { setAuthToken, setAuthUser } = useAuth();
-  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
-
-  const loginHandler = async (e) => {
-    try {
-      let response;
-      if (e.target.innerText === "Login with Test Credentials") {
-        setLoginData({
-          email: "adarshbalika@gmail.com",
-          password: "adarshBalika123",
-        });
-        response = await loginService(
-          "adarshbalika@gmail.com",
-          "adarshBalika123"
-        );
-      } else response = await loginService(loginData.email, loginData.password);
-      const user = JSON.stringify(response.foundUser);
-      const tokenResponse = response.encodedToken;
-      setAuthToken(tokenResponse);
-      setAuthUser(response.foundUser);
-      localStorage.setItem("authToken", tokenResponse);
-      localStorage.setItem("authUser", user);
-      navigate("/products");
-    } catch (e) {
-      console.log("loginHandler: Error in Login");
-    }
-  };
-
+  const { loginHandler } = useAuthHandlers();
   return (
     <main className="content-container">
       <div className="flex-row-center">
@@ -67,7 +40,7 @@ function LoginForm() {
             <button className="btn btn-primary btn-auth">Login</button>
             <button
               className="btn btn-outline-primary btn-auth"
-              onClick={loginHandler}
+              onClick={(e) => loginHandler(e, setLoginData)}
             >
               Login with Test Credentials
             </button>

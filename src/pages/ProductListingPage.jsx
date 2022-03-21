@@ -1,5 +1,5 @@
-import { Navigation, Footer, ProductList } from "../components";
-import "../styles/globalbakin.css";
+import { Navigation, Footer, ProductList } from "components";
+import "styles/globalbakin.css";
 
 function ProductListingPage() {
   return (

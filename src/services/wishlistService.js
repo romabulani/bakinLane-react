@@ -34,7 +34,7 @@ const addToWishlist = async (authToken, product) => {
   }
 };
 
-async function removeFromWishlist(id, authToken) {
+const removeFromWishlist = async (authToken, id) => {
   try {
     const response = await axios.delete(`/api/user/wishlist/${id}`, {
       headers: { authorization: authToken },
@@ -50,6 +50,6 @@ async function removeFromWishlist(id, authToken) {
       e
     );
   }
-}
+};
 
 export { getWishlist, addToWishlist, removeFromWishlist };

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function getCart(authToken) {
+const getCart = async (authToken) => {
   try {
     const response = await axios.get("/api/user/cart", {
       headers: { authorization: authToken },
@@ -13,13 +13,13 @@ async function getCart(authToken) {
   } catch (e) {
     console.log("getCart : Error in fetching cart details", e);
   }
-}
+};
 
-async function addToCart(authToken, product) {
+const addToCart = async (authToken, product) => {
   try {
     const response = await axios.post(
       "/api/user/cart",
-      { product: product },
+      { product },
       {
         headers: { authorization: authToken },
       }
@@ -32,9 +32,9 @@ async function addToCart(authToken, product) {
   } catch (e) {
     console.log("addToCart : Error in adding product to cart", e);
   }
-}
+};
 
-async function updateQuantityInCart(id, authToken, type) {
+const updateQuantityInCart = async (authToken, id, type) => {
   try {
     const response = await axios.post(
       `/api/user/cart/${id}`,
@@ -55,9 +55,9 @@ async function updateQuantityInCart(id, authToken, type) {
   } catch (e) {
     console.log("updateQuantity : Error in updating product in cart", e);
   }
-}
+};
 
-async function removeFromCart(id, authToken) {
+const removeFromCart = async (authToken, id) => {
   try {
     const response = await axios.delete(`/api/user/cart/${id}`, {
       headers: { authorization: authToken },
@@ -70,5 +70,5 @@ async function removeFromCart(id, authToken) {
   } catch (e) {
     console.log("removeFromCart : Error in removing product from cart", e);
   }
-}
+};
 export { getCart, addToCart, updateQuantityInCart, removeFromCart };
