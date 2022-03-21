@@ -3,6 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useData } from "../../contexts";
 import "./productlist.css";
+import {
+  CATEGORY_FILTER,
+  ITEMS_FILTER,
+  TOGGLE_STOCK,
+  SORT,
+  RATING,
+  CLEAR_FILTERS,
+} from "../../constants";
 
 function Filters() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
@@ -30,7 +38,7 @@ function Filters() {
           )}
           <button
             className="btn-link btn-link-primary btn-no-decoration"
-            onClick={() => dispatchHandler("CLEAR_FILTERS")}
+            onClick={() => dispatchHandler(CLEAR_FILTERS)}
           >
             CLEAR
           </button>
@@ -46,7 +54,7 @@ function Filters() {
               className="small-text"
               name="priceSort"
               checked={state.sortBy === "highToLow"}
-              onChange={() => dispatchHandler("SORT", { sortBy: "highToLow" })}
+              onChange={() => dispatchHandler(SORT, { sortBy: "highToLow" })}
             />
             <label htmlFor="highToLow" className="gray-text small-text">
               Price High to Low
@@ -60,7 +68,7 @@ function Filters() {
               className="small-text"
               name="priceSort"
               checked={state.sortBy === "lowToHigh"}
-              onChange={() => dispatchHandler("SORT", { sortBy: "lowToHigh" })}
+              onChange={() => dispatchHandler(SORT, { sortBy: "lowToHigh" })}
             />
             <label htmlFor="lowToHigh" className="gray-text small-text">
               Price Low to High
@@ -79,7 +87,7 @@ function Filters() {
               name="ratingCategory"
               checked={state.ratingCategory === "4andAbove"}
               onChange={() =>
-                dispatchHandler("RATING", { ratingCategory: "4andAbove" })
+                dispatchHandler(RATING, { ratingCategory: "4andAbove" })
               }
             />
             <label htmlFor="4andAbove" className="gray-text small-text">
@@ -100,7 +108,7 @@ function Filters() {
               name="ratingCategory"
               checked={state.ratingCategory === "3andAbove"}
               onChange={() =>
-                dispatchHandler("RATING", { ratingCategory: "3andAbove" })
+                dispatchHandler(RATING, { ratingCategory: "3andAbove" })
               }
             />
             <label htmlFor="3andAbove" className="gray-text small-text">
@@ -121,7 +129,7 @@ function Filters() {
               name="ratingCategory"
               checked={state.ratingCategory === "2andAbove"}
               onChange={() =>
-                dispatchHandler("RATING", { ratingCategory: "2andAbove" })
+                dispatchHandler(RATING, { ratingCategory: "2andAbove" })
               }
             />
             <label htmlFor="2andAbove" className="gray-text small-text">
@@ -146,7 +154,7 @@ function Filters() {
               name="priceCategory"
               checked={state.priceRange.under500}
               onChange={() =>
-                dispatchHandler("PRICERANGE_FILTER", { priceRange: "under500" })
+                dispatchHandler(PRICERANGE_FILTER, { priceRange: "under500" })
               }
             />
             <label className="gray-text small-text" htmlFor="under500">
@@ -162,7 +170,7 @@ function Filters() {
               name="priceCategory"
               checked={state.priceRange.price500To1000}
               onChange={() =>
-                dispatchHandler("PRICERANGE_FILTER", {
+                dispatchHandler(PRICERANGE_FILTER, {
                   priceRange: "price500To1000",
                 })
               }
@@ -180,7 +188,7 @@ function Filters() {
               name="priceCategory"
               checked={state.priceRange.price1000To1500}
               onChange={() =>
-                dispatchHandler("PRICERANGE_FILTER", {
+                dispatchHandler(PRICERANGE_FILTER, {
                   priceRange: "price1000To1500",
                 })
               }
@@ -198,7 +206,7 @@ function Filters() {
               name="priceCategory"
               checked={state.priceRange.price1500To2000}
               onChange={() =>
-                dispatchHandler("PRICERANGE_FILTER", {
+                dispatchHandler(PRICERANGE_FILTER, {
                   priceRange: "price1500To2000",
                 })
               }
@@ -219,7 +227,7 @@ function Filters() {
               className="small-text"
               name="itemCategory"
               checked={state.items.Cake}
-              onChange={() => dispatchHandler("ITEMS_FILTER", { item: "Cake" })}
+              onChange={() => dispatchHandler(ITEMS_FILTER, { item: "Cake" })}
             />
             <label className="gray-text small-text" htmlFor="item-cakes">
               Cakes
@@ -233,9 +241,7 @@ function Filters() {
               className="small-text"
               name="itemCategory"
               checked={state.items.Muffin}
-              onChange={() =>
-                dispatchHandler("ITEMS_FILTER", { item: "Muffin" })
-              }
+              onChange={() => dispatchHandler(ITEMS_FILTER, { item: "Muffin" })}
             />
             <label htmlFor="item-muffins" className="gray-text small-text">
               Muffins
@@ -255,7 +261,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors.Chocolate}
               onChange={() =>
-                dispatchHandler("CATEGORY_FILTER", { category: "Chocolate" })
+                dispatchHandler(CATEGORY_FILTER, { category: "Chocolate" })
               }
             />
             <label
@@ -274,7 +280,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors.Vanilla}
               onChange={() =>
-                dispatchHandler("CATEGORY_FILTER", { category: "Vanilla" })
+                dispatchHandler(CATEGORY_FILTER, { category: "Vanilla" })
               }
             />
             <label htmlFor="category-vanilla" className="gray-text small-text">
@@ -290,7 +296,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors["Red Velvet"]}
               onChange={() =>
-                dispatchHandler("CATEGORY_FILTER", { category: "Red Velvet" })
+                dispatchHandler(CATEGORY_FILTER, { category: "Red Velvet" })
               }
             />
             <label
@@ -309,7 +315,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors.Pineapple}
               onChange={() =>
-                dispatchHandler("CATEGORY_FILTER", { category: "Pineapple" })
+                dispatchHandler(CATEGORY_FILTER, { category: "Pineapple" })
               }
             />
             <label
@@ -328,7 +334,7 @@ function Filters() {
               name="flavorCategory"
               checked={state.flavors.Strawberry}
               onChange={() =>
-                dispatchHandler("CATEGORY_FILTER", { category: "Strawberry" })
+                dispatchHandler(CATEGORY_FILTER, { category: "Strawberry" })
               }
             />
             <label
@@ -350,7 +356,7 @@ function Filters() {
               className="small-text"
               name="flavorCategory"
               checked={state.isOutOfStock}
-              onChange={() => dispatchHandler("TOGGLE_STOCK")}
+              onChange={() => dispatchHandler(TOGGLE_STOCK)}
             />
             <label className="gray-text small-text" htmlFor="outOfStock">
               Include Out of Stock
@@ -369,7 +375,7 @@ function Filters() {
         <div>
           <button
             className="btn-link btn-link-primary btn-no-decoration"
-            onClick={() => dispatchHandler("CLEAR_FILTERS")}
+            onClick={() => dispatchHandler(CLEAR_FILTERS)}
           >
             CLEAR
           </button>
