@@ -1,84 +1,50 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCartSummary, useOperations } from "hooks";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useData } from "../../contexts";
-import {
-  updateQuantityInCart,
-  removeFromCart,
-  addToWishlist,
-} from "../../services";
-import { getOriginalPrice } from "../productListing/Products";
+import { useData } from "contexts";
 import "./cart.css";
 
 function CartItem() {
-  const { state, dispatch } = useData();
-  const { authToken } = useAuth();
+  const { state } = useData();
   const navigate = useNavigate();
-  const updateQuantity = async (item, type) => {
-    let response;
-    if (type === "increment")
-      response = await updateQuantityInCart(item._id, authToken, type);
-    else {
-      if (item.qty === 1) response = await removeFromCart(item._id, authToken);
-      else response = await updateQuantityInCart(item._id, authToken, type);
-    }
-    dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
-  };
+  const { updateQuantity, removeProduct, cartWishlistHandler } =
+    useOperations();
+  const { getOriginalPrice } = useCartSummary();
 
-  const removeItem = async (item) => {
-    const response = await removeFromCart(item._id, authToken);
-    dispatch({ type: "CART_OPERATION", payload: { cart: response.cart } });
-  };
-
-  const cartWishlistHandler = async (item) => {
-    const isWishlisted = (item) =>
-      state.wishlist.find((wishlistItem) => item._id === wishlistItem._id);
-    if (!isWishlisted(item)) {
-      const wishlistResponse = await addToWishlist(authToken, item);
-      dispatch({
-        type: "WISHLIST_OPERATION",
-        payload: { wishlist: wishlistResponse.wishlist },
-      });
-    }
-    const cartResponse = await removeFromCart(item._id, authToken);
-    dispatch({
-      type: "CART_OPERATION",
-      payload: { cart: cartResponse.cart },
-    });
-  };
   return (
     <div>
       {[...state.cart].reverse().map(
-        (item) =>
-          item && (
-            <div className="cart-items flex-column-center" key={item.id}>
+        (product) =>
+          product && (
+            <div className="cart-items flex-column-center" key={product.id}>
               <div className="cart-horizontal-wide">
                 <div className="cart-img-and-content">
                   <div className="cart-img-container">
                     <img
-                      src={item.imageUrl}
+                      src={product.imageUrl}
                       className="cart-img-horizontal"
                       alt="cake"
                     />
                   </div>
                   <div className="cart-content">
-                    <div className="card-header">{item.title}</div>
+                    <div className="card-header">{product.title}</div>
                     <div className="card-title">
-                      ₹ {item.qty * item.price}
-                      {item.offerPercentage > 0 && (
+                      ₹ {product.qty * product.price}
+                      {product.offerPercentage > 0 && (
                         <>
                           <span className="strikethrough card-title">
                             {" "}
                             ₹
-                            {item.qty *
+                            {product.qty *
                               getOriginalPrice(
-                                item.price,
-                                item.offerPercentage
+                                product.price,
+                                product.offerPercentage
                               )}{" "}
                           </span>
                           <span className="card-title offer">
-                            ({item.offerPercentage}% OFF){" "}
+                            ({product.offerPercentage}% OFF){" "}
                           </span>
                         </>
                       )}
@@ -86,14 +52,14 @@ function CartItem() {
                     <div className="cart-quantity-buttons">
                       <button
                         className="button-decrease"
-                        onClick={() => updateQuantity(item, "decrement")}
+                        onClick={() => updateQuantity(product, "decrement")}
                       >
                         -
                       </button>
-                      <span className="quantity-display">{item.qty}</span>
+                      <span className="quantity-display">{product.qty}</span>
                       <button
                         className="button-increase"
-                        onClick={() => updateQuantity(item, "increment")}
+                        onClick={() => updateQuantity(product, "increment")}
                       >
                         +
                       </button>
@@ -103,13 +69,13 @@ function CartItem() {
                 <div className="cart-buttons">
                   <button
                     className="btn btn-link btn-link-default cart-button"
-                    onClick={() => removeItem(item)}
+                    onClick={() => removeProduct(product)}
                   >
                     REMOVE
                   </button>
                   <button
                     className="btn btn-link btn-link-primary cart-button"
-                    onClick={() => cartWishlistHandler(item)}
+                    onClick={() => cartWishlistHandler(product)}
                   >
                     MOVE TO WISHLIST
                   </button>

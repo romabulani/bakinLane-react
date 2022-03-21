@@ -5,18 +5,19 @@ const ProductsDataContext = createContext();
 
 const ProductsDataProvider = ({ children }) => {
   const [productsData, setProductsData] = useState([]);
-  try {
-    useEffect(
-      () =>
-        (async () => {
+
+  useEffect(
+    () =>
+      (async () => {
+        try {
           const resp = await axios.get("/api/products");
           if (resp.status === 200) setProductsData(resp.data.products);
-        })(),
-      []
-    );
-  } catch (e) {
-    console.log("ProductsDataProvider : Error in fetching products", e);
-  }
+        } catch (e) {
+          console.log("Error in fetching Products", e);
+        }
+      })(),
+    []
+  );
 
   return (
     <ProductsDataContext.Provider value={{ productsData }}>

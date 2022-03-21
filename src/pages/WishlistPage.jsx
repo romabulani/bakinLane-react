@@ -1,4 +1,4 @@
-import { Navigation, Footer, Wishlist } from "../components";
+import { Navigation, Footer, Wishlist } from "components";
 function WishlistPage() {
   return (
     <div className="pagewrapper">

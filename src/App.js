@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { MockAPI } from "./components";
+import { MockAPI } from "components";
 import {
   CartPage,
   LandingPage,
@@ -11,7 +11,7 @@ import {
   SignupPage,
   WishlistPage,
 } from "./pages";
-import { useAuth } from "./contexts";
+import { useAuth } from "contexts";
 
 function App() {
   const { authToken } = useAuth();

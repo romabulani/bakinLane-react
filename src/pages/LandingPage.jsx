@@ -1,5 +1,5 @@
-import { Navigation, Footer, HeroSection } from "../components";
-import "../styles/globalbakin.css";
+import { Navigation, Footer, HeroSection } from "components";
+import "styles/globalbakin.css";
 
 function LandingPage() {
   return (

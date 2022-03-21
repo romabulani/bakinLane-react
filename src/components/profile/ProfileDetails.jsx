@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { useAuth } from "../../contexts";
 import { useNavigate } from "react-router-dom";
+import { useAuth, useData } from "contexts";
 import "./profile.css";
+import { CART_OPERATION, WISHLIST_OPERATION } from "../../constants";
 
 function ProfileDetails() {
   const { setAuthToken, authUser, setAuthUser } = useAuth();
+  const { dispatch } = useData();
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.authUser) setAuthUser(JSON.parse(localStorage.authUser));
@@ -14,6 +16,8 @@ function ProfileDetails() {
     localStorage.removeItem("authUser");
     setAuthToken("");
     setAuthUser(null);
+    dispatch({ type: CART_OPERATION, payload: { cart: [] } });
+    dispatch({ type: WISHLIST_OPERATION, payload: { wishlist: [] } });
     navigate("/products");
   }
 

@@ -1,7 +1,7 @@
-import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./nav.css";
-import logo from "../../assets/images/logo.webp";
+import logo from "assets/images/logo.webp";
 import { Sidebar } from "./Sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,7 +11,7 @@ import {
   faBars,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { useAuth, useData } from "../../contexts";
+import { useAuth, useData } from "contexts";
 
 function Navigation() {
   const { authToken } = useAuth();

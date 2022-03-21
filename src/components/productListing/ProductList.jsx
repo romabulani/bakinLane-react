@@ -1,7 +1,7 @@
 import { Filters } from "./Filters";
 import "./productlist.css";
 import { Products } from "./Products";
-import "../../styles/globalbakin.css";
+import "styles/globalbakin.css";
 
 function ProductList() {
   return (
