@@ -3,8 +3,6 @@
   border-radius: 5px;
   height: fit-content;
   margin: 1rem;
-  max-width: 30rem;
-  padding: 6rem;
   row-gap: 0.5rem;
 }
 
@@ -12,13 +10,11 @@
   padding: 1rem;
 }
 
-.content-container {
-  flex-grow: 1;
-}
-
 .form-auth {
   margin: 0.5rem;
   padding: 1rem;
+  width: 25rem;
+  color: #646464;
 }
 
 .heading4 {
@@ -30,15 +26,62 @@
   align-items: flex-start;
 }
 
-.btn-auth,
 .input-primary {
-  width: 100%;
+  width: 65%;
   display: block;
-  margin: 1rem 0;
+  font-size: 13px;
+}
+
+.btn-auth {
+  width: 100%;
+  margin: unset;
 }
 
 .btn-link-primary,
 #terms-conditions {
   display: inline-block;
   margin: 0.5rem;
+}
+
+.form-input {
+  display: flex;
+  width: 100%;
+  margin: 1rem;
+}
+
+.input-label {
+  align-items: center;
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 30%;
+}
+
+.error {
+  color: var(--error-color);
+  display: flex;
+  font-size: 12px;
+  justify-content: flex-start;
+  padding: unset;
+}
+
+.error-icon {
+  padding: 5px;
+}
+
+.error > span {
+  left: 5px;
+}
+
+.guest-button {
+  margin: 1rem 0;
+}
+
+@media only screen and (max-width: 640px) {
+  .auth-container,
+  .logout-container {
+    padding: 1rem;
+  }
+  .form-auth {
+    width: 100%;
+  }
 }

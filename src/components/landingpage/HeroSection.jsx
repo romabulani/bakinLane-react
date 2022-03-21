@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { categories } from "backend/db/categories";
 import { useData, useProductsData } from "contexts";
 import "./landingpage.css";
+import { CATEGORY_FILTER } from "../../constants";
 
 function HeroSection() {
   const { productsData } = useProductsData();
@@ -14,7 +15,7 @@ function HeroSection() {
 
   const routeChange = (item) => {
     dispatch({
-      type: "CATEGORY_FILTER",
+      type: CATEGORY_FILTER,
       payload: { category: item.title },
     });
     navigate("/products");

@@ -1,3 +1,4 @@
 export { useOperations } from "./useOperations";
 export { useCartSummary } from "./useCartSummary";
-export { useAuthHandlers } from "./useAuthHandlers";
+export { useLoginHandler } from "./useLoginHandler";
+export { useSignupHandler } from "./useSignupHandler";

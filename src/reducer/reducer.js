@@ -8,25 +8,32 @@ import {
   MUFFIN,
   CART_OPERATION,
   WISHLIST_OPERATION,
+  CATEGORY_FILTER,
+  ITEMS_FILTER,
+  CLEAR_FILTERS,
+  RATING,
+  SORT,
+  TOGGLE_STOCK,
+  PRICERANGE_FILTER,
 } from "../constants";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "CATEGORY_FILTER":
+    case CATEGORY_FILTER:
       const category = action.payload.category;
       return {
         ...state,
         flavors: { ...state.flavors, [category]: !state.flavors[category] },
       };
 
-    case "ITEMS_FILTER":
+    case ITEMS_FILTER:
       const item = action.payload.item;
       return {
         ...state,
         items: { ...state.items, [item]: !state.items[item] },
       };
 
-    case "PRICERANGE_FILTER":
+    case PRICERANGE_FILTER:
       const priceRange = action.payload.priceRange;
       return {
         ...state,
@@ -36,25 +43,25 @@ export const reducer = (state, action) => {
         },
       };
 
-    case "TOGGLE_STOCK":
+    case TOGGLE_STOCK:
       return {
         ...state,
         isOutOfStock: !state.isOutOfStock,
       };
 
-    case "SORT":
+    case SORT:
       return {
         ...state,
         sortBy: action.payload.sortBy,
       };
 
-    case "RATING":
+    case RATING:
       return {
         ...state,
         ratingCategory: action.payload.ratingCategory,
       };
 
-    case "CLEAR_FILTERS":
+    case CLEAR_FILTERS:
       return {
         ...state,
         flavors: {
