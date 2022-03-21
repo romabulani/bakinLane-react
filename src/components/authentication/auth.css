@@ -27,7 +27,7 @@
 }
 
 .input-primary {
-  width: 55%;
+  width: 65%;
   display: block;
   font-size: 13px;
 }
@@ -53,7 +53,7 @@
   align-items: center;
   display: inline-flex;
   justify-content: flex-start;
-  width: 40%;
+  width: 30%;
 }
 
 .error {
