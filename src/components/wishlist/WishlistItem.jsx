@@ -2,7 +2,7 @@ import React from "react";
 import "./wishlist.css";
 import { useData } from "contexts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import { useCartSummary, useOperations } from "hooks";
 
@@ -15,8 +15,12 @@ function WishlistItem() {
   return (
     <div>
       <div className="flex-row-center">
-        {state.wishlist.length > 0 &&
-          [...state.wishlist].reverse().map((product) => (
+        {[...state.wishlist].reverse().map((product) => (
+          <Link
+            to={`/products/${product._id}`}
+            key={product._id}
+            className="no-link-decoration"
+          >
             <div className="card card-default wishlist-card" key={product._id}>
               <div className="card-img-container wishlist-img-container">
                 <img src={product.imageUrl} alt="cake" className="card-img" />
@@ -54,7 +58,8 @@ function WishlistItem() {
                 </button>
               </div>
             </div>
-          ))}
+          </Link>
+        ))}
       </div>
 
       {state.wishlist.length === 0 && (
