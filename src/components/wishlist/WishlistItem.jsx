@@ -23,7 +23,7 @@ function WishlistItem() {
                 <FontAwesomeIcon
                   icon={faCircleXmark}
                   className="wishlist-close-btn gray-text"
-                  onClick={() => wishlistHandler(product)}
+                  onClick={(e) => wishlistHandler(e, product)}
                 ></FontAwesomeIcon>
               </div>
               <div className="card-header">{product.title}</div>
@@ -74,7 +74,7 @@ function WishlistItem() {
             className="btn btn-outline-primary"
             onClick={() => navigate("/products")}
           >
-            BUY NOW
+            ADD ITEMS
           </button>
         </div>
       )}

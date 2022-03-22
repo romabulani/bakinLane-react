@@ -52,14 +52,14 @@ function CartItem() {
                     <div className="cart-quantity-buttons">
                       <button
                         className="button-decrease"
-                        onClick={() => updateQuantity(product, "decrement")}
+                        onClick={(e) => updateQuantity(e, product, "decrement")}
                       >
                         -
                       </button>
                       <span className="quantity-display">{product.qty}</span>
                       <button
                         className="button-increase"
-                        onClick={() => updateQuantity(product, "increment")}
+                        onClick={(e) => updateQuantity(e, product, "increment")}
                       >
                         +
                       </button>
@@ -69,13 +69,13 @@ function CartItem() {
                 <div className="cart-buttons">
                   <button
                     className="btn btn-link btn-link-default cart-button"
-                    onClick={() => removeProduct(product)}
+                    onClick={(e) => removeProduct(e, product)}
                   >
                     REMOVE
                   </button>
                   <button
                     className="btn btn-link btn-link-primary cart-button"
-                    onClick={() => cartWishlistHandler(product)}
+                    onClick={(e) => cartWishlistHandler(e, product)}
                   >
                     MOVE TO WISHLIST
                   </button>
@@ -103,7 +103,7 @@ function CartItem() {
             className="btn btn-outline-primary"
             onClick={() => navigate("/wishlist")}
           >
-            ADD ITEMS FROM WISHLIST
+            ADD FROM WISHLIST
           </button>
         </div>
       )}
