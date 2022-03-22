@@ -1,4 +1,5 @@
 import { Navigation, Footer, ProductList } from "components";
+import { useData } from "contexts";
 import "styles/globalbakin.css";
 
 function ProductListingPage() {
