@@ -7,6 +7,10 @@
   height: 3.5rem;
   justify-content: space-between;
   padding: 0.7rem 0.7rem 0 0.7rem;
+  position: sticky;
+  background-color: var(--light-color);
+  top: 0;
+  z-index: 6;
 }
 
 .brand,
@@ -93,6 +97,9 @@
   height: 3rem;
   padding: 1rem;
   width: 100%;
+  position: sticky;
+  top: 3.5rem;
+  z-index: 6;
 }
 
 .nav-search-field {

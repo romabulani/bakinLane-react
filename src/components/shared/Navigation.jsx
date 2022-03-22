@@ -6,9 +6,7 @@ import {
   faCartShopping,
   faHeart,
   faUser,
-  faBars,
   faSearch,
-  faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth, useData } from "contexts";
 
