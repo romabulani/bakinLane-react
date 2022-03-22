@@ -121,7 +121,7 @@ function useSignupHandler() {
       errorDispatch({
         type: "ERROR_PASSWORD",
         payload:
-          "Password should contain minimum 8 characters, must have atleast 1 uppercase, one lowercase, one digit and one special character",
+          "Password should contain atleast 8 characters, 1 uppercase, 1 lowercase, 1 digit and 1 special character",
       });
       signupFlag = false;
     }
