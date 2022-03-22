@@ -18,6 +18,7 @@ function useOperations() {
 
   // To increment or decrement cart quantity
   const updateQuantity = async (e, product, type) => {
+    e.preventDefault();
     let response;
     e.target.disabled = true;
     if (type === "increment")
@@ -34,6 +35,7 @@ function useOperations() {
   //To remove product from cart
   const removeProduct = async (e, product) => {
     e.target.disabled = true;
+    e.preventDefault();
     const response = await removeFromCart(authToken, product._id);
     e.target.disabled = false;
     dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
@@ -41,6 +43,7 @@ function useOperations() {
 
   // For MOVE TO WISHLIST functionality on cart page, if its not present in wishlist, add it, then remove from cart
   const cartWishlistHandler = async (e, product) => {
+    e.preventDefault();
     e.target.disabled = true;
     if (!isWishlisted(product)) {
       const wishlistResponse = await addToWishlist(authToken, product);
@@ -68,6 +71,7 @@ function useOperations() {
   // To remove product from wishlist
   const wishlistHandler = async (e, product) => {
     e.target.disabled = true;
+    e.preventDefault();
     const response = await removeFromWishlist(authToken, product._id);
     e.target.disabled = false;
     dispatch({
@@ -78,9 +82,13 @@ function useOperations() {
 
   // Based on the button text on card, ADD TO CART or GO TO CART, perform the operation
   const cartHandler = async (e, product) => {
+    e.preventDefault();
     if (!authToken) navigate("/login");
     else {
-      if (e.target.innerText === "Add To Cart") {
+      if (
+        e.target.innerText === "Add To Cart" ||
+        e.target.innerText === "ADD TO CART"
+      ) {
         e.target.disabled = true;
         const response = await addToCart(authToken, product);
         e.target.disabled = false;
@@ -97,6 +105,7 @@ function useOperations() {
 
   // used on product listing page, too like/unlike the product in wishlist
   const toggleWishlist = async (e, product, setWishlistLoader) => {
+    e.preventDefault();
     if (!authToken) navigate("/login");
     else {
       setWishlistLoader(true);
@@ -111,6 +120,17 @@ function useOperations() {
     }
   };
 
+  const productWishlistHandler = async (e, product) => {
+    if (e.target.innerText === "WISHLIST") {
+      e.target.disabled = true;
+      const wishlistResponse = await addToWishlist(authToken, product);
+      e.target.disabled = false;
+      dispatch({
+        type: WISHLIST_OPERATION,
+        payload: { wishlist: wishlistResponse.wishlist },
+      });
+    } else navigate("/wishlist");
+  };
   return {
     updateQuantity,
     removeProduct,
@@ -120,6 +140,7 @@ function useOperations() {
     cartHandler,
     isWishlisted,
     toggleWishlist,
+    productWishlistHandler,
   };
 }
 
