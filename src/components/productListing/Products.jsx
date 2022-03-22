@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useCartSummary, useOperations } from "hooks";
 import { useData } from "contexts";
+import { useState } from "react";
 
 function Products() {
-  const { data } = useData();
+  const { data, showSidebar, setShowSidebar } = useData();
   const { getButtonText, cartHandler, isWishlisted, toggleWishlist } =
     useOperations();
   const { getOriginalPrice } = useCartSummary();
+  const [wishlistLoader, setWishlistLoader] = useState(false);
 
   return (
     <div className="product-cards">
@@ -26,7 +28,8 @@ function Products() {
               className={`card-icon ${
                 isWishlisted(product) ? "filled-wishlist-icon" : "wishlist-icon"
               }`}
-              onClick={() => toggleWishlist(product)}
+              style={{ pointerEvents: wishlistLoader ? "none" : "auto" }}
+              onClick={(e) => toggleWishlist(e, product, setWishlistLoader)}
             ></FontAwesomeIcon>
           </div>
           <div className="card-header">{product.title}</div>

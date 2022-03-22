@@ -1,8 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import "./nav.css";
 import logo from "assets/images/logo.webp";
-import { Sidebar } from "./Sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -10,13 +8,13 @@ import {
   faUser,
   faBars,
   faSearch,
+  faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth, useData } from "contexts";
 
 function Navigation() {
   const { authToken } = useAuth();
   const { state } = useData();
-  const [sidebar, setSidebar] = useState(false);
   const navigate = useNavigate();
   const isUserLoggedIn = (to) =>
     authToken ? navigate(to) : navigate("/login");
@@ -96,17 +94,6 @@ function Navigation() {
                 onClick={() => isUserLoggedIn("/profile")}
               ></FontAwesomeIcon>
             </div>
-            <div
-              className="nav-item nav-icon icon-hamburger"
-              onClick={() => setSidebar(!sidebar)}
-            >
-              <a href="#" rel="noreferrer" aria-label="hamburger">
-                <FontAwesomeIcon
-                  icon={faBars}
-                  className="icon-style"
-                ></FontAwesomeIcon>
-              </a>
-            </div>
           </div>
         </div>
       </nav>
@@ -121,7 +108,6 @@ function Navigation() {
           className="nav-search-field"
         />
       </div>
-      {sidebar && <Sidebar />}
     </>
   );
 }

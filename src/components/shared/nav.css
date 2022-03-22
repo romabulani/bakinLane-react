@@ -59,32 +59,10 @@
   padding: 1rem;
 }
 
-.nav-item,
-.sidenav-item {
+.nav-item {
   color: var(--default-color);
   display: inline-block;
   text-decoration: none;
-}
-
-.sidenav-item {
-  color: var(--default-color);
-  display: block;
-  margin: 1rem;
-  text-decoration: none;
-}
-
-.sidebar-container {
-  background-color: var(--gray-color);
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  left: 0;
-  position: absolute;
-  top: 0;
-  top: 0;
-  transition: transform 0.3s ease-in-out;
-  width: 30%;
-  z-index: 1;
 }
 
 .nav-active {
@@ -145,10 +123,6 @@
   padding: 2px;
 }
 
-.icon-hamburger {
-  display: none;
-}
-
 /* Media Queries */
 @media only screen and (max-width: 1024px) {
   .searchbar-container {
@@ -159,16 +133,19 @@
     display: inline-flex;
   }
 
-  .brand-name,
-  .brand > .nav-item {
+  .brand-name {
     display: none;
   }
 
-  .icon-hamburger {
-    display: inline-block;
+  .brand > .nav-item:nth-child(3) {
+    display: none;
   }
 
-  .icon-person {
-    display: none;
+  .nav-icon {
+    padding: 10px;
+  }
+
+  .icon-style {
+    font-size: 1.4rem;
   }
 }
