@@ -17,8 +17,10 @@ function useOperations() {
   const navigate = useNavigate();
 
   // To increment or decrement cart quantity
-  const updateQuantity = async (product, type) => {
+  const updateQuantity = async (e, product, type) => {
+    e.preventDefault();
     let response;
+    e.target.disabled = true;
     if (type === "increment")
       response = await updateQuantityInCart(authToken, product._id, type);
     else {
@@ -26,17 +28,23 @@ function useOperations() {
         response = await removeFromCart(authToken, product._id);
       else response = await updateQuantityInCart(authToken, product._id, type);
     }
+    e.target.disabled = false;
     dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
   };
 
   //To remove product from cart
-  const removeProduct = async (product) => {
+  const removeProduct = async (e, product) => {
+    e.target.disabled = true;
+    e.preventDefault();
     const response = await removeFromCart(authToken, product._id);
+    e.target.disabled = false;
     dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
   };
 
   // For MOVE TO WISHLIST functionality on cart page, if its not present in wishlist, add it, then remove from cart
-  const cartWishlistHandler = async (product) => {
+  const cartWishlistHandler = async (e, product) => {
+    e.preventDefault();
+    e.target.disabled = true;
     if (!isWishlisted(product)) {
       const wishlistResponse = await addToWishlist(authToken, product);
       dispatch({
@@ -45,6 +53,7 @@ function useOperations() {
       });
     }
     const cartResponse = await removeFromCart(authToken, product._id);
+    e.target.disabled = false;
     dispatch({
       type: CART_OPERATION,
       payload: { cart: cartResponse.cart },
@@ -60,8 +69,11 @@ function useOperations() {
   };
 
   // To remove product from wishlist
-  const wishlistHandler = async (product) => {
+  const wishlistHandler = async (e, product) => {
+    e.target.disabled = true;
+    e.preventDefault();
     const response = await removeFromWishlist(authToken, product._id);
+    e.target.disabled = false;
     dispatch({
       type: WISHLIST_OPERATION,
       payload: { wishlist: response.wishlist },
@@ -70,10 +82,16 @@ function useOperations() {
 
   // Based on the button text on card, ADD TO CART or GO TO CART, perform the operation
   const cartHandler = async (e, product) => {
+    e.preventDefault();
     if (!authToken) navigate("/login");
     else {
-      if (e.target.innerText === "Add To Cart") {
+      if (
+        e.target.innerText === "Add To Cart" ||
+        e.target.innerText === "ADD TO CART"
+      ) {
+        e.target.disabled = true;
         const response = await addToCart(authToken, product);
+        e.target.disabled = false;
         dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
       } else navigate("/cart");
     }
@@ -86,12 +104,15 @@ function useOperations() {
     );
 
   // used on product listing page, too like/unlike the product in wishlist
-  const toggleWishlist = async (product) => {
+  const toggleWishlist = async (e, product, setWishlistLoader) => {
+    e.preventDefault();
     if (!authToken) navigate("/login");
     else {
+      setWishlistLoader(true);
       const response = isWishlisted(product)
         ? await removeFromWishlist(authToken, product._id)
         : await addToWishlist(authToken, product);
+      setWishlistLoader(false);
       dispatch({
         type: WISHLIST_OPERATION,
         payload: { wishlist: response.wishlist },
@@ -99,6 +120,17 @@ function useOperations() {
     }
   };
 
+  const productWishlistHandler = async (e, product) => {
+    if (e.target.innerText === "WISHLIST") {
+      e.target.disabled = true;
+      const wishlistResponse = await addToWishlist(authToken, product);
+      e.target.disabled = false;
+      dispatch({
+        type: WISHLIST_OPERATION,
+        payload: { wishlist: wishlistResponse.wishlist },
+      });
+    } else navigate("/wishlist");
+  };
   return {
     updateQuantity,
     removeProduct,
@@ -108,6 +140,7 @@ function useOperations() {
     cartHandler,
     isWishlisted,
     toggleWishlist,
+    productWishlistHandler,
   };
 }
 

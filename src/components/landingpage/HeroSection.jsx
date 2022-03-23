@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { categories } from "backend/db/categories";
 import { useData, useProductsData } from "contexts";
 import "./landingpage.css";
@@ -49,14 +49,20 @@ function HeroSection() {
       <div className="container-main">
         <h3 className="align-center heading3">Trending</h3>
         <div className="cards">
-          {trendingItems.map((item) => (
-            <div className="card card-default zoom" key={item.id}>
-              <div className="card-img-container">
-                <img src={item.imageUrl} alt="cake" className="card-img" />
+          {trendingItems.map((product) => (
+            <Link
+              to={`/products/${product._id}`}
+              key={product._id}
+              className="no-link-decoration"
+            >
+              <div className="card card-default zoom" key={product._id}>
+                <div className="card-img-container">
+                  <img src={product.imageUrl} alt="cake" className="card-img" />
+                </div>
+                <div className="card-header">{product.title}</div>
+                <div className="card-title">₹ {product.price}</div>
               </div>
-              <div className="card-header">{item.title}</div>
-              <div className="card-title">₹ {item.price}</div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

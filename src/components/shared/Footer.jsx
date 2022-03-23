@@ -22,7 +22,7 @@ function Footer() {
             >
               <FontAwesomeIcon
                 icon={faGithub}
-                className="icon-style"
+                className="footer-icon-style"
               ></FontAwesomeIcon>
             </a>
           </li>
@@ -35,7 +35,7 @@ function Footer() {
             >
               <FontAwesomeIcon
                 icon={faTwitter}
-                className="icon-style"
+                className="footer-icon-style"
               ></FontAwesomeIcon>
             </a>
           </li>
@@ -48,7 +48,7 @@ function Footer() {
             >
               <FontAwesomeIcon
                 icon={faLinkedinIn}
-                className="icon-style"
+                className="footer-icon-style"
               ></FontAwesomeIcon>
             </a>
           </li>

@@ -52,6 +52,7 @@
 .input-label {
   align-items: center;
   display: inline-flex;
+  font-weight: bold;
   justify-content: flex-start;
   width: 30%;
 }
@@ -62,10 +63,15 @@
   font-size: 12px;
   justify-content: flex-start;
   padding: unset;
+  margin-left: 35%;
+}
+
+.error > div {
+  font-size: 14px;
 }
 
 .error-icon {
-  padding: 5px;
+  padding-right: 5px;
 }
 
 .error > span {
@@ -83,5 +89,12 @@
   }
   .form-auth {
     width: 100%;
+  }
+  .input-label {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .error > div {
+    font-size: 12px;
   }
 }

@@ -15,12 +15,12 @@
   text-decoration: none;
 }
 
-.icon-style {
+.footer-icon-style {
   color: var(--default-color);
   font-size: 1.7rem;
 }
 
-.icon-style:hover {
+.footer-icon-style:hover {
   color: var(--primary-color);
 }
 .copywright {

@@ -103,12 +103,11 @@ const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
     <DataContext.Provider
       value={{
-        state: state,
-        dispatch: dispatch,
+        state,
+        dispatch,
         data: getData(state),
       }}
     >

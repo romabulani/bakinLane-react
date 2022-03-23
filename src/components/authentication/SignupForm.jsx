@@ -2,10 +2,7 @@ import "./auth.css";
 import { Link } from "react-router-dom";
 import { useSignupHandler } from "hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleExclamation,
-  faExclamationCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 function SignupForm() {
   const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
