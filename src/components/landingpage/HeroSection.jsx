@@ -15,8 +15,11 @@ function HeroSection() {
 
   const routeChange = (item) => {
     dispatch({
+      type: CLEAR_FILTERS,
+    });
+    dispatch({
       type: CATEGORY_FILTER,
-      payload: { category: item.title },
+      payload: { category: item.title, value: true },
     });
     navigate("/products");
   };

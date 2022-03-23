@@ -16,12 +16,8 @@ function Products() {
   return (
     <div className="product-cards">
       {data.map((product) => (
-        <Link
-          to={`/products/${product._id}`}
-          key={product._id}
-          className="no-link-decoration"
-        >
-          <div className="card-default-product">
+        <div className="card-default-product" key={product._id}>
+          <Link to={`/products/${product._id}`} className="no-link-decoration">
             <div className="card-img-icon-container">
               <div className="card-img-container">
                 <img src={product.imageUrl} alt="cake" className="card-img" />
@@ -59,14 +55,14 @@ function Products() {
               )}
             </div>
             <div className="card-content">
-              {product.rating}{" "}
+              <span>{product.rating} </span>
               <span>
                 <FontAwesomeIcon
                   icon={faStar}
                   className="rating-star"
                 ></FontAwesomeIcon>
               </span>{" "}
-              | {product.totalRatings}
+              <span>| {product.totalRatings}</span>
             </div>
             <div className="card-buttons product-card-buttons">
               {product.isOutOfStock ? (
@@ -85,8 +81,8 @@ function Products() {
                 </button>
               )}
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       ))}
     </div>
   );

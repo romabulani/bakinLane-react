@@ -23,7 +23,10 @@ export const reducer = (state, action) => {
       const category = action.payload.category;
       return {
         ...state,
-        flavors: { ...state.flavors, [category]: !state.flavors[category] },
+        flavors: {
+          ...state.flavors,
+          [category]: action.payload.value || !state.flavors[category],
+        },
       };
 
     case ITEMS_FILTER:
