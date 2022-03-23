@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { categories } from "backend/db/categories";
 import { useData, useProductsData } from "contexts";
 import "./landingpage.css";
-import { CATEGORY_FILTER } from "../../constants";
+import { CATEGORY_FILTER, CLEAR_FILTERS } from "../../constants";
 
 function HeroSection() {
   const { productsData } = useProductsData();
@@ -32,7 +32,12 @@ function HeroSection() {
           </h4>
           <button
             className="btn btn-primary hero-btn"
-            onClick={() => navigate("/products")}
+            onClick={() => {
+              dispatch({
+                type: CLEAR_FILTERS,
+              });
+              navigate("/products");
+            }}
           >
             BUY NOW
           </button>
