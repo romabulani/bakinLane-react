@@ -51,3 +51,10 @@
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 640px) {
+  .wishlist-close-btn:hover {
+    background-color: transparent;
+    border-radius: unset;
+  }
+}
