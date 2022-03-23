@@ -150,7 +150,7 @@
   padding: 8px;
   position: fixed;
   width: 100%;
-  z-index: 2;
+  z-index: 7;
 }
 
 .mobile-filters > .mobile-filter-header {
@@ -186,6 +186,22 @@
   text-decoration: none;
 }
 
+/* Media for hover */
+@media only screen and (max-width: 640px) {
+  .card-default-product:hover {
+    box-shadow: unset;
+  }
+
+  .card-icon:hover {
+    filter: unset;
+    background-color: transparent;
+    border-radius: unset;
+  }
+
+  * {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  }
+}
 /* Media Queries */
 @media only screen and (max-width: 768px) {
   .filters {
@@ -197,10 +213,6 @@
     grid-template-columns: repeat(auto-fill, minmax(10.2rem, 1fr));
     margin: 1rem;
     row-gap: 0.5rem;
-  }
-
-  .card-default-product:hover {
-    box-shadow: unset;
   }
 
   .card-default-product > .card-img-icon-container > .card-img-container {
@@ -228,6 +240,6 @@
     position: fixed;
     top: 0;
     width: 100vw;
-    z-index: 3;
+    z-index: 8;
   }
 }
