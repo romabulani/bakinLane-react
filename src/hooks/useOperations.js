@@ -121,15 +121,18 @@ function useOperations() {
   };
 
   const productWishlistHandler = async (e, product) => {
-    if (e.target.innerText === "WISHLIST") {
-      e.target.disabled = true;
-      const wishlistResponse = await addToWishlist(authToken, product);
-      e.target.disabled = false;
-      dispatch({
-        type: WISHLIST_OPERATION,
-        payload: { wishlist: wishlistResponse.wishlist },
-      });
-    } else navigate("/wishlist");
+    if (!authToken) navigate("/login");
+    else {
+      if (e.target.innerText === "WISHLIST") {
+        e.target.disabled = true;
+        const wishlistResponse = await addToWishlist(authToken, product);
+        e.target.disabled = false;
+        dispatch({
+          type: WISHLIST_OPERATION,
+          payload: { wishlist: wishlistResponse.wishlist },
+        });
+      } else navigate("/wishlist");
+    }
   };
   return {
     updateQuantity,

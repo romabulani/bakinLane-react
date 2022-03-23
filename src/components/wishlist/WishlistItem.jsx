@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate, Link } from "react-router-dom";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import { useCartSummary, useOperations } from "hooks";
+import { CLEAR_FILTERS } from "../../constants";
 
 function WishlistItem() {
-  const { state } = useData();
+  const { state, dispatch } = useData();
   const navigate = useNavigate();
   const { getOriginalPrice } = useCartSummary();
   const { getButtonText, wishlistHandler, cartHandler } = useOperations();
@@ -77,7 +78,10 @@ function WishlistItem() {
           </div>
           <button
             className="btn btn-outline-primary"
-            onClick={() => navigate("/products")}
+            onClick={() => {
+              dispatch({ type: CLEAR_FILTERS });
+              navigate("/products");
+            }}
           >
             ADD ITEMS
           </button>
