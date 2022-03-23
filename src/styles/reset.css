@@ -3,3 +3,21 @@
   padding: 0%;
   font-size: 16px;
 }
+
+@media only screen and (max-width: 640px) {
+  .btn:hover,
+  .btn-float:hover,
+  .btn-link:hover {
+    filter: unset;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: unset;
+    color: var(--primary-color);
+  }
+
+  .btn-outline-default:hover {
+    background-color: unset;
+    color: var(--default-color);
+  }
+}

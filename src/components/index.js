@@ -10,3 +10,4 @@ export { ProfileDetails } from "./profile/ProfileDetails";
 export { Cart } from "./cart/Cart";
 export { Wishlist } from "./wishlist/Wishlist";
 export { Product } from "./singleproduct/Product";
+export { ScrollToTop } from "./shared/ScrollToTop";

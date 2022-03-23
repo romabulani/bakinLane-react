@@ -91,9 +91,25 @@
   justify-content: flex-start;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
   .product-display {
     flex-direction: column;
     height: unset;
+    width: 80%;
+  }
+  .product-img-container {
+    height: 15rem;
+    width: 90%;
+  }
+  .product-buttons {
+    flex-wrap: wrap;
+  }
+
+  .product-title {
+    font-size: 1.1rem;
+  }
+
+  .price-header > span {
+    font-size: 0.9rem;
   }
 }

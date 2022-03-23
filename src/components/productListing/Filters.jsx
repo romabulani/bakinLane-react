@@ -10,6 +10,7 @@ import {
   SORT,
   RATING,
   CLEAR_FILTERS,
+  PRICERANGE_FILTER,
 } from "../../constants";
 
 function Filters() {

@@ -63,14 +63,25 @@ function Product() {
                 <div className="color-success">Inclusive of all taxes</div>
               </div>
               <div className="product-buttons">
+                {product.isOutOfStock ? (
+                  <button
+                    className="btn btn-outline-primary product-btn"
+                    disabled
+                  >
+                    OUT OF STOCK
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-primary product-btn"
+                    onClick={(e) => cartHandler(e, product)}
+                  >
+                    {`${getButtonText(product).toUpperCase()}`}
+                  </button>
+                )}
                 <button
-                  className="btn btn-primary product-btn"
-                  onClick={(e) => cartHandler(e, product)}
-                >
-                  {`${getButtonText(product).toUpperCase()}`}
-                </button>
-                <button
-                  className="btn btn-outline-default product-btn"
+                  className={`btn product-btn ${
+                    product.isOutOfStock ? "btn-default" : "btn-outline-default"
+                  } `}
                   onClick={(e) => productWishlistHandler(e, product)}
                 >
                   {`${isWishlisted(product) ? "WISHLISTED" : "WISHLIST"}`}

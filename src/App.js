@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { MockAPI } from "components";
+import { MockAPI, ScrollToTop } from "components";
 import {
   CartPage,
   LandingPage,
@@ -18,6 +18,7 @@ function App() {
   const { authToken } = useAuth();
   return (
     <div className="App">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
