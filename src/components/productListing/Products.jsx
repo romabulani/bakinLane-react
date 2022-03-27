@@ -17,7 +17,13 @@ function Products() {
     <div className="product-cards">
       {data.map((product) => (
         <div className="card-default-product" key={product._id}>
-          <Link to={`/products/${product._id}`} className="no-link-decoration">
+          <Link
+            to={`/products/${product._id}`}
+            className="no-link-decoration"
+            onClick={(e) => {
+              if (wishlistLoader) e.preventDefault();
+            }}
+          >
             <div className="card-img-icon-container">
               <div className="card-img-container">
                 <img src={product.imageUrl} alt="cake" className="card-img" />
