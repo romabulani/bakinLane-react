@@ -48,7 +48,6 @@ function Products() {
           <div className="flex-column-center search-header">
             {`Search Results for "${state.searchText}" - ${searchedProducts.length} products`}
           </div>
-          {/* <div className="flex-row-center"> */}
           <div className="product-cards">
             {searchedProducts.map((product) => (
               <ProductCard product={product} key={product._id} />
