@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useData } from "contexts";
 import { useCartSummary, useOperations } from "hooks";
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./product.css";
 
@@ -12,6 +12,9 @@ function Product() {
   const product = data.filter((product) => params.productId === product._id)[0];
   const { getButtonText, isWishlisted, cartHandler, productWishlistHandler } =
     useOperations();
+  const [wishlistLoader, setWishlistLoader] = useState(false);
+  const [cartLoader, setCartLoader] = useState(false);
+
   return (
     <div className="middle-content">
       {product && (
@@ -64,7 +67,8 @@ function Product() {
                 ) : (
                   <button
                     className="btn btn-primary product-btn"
-                    onClick={(e) => cartHandler(e, product)}
+                    onClick={(e) => cartHandler(e, product, setCartLoader)}
+                    disabled={cartLoader}
                   >
                     {`${getButtonText(product).toUpperCase()}`}
                   </button>
@@ -73,7 +77,10 @@ function Product() {
                   className={`btn product-btn ${
                     product.isOutOfStock ? "btn-default" : "btn-outline-default"
                   } `}
-                  onClick={(e) => productWishlistHandler(e, product)}
+                  disabled={wishlistLoader}
+                  onClick={(e) =>
+                    productWishlistHandler(e, product, setWishlistLoader)
+                  }
                 >
                   {`${isWishlisted(product) ? "WISHLISTED" : "WISHLIST"}`}
                 </button>

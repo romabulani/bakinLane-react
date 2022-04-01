@@ -4,6 +4,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useData } from "contexts";
 import "./cart.css";
+import { useState } from "react";
 
 function CartItem() {
   const { state } = useData();
@@ -11,7 +12,7 @@ function CartItem() {
   const { updateQuantity, removeProduct, cartWishlistHandler } =
     useOperations();
   const { getOriginalPrice } = useCartSummary();
-
+  const [disable, setDisable] = useState(false);
   return (
     <div>
       {[...state.cart].reverse().map((product) => (
@@ -54,14 +55,20 @@ function CartItem() {
                   <div className="cart-quantity-buttons">
                     <button
                       className="button-decrease"
-                      onClick={(e) => updateQuantity(e, product, "decrement")}
+                      disabled={disable}
+                      onClick={(e) =>
+                        updateQuantity(e, product, "decrement", setDisable)
+                      }
                     >
                       -
                     </button>
                     <span className="quantity-display">{product.qty}</span>
                     <button
                       className="button-increase"
-                      onClick={(e) => updateQuantity(e, product, "increment")}
+                      disabled={disable}
+                      onClick={(e) =>
+                        updateQuantity(e, product, "increment", setDisable)
+                      }
                     >
                       +
                     </button>
@@ -71,13 +78,15 @@ function CartItem() {
               <div className="cart-buttons">
                 <button
                   className="btn btn-link btn-link-default cart-button"
-                  onClick={(e) => removeProduct(e, product)}
+                  disabled={disable}
+                  onClick={(e) => removeProduct(e, product, setDisable)}
                 >
                   REMOVE
                 </button>
                 <button
                   className="btn btn-link btn-link-primary cart-button"
-                  onClick={(e) => cartWishlistHandler(e, product)}
+                  disabled={disable}
+                  onClick={(e) => cartWishlistHandler(e, product, setDisable)}
                 >
                   MOVE TO WISHLIST
                 </button>

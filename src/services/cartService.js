@@ -53,7 +53,7 @@ const updateQuantityInCart = async (authToken, id, type) => {
       throw new Error();
     }
   } catch (e) {
-    console.log("updateQuantity : Error in updating product in cart", e);
+    console.log("updateQuantityInCart : Error in updating product in cart", e);
   }
 };
 
