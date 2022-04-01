@@ -100,10 +100,7 @@ function useOperations() {
     try {
       if (!authToken) navigate("/login");
       else {
-        if (
-          e.target.innerText === "Add To Cart" ||
-          e.target.innerText === "ADD TO CART"
-        ) {
+        if (e.target.innerText.toUpperCase() === "ADD TO CART") {
           const response = await addToCart(authToken, product);
           dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
         } else navigate("/cart");

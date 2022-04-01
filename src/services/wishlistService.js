@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const getWishlist = async (authToken) => {
   try {
@@ -25,11 +26,13 @@ const addToWishlist = async (authToken, product) => {
       }
     );
     if (response.status === 201) {
+      toast.success("Added to wishlist!");
       return response.data;
     } else {
       throw new Error();
     }
   } catch (e) {
+    toast.error("Couldn't add to wishlist! Please try again.");
     console.log("addToWishlist : Error in adding product to wishlist", e);
   }
 };
@@ -40,11 +43,13 @@ const removeFromWishlist = async (authToken, id) => {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {
+      toast.success("Removed from wishlist!");
       return response.data;
     } else {
       throw new Error();
     }
   } catch (e) {
+    toast.error("Couldn't remove from wishlist! Please try again.");
     console.log(
       "removeFromWishlist : Error in removing product from wishlist",
       e

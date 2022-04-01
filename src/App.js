@@ -1,5 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import {
   Cart,
   Footer,
@@ -22,6 +24,7 @@ function App() {
     <div className="App pagewrapper">
       <Navigation />
       <ScrollToTop />
+      <ToastContainer position="bottom-right" autoClose={800} draggable />
       <Routes>
         <Route path="/" element={<HeroSection />} />
         <Route path="/signup" element={<SignupForm />} />

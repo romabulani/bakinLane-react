@@ -16,8 +16,6 @@ function ProfileDetails() {
     localStorage.removeItem("authUser");
     setAuthToken("");
     setAuthUser(null);
-    dispatch({ type: CART_OPERATION, payload: { cart: [] } });
-    dispatch({ type: WISHLIST_OPERATION, payload: { wishlist: [] } });
     navigate("/products");
   }
 
