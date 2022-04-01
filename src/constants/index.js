@@ -15,3 +15,4 @@ export const TOGGLE_STOCK = "TOGGLE_STOCK";
 export const SORT = "SORT";
 export const RATING = "RATING";
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
+export const SET_SEARCH_TEXT = "SET_SEARCH_TEXT";

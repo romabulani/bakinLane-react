@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { useProductsData } from "./productContext";
 import * as utilFunctions from "utilities";
 import { reducer } from "reducer";
@@ -35,6 +35,7 @@ const initialState = {
   ratingCategory: "",
   cart: [],
   wishlist: [],
+  searchText: "",
 };
 
 const getData = (state) => {
@@ -103,11 +104,14 @@ const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [searchBarText, setSearchBarText] = useState("");
   return (
     <DataContext.Provider
       value={{
         state,
         dispatch,
+        searchBarText,
+        setSearchBarText,
         data: getData(state),
       }}
     >
