@@ -1,16 +1,7 @@
-import { faCalendarXmark } from "@fortawesome/free-regular-svg-icons";
-import {
-  faCalendarCheck,
-  faCheck,
-  faCircleCheck,
-  faStar,
-  faTag,
-  faTruck,
-} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useData } from "contexts";
 import { useCartSummary, useOperations } from "hooks";
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./product.css";
 
@@ -21,8 +12,11 @@ function Product() {
   const product = data.filter((product) => params.productId === product._id)[0];
   const { getButtonText, isWishlisted, cartHandler, productWishlistHandler } =
     useOperations();
+  const [wishlistLoader, setWishlistLoader] = useState(false);
+  const [cartLoader, setCartLoader] = useState(false);
+
   return (
-    <>
+    <div className="middle-content">
       {product && (
         <div className="flex-row-center">
           <div className="product-display">
@@ -37,7 +31,7 @@ function Product() {
                 <div className="product-title">{product.title}</div>
                 <div className="rating-box margin-2">
                   {product.rating}{" "}
-                  <FontAwesomeIcon icon={faStar} className="rating-star" /> |{" "}
+                  <FontAwesomeIcon icon="star" className="rating-star" /> |{" "}
                   {product.totalRatings} reviews
                 </div>
               </div>
@@ -73,7 +67,8 @@ function Product() {
                 ) : (
                   <button
                     className="btn btn-primary product-btn"
-                    onClick={(e) => cartHandler(e, product)}
+                    onClick={(e) => cartHandler(e, product, setCartLoader)}
+                    disabled={cartLoader}
                   >
                     {`${getButtonText(product).toUpperCase()}`}
                   </button>
@@ -82,7 +77,10 @@ function Product() {
                   className={`btn product-btn ${
                     product.isOutOfStock ? "btn-default" : "btn-outline-default"
                   } `}
-                  onClick={(e) => productWishlistHandler(e, product)}
+                  disabled={wishlistLoader}
+                  onClick={(e) =>
+                    productWishlistHandler(e, product, setWishlistLoader)
+                  }
                 >
                   {`${isWishlisted(product) ? "WISHLISTED" : "WISHLIST"}`}
                 </button>
@@ -90,29 +88,29 @@ function Product() {
               <div className="additional-details padding-bottom-5 border-bottom">
                 {" "}
                 <div className="margin-2">
-                  <FontAwesomeIcon icon={faTruck}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon="truck"></FontAwesomeIcon>
                   <span className="margin-sides-2">Order one day prior</span>
                 </div>
                 {!product.isOutOfStock ? (
                   <div>
-                    <FontAwesomeIcon icon={faCalendarCheck}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="calendar-check"></FontAwesomeIcon>
                     <span className="margin-sides-2"> In stock</span>
                   </div>
                 ) : (
                   <div className="margin-2">
-                    <FontAwesomeIcon icon={faCalendarXmark}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="calendar-xmark"></FontAwesomeIcon>
                     <span> Out of stock</span>
                   </div>
                 )}
                 <div className="margin-2">
-                  <FontAwesomeIcon icon={faCircleCheck}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon="circle-check"></FontAwesomeIcon>
                   <span className="margin-sides-2"> Price Includes GST</span>
                 </div>
               </div>
 
               <div className="product-offers ">
                 <span className=".margin-2">
-                  BEST OFFERS <FontAwesomeIcon icon={faTag}></FontAwesomeIcon>
+                  BEST OFFERS <FontAwesomeIcon icon="tag"></FontAwesomeIcon>
                 </span>
                 <span className="d-block">
                   The product is already at the best price
@@ -123,7 +121,7 @@ function Product() {
                 {product.item === "Cake" && (
                   <div className="margin-2">
                     <FontAwesomeIcon
-                      icon={faCheck}
+                      icon="check"
                       className="color-success"
                     ></FontAwesomeIcon>
                     <span> Can be customised</span>
@@ -131,14 +129,14 @@ function Product() {
                 )}
                 <div className="margin-2">
                   <FontAwesomeIcon
-                    icon={faCheck}
+                    icon="check"
                     className="color-success"
                   ></FontAwesomeIcon>
                   <span>{` Weighs ${product.weight}`}</span>
                 </div>
                 <div className="margin-2">
                   <FontAwesomeIcon
-                    icon={faCheck}
+                    icon="check"
                     className="color-success"
                   ></FontAwesomeIcon>
                   <span>
@@ -151,7 +149,7 @@ function Product() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

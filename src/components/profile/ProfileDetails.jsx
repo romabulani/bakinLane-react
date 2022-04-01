@@ -16,13 +16,11 @@ function ProfileDetails() {
     localStorage.removeItem("authUser");
     setAuthToken("");
     setAuthUser(null);
-    dispatch({ type: CART_OPERATION, payload: { cart: [] } });
-    dispatch({ type: WISHLIST_OPERATION, payload: { wishlist: [] } });
     navigate("/products");
   }
 
   return (
-    <div className="flex-row-center">
+    <div className="flex-row-center middle-content">
       <div className="logout-container flex-column-center">
         <h4 className="heading4">ACCOUNT DETAILS</h4>
         <div className="row-format">

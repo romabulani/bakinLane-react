@@ -1,18 +1,16 @@
-import { useState, createContext, useContext, useEffect } from "react";
+import { useState, createContext, useContext } from "react";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [authToken, setAuthToken] = useState("");
-  const [authUser, setAuthUser] = useState(null);
-
-  useEffect(() => {
-    const localStorageAuth = localStorage.getItem("authToken");
-    if (localStorageAuth) {
-      setAuthToken(localStorageAuth);
-      setAuthUser(localStorage.getItem("authUser"));
-    }
-  }, []);
+  const localStorageAuth = localStorage.getItem("authToken");
+  const localStorageUser = localStorage.getItem("authUser");
+  const [authToken, setAuthToken] = useState(
+    localStorageAuth ? localStorageAuth : ""
+  );
+  const [authUser, setAuthUser] = useState(
+    localStorageUser ? localStorageUser : null
+  );
 
   return (
     <AuthContext.Provider

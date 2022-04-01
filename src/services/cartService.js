@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const getCart = async (authToken) => {
   try {
@@ -25,11 +26,13 @@ const addToCart = async (authToken, product) => {
       }
     );
     if (response.status === 201) {
+      toast.success("Added to cart!");
       return response.data;
     } else {
       throw new Error();
     }
   } catch (e) {
+    toast.error("Couldn't add to cart! Please try again.");
     console.log("addToCart : Error in adding product to cart", e);
   }
 };
@@ -48,12 +51,14 @@ const updateQuantityInCart = async (authToken, id, type) => {
       }
     );
     if (response.status === 200) {
+      toast.info("Quantity updated!");
       return response.data;
     } else {
       throw new Error();
     }
   } catch (e) {
-    console.log("updateQuantity : Error in updating product in cart", e);
+    toast.error("Couldn't update the quantity! Please try again.");
+    console.log("updateQuantityInCart : Error in updating product in cart", e);
   }
 };
 
@@ -63,11 +68,13 @@ const removeFromCart = async (authToken, id) => {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {
+      toast.success("Removed from cart!");
       return response.data;
     } else {
       throw new Error();
     }
   } catch (e) {
+    toast.error("Couldn't remove from cart! Please try again.");
     console.log("removeFromCart : Error in removing product from cart", e);
   }
 };

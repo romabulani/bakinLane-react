@@ -2,21 +2,28 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./nav.css";
 import logo from "assets/images/logo.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartShopping,
-  faHeart,
-  faUser,
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
 import { useAuth, useData } from "contexts";
 
 function Navigation() {
   const { authToken } = useAuth();
-  const { state } = useData();
+  const { state, searchBarText, setSearchBarText, dispatch } = useData();
   const navigate = useNavigate();
   const isUserLoggedIn = (to) =>
     authToken ? navigate(to) : navigate("/login");
 
+  const searchHandler = (e) => {
+    e.preventDefault();
+    if (searchBarText.trim().length > 0) {
+      dispatch({
+        type: "SET_SEARCH_TEXT",
+        payload: { searchText: searchBarText },
+      });
+      navigate({
+        pathname: "/products",
+        search: `query=${searchBarText.trim()}`,
+      });
+    }
+  };
   return (
     <>
       <nav className="nav-container">
@@ -45,22 +52,27 @@ function Navigation() {
           </NavLink>
         </div>
         <div className="nav-right">
-          <div className="searchbar-container" aria-label="search">
-            <FontAwesomeIcon
-              icon={faSearch}
-              className="search-icon"
-            ></FontAwesomeIcon>
+          <form onSubmit={searchHandler} className="searchbar-container">
             <input
               type="search"
               placeholder="Search for Items"
               className="nav-search-field"
+              value={searchBarText}
+              onChange={(e) => setSearchBarText(e.target.value)}
             />
-          </div>
+            <button className="btn-no-decoration" type="submit">
+              <FontAwesomeIcon
+                icon="search"
+                className="search-icon"
+              ></FontAwesomeIcon>
+            </button>
+          </form>
+
           <div className="nav-icons-container">
             <div className="nav-item nav-icon">
               <div className="badge">
                 <FontAwesomeIcon
-                  icon={faHeart}
+                  icon="heart"
                   className="icon-style"
                   onClick={() => isUserLoggedIn("/wishlist")}
                 ></FontAwesomeIcon>
@@ -74,7 +86,7 @@ function Navigation() {
             <div className="nav-item nav-icon">
               <div className="badge">
                 <FontAwesomeIcon
-                  icon={faCartShopping}
+                  icon="cart-shopping"
                   className="icon-style"
                   onClick={() => isUserLoggedIn("/cart")}
                 ></FontAwesomeIcon>
@@ -87,7 +99,7 @@ function Navigation() {
             </div>
             <div className="nav-item nav-icon icon-person">
               <FontAwesomeIcon
-                icon={faUser}
+                icon="user"
                 className="icon-style"
                 onClick={() => isUserLoggedIn("/profile")}
               ></FontAwesomeIcon>
@@ -95,17 +107,25 @@ function Navigation() {
           </div>
         </div>
       </nav>
-      <div className="mobile-searchbar-container" aria-label="search">
-        <FontAwesomeIcon
-          icon={faSearch}
-          className="search-icon"
-        ></FontAwesomeIcon>
+      <form
+        className="mobile-searchbar-container"
+        aria-label="search"
+        onSubmit={searchHandler}
+      >
         <input
           type="search"
           placeholder="Search for Items"
           className="nav-search-field"
+          value={searchBarText}
+          onChange={(e) => setSearchBarText(e.target.value)}
         />
-      </div>
+        <button className="btn-no-decoration" type="submit">
+          <FontAwesomeIcon
+            icon="search"
+            className="search-icon"
+          ></FontAwesomeIcon>
+        </button>
+      </form>
     </>
   );
 }

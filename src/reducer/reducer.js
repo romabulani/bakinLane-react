@@ -15,6 +15,7 @@ import {
   SORT,
   TOGGLE_STOCK,
   PRICERANGE_FILTER,
+  SET_SEARCH_TEXT,
 } from "../constants";
 
 export const reducer = (state, action) => {
@@ -100,7 +101,11 @@ export const reducer = (state, action) => {
         ...state,
         wishlist: [...action.payload.wishlist],
       };
-
+    case SET_SEARCH_TEXT:
+      return {
+        ...state,
+        searchText: action.payload.searchText,
+      };
     default:
       return state;
   }

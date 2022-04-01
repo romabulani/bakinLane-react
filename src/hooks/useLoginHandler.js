@@ -9,10 +9,10 @@ function useLoginHandler() {
   const navigate = useNavigate();
 
   const loginHandler = async (e, setLoginData, setErrorData, loginData) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     try {
       let response;
-      if (e.target.innerText === "Login as Guest") {
+      if (e && e.target.innerText === "Login as Guest") {
         setLoginData({
           email: "adarshbalika@gmail.com",
           password: "adarshBalika123",

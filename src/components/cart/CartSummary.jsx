@@ -1,4 +1,3 @@
-import { faTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useData } from "contexts";
@@ -13,7 +12,7 @@ function CartSummary() {
       <h5 className="heading5">COUPONS</h5>
       <div>
         <button className="btn btn-outline-default coupon-button">
-          <FontAwesomeIcon icon={faTag} /> APPLY COUPON
+          <FontAwesomeIcon icon="tag" /> APPLY COUPON
         </button>
       </div>
       <h5 className="heading5">PRICE DETAILS : ({state.cart.length} Items)</h5>

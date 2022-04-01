@@ -191,6 +191,25 @@
   text-decoration: none;
 }
 
+.search-header {
+  margin-top: 1rem;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.inline-flex-center {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.padding-top-4 {
+  padding-top: 4rem;
+}
+
 /* Media for hover */
 @media only screen and (max-width: 640px) {
   .card-default-product:hover {

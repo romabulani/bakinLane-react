@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 async function loginService(email, password) {
   try {
@@ -7,12 +8,14 @@ async function loginService(email, password) {
       password: password,
     });
     if (response.status === 200) {
+      toast.success("Log In successful");
       return response.data;
     } else {
       throw new Error();
     }
   } catch (e) {
-    console.log("loginService: Error in Login", e); // convert this in error page
+    toast.error(`Couldn't Login! Please try again.`);
+    console.log("loginService: Error in Login", e);
   }
 }
 

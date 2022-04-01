@@ -3,15 +3,16 @@ import "./wishlist.css";
 import { useData } from "contexts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate, Link } from "react-router-dom";
-import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import { useCartSummary, useOperations } from "hooks";
 import { CLEAR_FILTERS } from "../../constants";
+import { useState } from "react";
 
 function WishlistItem() {
   const { state, dispatch } = useData();
   const navigate = useNavigate();
   const { getOriginalPrice } = useCartSummary();
   const { getButtonText, wishlistHandler, cartHandler } = useOperations();
+  const [disable, setDisable] = useState(false);
 
   return (
     <div>
@@ -26,9 +27,9 @@ function WishlistItem() {
               <div className="card-img-container wishlist-img-container">
                 <img src={product.imageUrl} alt="cake" className="card-img" />
                 <FontAwesomeIcon
-                  icon={faCircleXmark}
+                  icon="circle-xmark"
                   className="wishlist-close-btn gray-text"
-                  onClick={(e) => wishlistHandler(e, product)}
+                  onClick={(e) => wishlistHandler(e, product, setDisable)}
                 ></FontAwesomeIcon>
               </div>
               <div className="card-header">{product.title}</div>
@@ -53,7 +54,8 @@ function WishlistItem() {
               <div className="wishlist-card-buttons">
                 <button
                   className="btn btn-outline-primary wishlist-card-button"
-                  onClick={(e) => cartHandler(e, product)}
+                  onClick={(e) => cartHandler(e, product, setDisable)}
+                  disabled={disable}
                 >
                   {getButtonText(product)}
                 </button>

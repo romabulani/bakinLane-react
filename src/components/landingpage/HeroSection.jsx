@@ -25,7 +25,7 @@ function HeroSection() {
   };
 
   return (
-    <>
+    <div className="middle-content">
       <div className="hero-container">
         <div className="hero-content">
           <h2 className="heading2 keyword">Bakin Lane</h2>
@@ -92,7 +92,7 @@ function HeroSection() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { useReducer } from "react";
 import axios from "axios";
+import { useLoginHandler } from "./useLoginHandler";
+import { toast } from "react-toastify";
 
 function useSignupHandler() {
-  const navigate = useNavigate();
+  const { loginHandler } = useLoginHandler();
   const initialFormState = {
     firstName: "",
     lastName: "",
@@ -141,10 +142,16 @@ function useSignupHandler() {
     if (checkValidation()) {
       try {
         const response = await axios.post("/api/auth/signup", formData);
-        if (response.status === 201) navigate("/login");
-        else throw new Error();
+        if (response.status === 201) {
+          loginHandler(null, null, null, {
+            email: formData.email,
+            password: formData.password,
+          });
+          toast.success("Signup successful!");
+        } else throw new Error();
       } catch (e) {
-        console.log("signUpHandler : Error in signing up");
+        toast.error("Error in signing up. Please try again.");
+        console.log("signUpHandler : Error in signing up", e);
       }
     }
   };
