@@ -9,7 +9,7 @@ function SignupForm() {
     useSignupHandler();
 
   return (
-    <div className="auth-container flex-column-center signup-container">
+    <div className="auth-container flex-column-center signup-container middle-content">
       <h4 className="heading4">SIGN UP</h4>
       <form className="form-auth">
         <div className="form-input ">

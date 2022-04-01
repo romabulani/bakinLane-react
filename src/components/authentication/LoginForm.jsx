@@ -10,7 +10,7 @@ function LoginForm() {
   const [errorData, setErrorData] = useState(false);
   const { loginHandler } = useLoginHandler();
   return (
-    <div className="auth-container flex-column-center">
+    <div className="auth-container flex-column-center middle-content">
       <h4 className="heading4">LOGIN</h4>
       <form className="form-auth">
         <div className="form-input">

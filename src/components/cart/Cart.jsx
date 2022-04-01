@@ -6,7 +6,7 @@ import { CartSummary } from "./CartSummary";
 function Cart() {
   const { state } = useData();
   return (
-    <main className="cart-container flex-column-center">
+    <main className="cart-container flex-column-center middle-content">
       {state.cart.length > 0 && <div className="heading4">MY CART</div>}
       <div className="cart-items-and-price flex-row-center">
         <CartItem />

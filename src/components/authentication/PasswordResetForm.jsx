@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function PasswordResetForm() {
   return (
-    <div className="auth-container flex-column-center">
+    <div className="auth-container flex-column-center middle-content">
       <h4 className="heading4">RESET PASSWORD</h4>
       <form action="" className="form-auth">
         <div className="form-input">

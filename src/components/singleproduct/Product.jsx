@@ -22,7 +22,7 @@ function Product() {
   const { getButtonText, isWishlisted, cartHandler, productWishlistHandler } =
     useOperations();
   return (
-    <>
+    <div className="middle-content">
       {product && (
         <div className="flex-row-center">
           <div className="product-display">
@@ -151,7 +151,7 @@ function Product() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
