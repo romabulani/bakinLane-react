@@ -2,7 +2,6 @@ import "./auth.css";
 import { Link } from "react-router-dom";
 import { useSignupHandler } from "hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 function SignupForm() {
   const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
@@ -41,7 +40,7 @@ function SignupForm() {
         {errorData.firstName.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
-              icon={faCircleExclamation}
+              icon="circle-exclamation"
               className="error-icon"
             ></FontAwesomeIcon>
             {"    "}
@@ -77,7 +76,7 @@ function SignupForm() {
         {errorData.lastName.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
-              icon={faCircleExclamation}
+              icon="circle-exclamation"
               className="error-icon"
             ></FontAwesomeIcon>
             {"    "}
@@ -110,7 +109,7 @@ function SignupForm() {
         {errorData.email.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
-              icon={faCircleExclamation}
+              icon="circle-exclamation"
               className="error-icon"
             ></FontAwesomeIcon>
             {"    "}
@@ -145,7 +144,7 @@ function SignupForm() {
         {errorData.password.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
-              icon={faCircleExclamation}
+              icon="circle-exclamation"
               className="error-icon"
             ></FontAwesomeIcon>
             {"    "}
@@ -181,7 +180,7 @@ function SignupForm() {
         {errorData.confirmPassword.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
-              icon={faCircleExclamation}
+              icon="circle-exclamation"
               className="error-icon"
             ></FontAwesomeIcon>
             {"    "}

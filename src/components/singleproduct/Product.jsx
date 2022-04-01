@@ -1,12 +1,3 @@
-import { faCalendarXmark } from "@fortawesome/free-regular-svg-icons";
-import {
-  faCalendarCheck,
-  faCheck,
-  faCircleCheck,
-  faStar,
-  faTag,
-  faTruck,
-} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useData } from "contexts";
 import { useCartSummary, useOperations } from "hooks";
@@ -37,7 +28,7 @@ function Product() {
                 <div className="product-title">{product.title}</div>
                 <div className="rating-box margin-2">
                   {product.rating}{" "}
-                  <FontAwesomeIcon icon={faStar} className="rating-star" /> |{" "}
+                  <FontAwesomeIcon icon="star" className="rating-star" /> |{" "}
                   {product.totalRatings} reviews
                 </div>
               </div>
@@ -90,29 +81,29 @@ function Product() {
               <div className="additional-details padding-bottom-5 border-bottom">
                 {" "}
                 <div className="margin-2">
-                  <FontAwesomeIcon icon={faTruck}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon="truck"></FontAwesomeIcon>
                   <span className="margin-sides-2">Order one day prior</span>
                 </div>
                 {!product.isOutOfStock ? (
                   <div>
-                    <FontAwesomeIcon icon={faCalendarCheck}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="calendar-check"></FontAwesomeIcon>
                     <span className="margin-sides-2"> In stock</span>
                   </div>
                 ) : (
                   <div className="margin-2">
-                    <FontAwesomeIcon icon={faCalendarXmark}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="calendar-xmark"></FontAwesomeIcon>
                     <span> Out of stock</span>
                   </div>
                 )}
                 <div className="margin-2">
-                  <FontAwesomeIcon icon={faCircleCheck}></FontAwesomeIcon>
+                  <FontAwesomeIcon icon="circle-check"></FontAwesomeIcon>
                   <span className="margin-sides-2"> Price Includes GST</span>
                 </div>
               </div>
 
               <div className="product-offers ">
                 <span className=".margin-2">
-                  BEST OFFERS <FontAwesomeIcon icon={faTag}></FontAwesomeIcon>
+                  BEST OFFERS <FontAwesomeIcon icon="tag"></FontAwesomeIcon>
                 </span>
                 <span className="d-block">
                   The product is already at the best price
@@ -123,7 +114,7 @@ function Product() {
                 {product.item === "Cake" && (
                   <div className="margin-2">
                     <FontAwesomeIcon
-                      icon={faCheck}
+                      icon="check"
                       className="color-success"
                     ></FontAwesomeIcon>
                     <span> Can be customised</span>
@@ -131,14 +122,14 @@ function Product() {
                 )}
                 <div className="margin-2">
                   <FontAwesomeIcon
-                    icon={faCheck}
+                    icon="check"
                     className="color-success"
                   ></FontAwesomeIcon>
                   <span>{` Weighs ${product.weight}`}</span>
                 </div>
                 <div className="margin-2">
                   <FontAwesomeIcon
-                    icon={faCheck}
+                    icon="check"
                     className="color-success"
                   ></FontAwesomeIcon>
                   <span>

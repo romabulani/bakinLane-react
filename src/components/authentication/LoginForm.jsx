@@ -1,4 +1,3 @@
-import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLoginHandler } from "hooks";
 import { useState } from "react";
@@ -70,7 +69,7 @@ function LoginForm() {
         {errorData && (
           <div className="error">
             <FontAwesomeIcon
-              icon={faCircleExclamation}
+              icon="circle-exclamation"
               className="error-icon"
             ></FontAwesomeIcon>
             {"    "}

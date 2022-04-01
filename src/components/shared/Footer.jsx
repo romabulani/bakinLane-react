@@ -1,8 +1,3 @@
-import {
-  faGithub,
-  faLinkedinIn,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./footer.css";
 function Footer() {
@@ -21,7 +16,7 @@ function Footer() {
               aria-label="github"
             >
               <FontAwesomeIcon
-                icon={faGithub}
+                icon={["fab", "github"]}
                 className="footer-icon-style"
               ></FontAwesomeIcon>
             </a>
@@ -34,7 +29,7 @@ function Footer() {
               aria-label="twitter"
             >
               <FontAwesomeIcon
-                icon={faTwitter}
+                icon={["fab", "twitter"]}
                 className="footer-icon-style"
               ></FontAwesomeIcon>
             </a>
@@ -47,7 +42,7 @@ function Footer() {
               aria-label="linkedin"
             >
               <FontAwesomeIcon
-                icon={faLinkedinIn}
+                icon={["fab", "linkedin-in"]}
                 className="footer-icon-style"
               ></FontAwesomeIcon>
             </a>

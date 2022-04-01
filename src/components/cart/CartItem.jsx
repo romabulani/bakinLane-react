@@ -1,4 +1,3 @@
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCartSummary, useOperations } from "hooks";
 import React from "react";
@@ -97,7 +96,7 @@ function CartItem() {
           </p>
           <div>
             <FontAwesomeIcon
-              icon={faCartShopping}
+              icon="cart-shopping"
               size="7x"
               className="empty-cart-icon"
             ></FontAwesomeIcon>

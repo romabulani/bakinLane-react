@@ -2,12 +2,6 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./nav.css";
 import logo from "assets/images/logo.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartShopping,
-  faHeart,
-  faUser,
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
 import { useAuth, useData } from "contexts";
 
 function Navigation() {
@@ -47,7 +41,7 @@ function Navigation() {
         <div className="nav-right">
           <div className="searchbar-container" aria-label="search">
             <FontAwesomeIcon
-              icon={faSearch}
+              icon="search"
               className="search-icon"
             ></FontAwesomeIcon>
             <input
@@ -60,7 +54,7 @@ function Navigation() {
             <div className="nav-item nav-icon">
               <div className="badge">
                 <FontAwesomeIcon
-                  icon={faHeart}
+                  icon="heart"
                   className="icon-style"
                   onClick={() => isUserLoggedIn("/wishlist")}
                 ></FontAwesomeIcon>
@@ -74,7 +68,7 @@ function Navigation() {
             <div className="nav-item nav-icon">
               <div className="badge">
                 <FontAwesomeIcon
-                  icon={faCartShopping}
+                  icon="cart-shopping"
                   className="icon-style"
                   onClick={() => isUserLoggedIn("/cart")}
                 ></FontAwesomeIcon>
@@ -87,7 +81,7 @@ function Navigation() {
             </div>
             <div className="nav-item nav-icon icon-person">
               <FontAwesomeIcon
-                icon={faUser}
+                icon="user"
                 className="icon-style"
                 onClick={() => isUserLoggedIn("/profile")}
               ></FontAwesomeIcon>
@@ -97,7 +91,7 @@ function Navigation() {
       </nav>
       <div className="mobile-searchbar-container" aria-label="search">
         <FontAwesomeIcon
-          icon={faSearch}
+          icon="search"
           className="search-icon"
         ></FontAwesomeIcon>
         <input

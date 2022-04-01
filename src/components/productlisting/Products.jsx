@@ -1,6 +1,5 @@
 import "./productlist.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useCartSummary, useOperations } from "hooks";
 import { useData } from "contexts";
 import { useState } from "react";
@@ -32,7 +31,7 @@ function Products() {
                 <span className="card-badge">Trending</span>
               )}
               <FontAwesomeIcon
-                icon={faHeart}
+                icon="heart"
                 className={`card-icon ${
                   isWishlisted(product)
                     ? "filled-wishlist-icon"
@@ -64,7 +63,7 @@ function Products() {
               <span>{product.rating} </span>
               <span>
                 <FontAwesomeIcon
-                  icon={faStar}
+                  icon="star"
                   className="rating-star"
                 ></FontAwesomeIcon>
               </span>{" "}

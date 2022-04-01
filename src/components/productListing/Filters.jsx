@@ -1,4 +1,3 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useData } from "contexts";
@@ -94,7 +93,7 @@ function Filters() {
             <label htmlFor="4andAbove" className="gray-text small-text">
               4{" "}
               <FontAwesomeIcon
-                icon={faStar}
+                icon="star"
                 className="rating-star"
               ></FontAwesomeIcon>{" "}
               and above
@@ -115,7 +114,7 @@ function Filters() {
             <label htmlFor="3andAbove" className="gray-text small-text">
               3{" "}
               <FontAwesomeIcon
-                icon={faStar}
+                icon="star"
                 className="rating-star"
               ></FontAwesomeIcon>{" "}
               and above
@@ -136,7 +135,7 @@ function Filters() {
             <label htmlFor="2andAbove" className="gray-text small-text">
               2{" "}
               <FontAwesomeIcon
-                icon={faStar}
+                icon="star"
                 className="rating-star"
               ></FontAwesomeIcon>{" "}
               and above

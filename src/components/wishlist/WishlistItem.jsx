@@ -3,7 +3,6 @@ import "./wishlist.css";
 import { useData } from "contexts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate, Link } from "react-router-dom";
-import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import { useCartSummary, useOperations } from "hooks";
 import { CLEAR_FILTERS } from "../../constants";
 
@@ -26,7 +25,7 @@ function WishlistItem() {
               <div className="card-img-container wishlist-img-container">
                 <img src={product.imageUrl} alt="cake" className="card-img" />
                 <FontAwesomeIcon
-                  icon={faCircleXmark}
+                  icon="circle-xmark"
                   className="wishlist-close-btn gray-text"
                   onClick={(e) => wishlistHandler(e, product)}
                 ></FontAwesomeIcon>
