@@ -8,8 +8,6 @@ function Navigation() {
   const { authToken } = useAuth();
   const { state, searchBarText, setSearchBarText, dispatch } = useData();
   const navigate = useNavigate();
-  const isUserLoggedIn = (to) =>
-    authToken ? navigate(to) : navigate("/login");
 
   const searchHandler = (e) => {
     e.preventDefault();
@@ -74,7 +72,7 @@ function Navigation() {
                 <FontAwesomeIcon
                   icon="heart"
                   className="icon-style"
-                  onClick={() => isUserLoggedIn("/wishlist")}
+                  onClick={() => navigate("/wishlist")}
                 ></FontAwesomeIcon>
                 {authToken && state.wishlist.length > 0 && (
                   <span className="badge-icon badge-number badge-right badge-lg">
@@ -88,7 +86,7 @@ function Navigation() {
                 <FontAwesomeIcon
                   icon="cart-shopping"
                   className="icon-style"
-                  onClick={() => isUserLoggedIn("/cart")}
+                  onClick={() => navigate("/cart")}
                 ></FontAwesomeIcon>
                 {authToken && state.cart.length > 0 && (
                   <span className="badge-icon badge-number badge-right badge-lg">
@@ -101,7 +99,7 @@ function Navigation() {
               <FontAwesomeIcon
                 icon="user"
                 className="icon-style"
-                onClick={() => isUserLoggedIn("/profile")}
+                onClick={() => navigate("/profile/")}
               ></FontAwesomeIcon>
             </div>
           </div>

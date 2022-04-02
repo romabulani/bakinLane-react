@@ -83,8 +83,7 @@
 }
 
 @media only screen and (max-width: 640px) {
-  .auth-container,
-  .logout-container {
+  .auth-container {
     padding: 1rem;
   }
   .form-auth {
