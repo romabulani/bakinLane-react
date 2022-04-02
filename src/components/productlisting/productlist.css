@@ -187,8 +187,13 @@
   color: var(--primary-color);
 }
 
-.no-link-decoration {
+.no-link-decoration,
+.no-link-decoration:hover,
+.no-link-decoration:active,
+.no-link-decoration:visited,
+.no-link-decoration:focus {
   text-decoration: none;
+  color: var(--primary-color);
 }
 
 .search-header {

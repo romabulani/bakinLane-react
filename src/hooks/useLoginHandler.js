@@ -1,7 +1,12 @@
-import { WISHLIST_OPERATION, CART_OPERATION } from "../constants";
+import { WISHLIST_OPERATION, CART_OPERATION, SET_ADDRESS } from "../constants";
 import { useAuth, useData } from "contexts";
 import { useNavigate } from "react-router-dom";
-import { getCart, getWishlist, loginService } from "services";
+import {
+  getAddressFromServer,
+  getCart,
+  getWishlist,
+  loginService,
+} from "services";
 
 function useLoginHandler() {
   const { setAuthToken, setAuthUser } = useAuth();
@@ -34,6 +39,11 @@ function useLoginHandler() {
       dispatch({
         type: WISHLIST_OPERATION,
         payload: { wishlist: response.wishlist },
+      });
+      response = await getAddressFromServer(tokenResponse);
+      dispatch({
+        type: SET_ADDRESS,
+        payload: { address: response.address },
       });
       navigate("/products");
     } catch (e) {

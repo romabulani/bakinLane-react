@@ -16,6 +16,7 @@ import {
   TOGGLE_STOCK,
   PRICERANGE_FILTER,
   SET_SEARCH_TEXT,
+  SET_ADDRESS,
 } from "../constants";
 
 export const reducer = (state, action) => {
@@ -105,6 +106,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         searchText: action.payload.searchText,
+      };
+    case SET_ADDRESS:
+      return {
+        ...state,
+        address: action.payload.address,
       };
     default:
       return state;

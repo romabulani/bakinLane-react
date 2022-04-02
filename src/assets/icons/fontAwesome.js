@@ -13,6 +13,8 @@ import {
   faCheck,
   faCircleCheck,
   faTruck,
+  faBoxOpen,
+  faAddressBook,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   fab,
@@ -27,7 +29,9 @@ library.add(
   faCheck,
   faCircleCheck,
   faTruck,
-  faCalendarXmark
+  faCalendarXmark,
+  faBoxOpen,
+  faAddressBook
 );
 
 export { library };

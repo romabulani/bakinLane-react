@@ -10,3 +10,9 @@ export {
   addToWishlist,
   removeFromWishlist,
 } from "./wishlistService";
+export {
+  getAddressFromServer,
+  updateAddressInServer,
+  addAddressInServer,
+  removeAddressFromServer,
+} from "./addressService";

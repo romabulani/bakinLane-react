@@ -1,8 +1,177 @@
 .logout-container {
   border-radius: 5px;
   height: fit-content;
-  margin: 1rem;
   max-width: 30rem;
-  padding: 6rem;
-  row-gap: 0.5rem;
+  row-gap: 1rem;
+  display: flex;
+  padding-top: 1rem;
+  flex-direction: column;
+}
+
+.tab-default {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  width: 5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs-container {
+  margin-top: 2rem;
+  border-bottom: 2px solid var(--primary-color);
+  width: fit-content;
+}
+
+.tab-active {
+  border-bottom: unset;
+}
+
+.tab-default:hover {
+  background-color: var(--primary-bg-color);
+}
+
+.row-format {
+  column-gap: 2rem;
+  display: flex;
+}
+
+.profile-column {
+  row-gap: 1rem;
+}
+.profile-details {
+  column-gap: 2rem;
+}
+
+.logout-btn {
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.flex-row-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.add-address-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--default-color);
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.add-address-btn:hover {
+  color: black;
+}
+
+.address-input > .input-primary {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 1rem auto;
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+}
+
+.address-modal-container {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 12;
+}
+
+.address-modal {
+  border-radius: 5px;
+  padding: 1rem;
+  align-items: center;
+  width: 25rem;
+  background-color: var(--light-color);
+  row-gap: 1rem;
+  box-shadow: var(--default-shadow);
+}
+
+.flex-row-center {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.address-card {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 15rem;
+  margin: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.address-card-btn {
+  margin-left: 0px;
+  height: 1.8rem;
+}
+
+.modal-header {
+  font-weight: 600;
+}
+
+.address-input {
+  margin: unset;
+}
+
+.address-error {
+  margin-left: 10px;
+}
+
+.address-btn-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-fit-content {
+  width: fit-content;
+  padding: 0 10px;
+}
+
+.address-input > input {
+  margin: 0.5rem auto;
+}
+
+.mobile-tab {
+  padding: 1rem 0;
+  color: var(--default-color);
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.p-right-5 {
+  padding-right: 5px;
+  font-size: 1.2rem;
+}
+
+.mobile-tabs-container {
+  display: none;
+}
+
+@media only screen and (max-width: 460px) {
+  .address-modal {
+    width: 80vw;
+  }
+
+  .tabs-container {
+    display: none;
+  }
+
+  .mobile-tabs-container {
+    display: flex;
+  }
 }
