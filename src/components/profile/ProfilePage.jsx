@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 function ProfilePage() {
   const tabArray = [
@@ -16,7 +16,7 @@ function ProfilePage() {
     },
   ];
   return (
-    <div className="main-content">
+    <div className="middle-content">
       <div className="flex-row-center">
         <div className="flex-column">
           <div className="tabs-container">
@@ -35,6 +35,7 @@ function ProfilePage() {
               </NavLink>
             ))}
           </div>
+
           <Outlet />
         </div>
       </div>
