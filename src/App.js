@@ -24,7 +24,7 @@ import {
 
 function App() {
   return (
-    <div className="App pagewrapper">
+    <div className="App pagewrapper ">
       <Navigation />
       <ScrollToTop />
       <ToastContainer position="bottom-right" autoClose={800} draggable />

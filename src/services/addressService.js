@@ -37,11 +37,15 @@ const addAddressInServer = async (authToken, address) => {
   }
 };
 
-const updateAddressInServer = async (authToken, id) => {
+const updateAddressInServer = async (authToken, id, address) => {
   try {
-    const response = await axios.post(`/api/user/address/${id}`, {
-      headers: { authorization: authToken },
-    });
+    const response = await axios.post(
+      `/api/user/address/${id}`,
+      { address },
+      {
+        headers: { authorization: authToken },
+      }
+    );
     if (response.status === 200) {
       toast.info("Address updated!");
       return response.data;

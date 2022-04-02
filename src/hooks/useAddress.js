@@ -1,15 +1,15 @@
 import { SET_ADDRESS } from "../constants";
-import { useAuth, useData } from "contexts";
+import { useAuth, useData, useEditAddress } from "contexts";
 import {
-  getAddressFromServer,
   addAddressInServer,
   removeAddressFromServer,
   updateAddressInServer,
 } from "services";
 
 function useAddress() {
-  const { state, dispatch } = useData();
+  const { dispatch } = useData();
   const { authToken } = useAuth();
+  const { setShowAddressModal, setEditAddress, editAddress } = useEditAddress();
 
   const addAddress = async (address, setDisable) => {
     setDisable(true);
@@ -19,8 +19,9 @@ function useAddress() {
         type: SET_ADDRESS,
         payload: { address: response.address },
       });
+      setShowAddressModal(false);
       return response.data;
-    } finally {
+    } catch (e) {
       setDisable(false);
     }
   };
@@ -28,14 +29,20 @@ function useAddress() {
   const updateAddress = async (address, setDisable) => {
     setDisable(true);
     try {
-      const response = await updateAddressInServer(authToken, address._id);
+      const response = await updateAddressInServer(
+        authToken,
+        editAddress._id,
+        address
+      );
       dispatch({
         type: SET_ADDRESS,
         payload: { address: response.address },
       });
       return response.data;
     } finally {
+      setEditAddress(null);
       setDisable(false);
+      setShowAddressModal(false);
     }
   };
 
@@ -48,7 +55,7 @@ function useAddress() {
         payload: { address: response.address },
       });
       return response.data;
-    } finally {
+    } catch (e) {
       setDisable(false);
     }
   };

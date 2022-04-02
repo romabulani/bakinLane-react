@@ -12,3 +12,6 @@ export { Wishlist } from "./wishlist/Wishlist";
 export { Product } from "./singleproduct/Product";
 export { ScrollToTop } from "./shared/ScrollToTop";
 export { PrivateRoute } from "./authentication/PrivateRoute";
+export { ProfilePage } from "./profile/ProfilePage";
+export { Address } from "./profile/addresses/Address";
+export { OrderSummary } from "./profile/orders/OrderSummary";

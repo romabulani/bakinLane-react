@@ -27,10 +27,6 @@
   padding-top: 0;
 }
 
-.content-container {
-  flex-grow: 1;
-}
-
 .border-box {
   box-sizing: border-box;
 }
