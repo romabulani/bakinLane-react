@@ -1,8 +1,54 @@
 .logout-container {
   border-radius: 5px;
   height: fit-content;
-  margin: 1rem;
   max-width: 30rem;
-  padding: 6rem;
-  row-gap: 0.5rem;
+  row-gap: 1rem;
+  display: flex;
+  padding-top: 1rem;
+  flex-direction: column;
+}
+
+.tab-default {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  width: 5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs-container {
+  margin-top: 2rem;
+  border-bottom: 2px solid var(--primary-color);
+  width: fit-content;
+}
+
+.tab-active {
+  border-bottom: unset;
+}
+
+.tab-default:hover {
+  background-color: var(--primary-bg-color);
+}
+
+.row-format {
+  column-gap: 2rem;
+  display: flex;
+}
+
+.profile-column {
+  row-gap: 1rem;
+}
+.profile-details {
+  column-gap: 2rem;
+}
+
+.logout-btn {
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.flex-row-start {
+  display: flex;
+  justify-content: flex-start;
 }
