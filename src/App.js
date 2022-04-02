@@ -3,17 +3,20 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import {
+  Address,
   Cart,
   Footer,
   HeroSection,
   LoginForm,
   MockAPI,
   Navigation,
+  OrderSummary,
   PasswordResetForm,
   PrivateRoute,
   Product,
   ProductList,
   ProfileDetails,
+  ProfilePage,
   ScrollToTop,
   SignupForm,
   Wishlist,
@@ -33,30 +36,16 @@ function App() {
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<Product />} />
         <Route path="/mock-api" element={<MockAPI />} />
-        <Route
-          path="/wishlist"
-          element={
-            <PrivateRoute>
-              <Wishlist />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <PrivateRoute>
-              <Cart />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <ProfileDetails />
-            </PrivateRoute>
-          }
-        />
+
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/profile" element={<ProfilePage />}>
+            <Route path="/profile" element={<ProfileDetails />} />
+            <Route path="/profile/address" element={<Address />} />
+            <Route path="/profile/orders" element={<OrderSummary />} />
+          </Route>
+        </Route>
       </Routes>
       <Footer />
     </div>
