@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "contexts";
+import { useAuth, useData } from "contexts";
 import "./profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  CART_OPERATION,
+  WISHLIST_OPERATION,
+  SET_ADDRESS,
+} from "../../constants";
 
 function ProfileDetails() {
   const { setAuthToken, authUser, setAuthUser } = useAuth();
+  const { dispatch } = useData();
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.authUser) setAuthUser(JSON.parse(localStorage.authUser));
@@ -15,6 +21,9 @@ function ProfileDetails() {
     localStorage.removeItem("authUser");
     setAuthToken("");
     setAuthUser(null);
+    dispatch({ type: CART_OPERATION, payload: { cart: [] } });
+    dispatch({ type: WISHLIST_OPERATION, payload: { wishlist: [] } });
+    dispatch({ type: SET_ADDRESS, payload: { address: [] } });
     navigate("/products");
   }
 
