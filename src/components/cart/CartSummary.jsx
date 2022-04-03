@@ -73,6 +73,9 @@ function CartSummary() {
         <div className="address-modal-container">
           <div className="coupon-modal flex-column-center">
             <h4>ADD COUPON</h4>
+            {getTotalPrice() <= 1000 && (
+              <p>No coupons available for the current cart price.</p>
+            )}
             <button
               className="btn-no-decoration btn-close btn-close-coupon cursor-pointer"
               onClick={() => setShowCouponModal(false)}

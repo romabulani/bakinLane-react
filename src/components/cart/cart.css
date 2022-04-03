@@ -161,6 +161,7 @@
   padding: 2rem;
   border-radius: 5px;
   position: relative;
+  width: 22rem;
 }
 
 .coupon-container {
@@ -205,5 +206,9 @@
 @media only screen and (max-width: 640px) {
   .coupon-modal {
     width: 70vw;
+  }
+
+  .cart-horizontal-wide {
+    width: 90vw;
   }
 }
