@@ -82,6 +82,29 @@
   margin: 1rem 0;
 }
 
+.input-icon-style {
+  color: var(--default-color);
+  font-size: 1.2rem;
+  position: absolute;
+  right: 5px;
+  top: 4px;
+}
+
+.input-icon-container {
+  position: relative;
+}
+
+.input-no-outline {
+  outline: none;
+  border: none;
+  font-size: 13px;
+  position: absolute;
+  bottom: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 640px) {
   .auth-container {
     padding: 1rem;

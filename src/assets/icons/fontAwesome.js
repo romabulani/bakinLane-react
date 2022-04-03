@@ -16,6 +16,8 @@ import {
   faBoxOpen,
   faAddressBook,
   faClose,
+  faEye,
+  faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   fab,
@@ -33,7 +35,9 @@ library.add(
   faCalendarXmark,
   faBoxOpen,
   faAddressBook,
-  faClose
+  faClose,
+  faEye,
+  faEyeSlash
 );
 
 export { library };

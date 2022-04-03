@@ -4,6 +4,10 @@
   font-size: 16px;
 }
 
+.img-responsive {
+  width: 40%;
+}
+
 @media only screen and (max-width: 640px) {
   .btn:hover,
   .btn-float:hover,
@@ -19,5 +23,9 @@
   .btn-outline-default:hover {
     background-color: unset;
     color: var(--default-color);
+  }
+
+  .img-responsive {
+    width: 60%;
   }
 }
