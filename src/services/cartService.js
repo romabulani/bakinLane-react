@@ -12,7 +12,7 @@ const getCart = async (authToken) => {
       throw new Error();
     }
   } catch (e) {
-    console.log("getCart : Error in fetching cart details", e);
+    console.error("getCart : Error in fetching cart details", e);
   }
 };
 
@@ -33,7 +33,7 @@ const addToCart = async (authToken, product) => {
     }
   } catch (e) {
     toast.error("Couldn't add to cart! Please try again.");
-    console.log("addToCart : Error in adding product to cart", e);
+    console.error("addToCart : Error in adding product to cart", e);
   }
 };
 
@@ -58,7 +58,10 @@ const updateQuantityInCart = async (authToken, id, type) => {
     }
   } catch (e) {
     toast.error("Couldn't update the quantity! Please try again.");
-    console.log("updateQuantityInCart : Error in updating product in cart", e);
+    console.error(
+      "updateQuantityInCart : Error in updating product in cart",
+      e
+    );
   }
 };
 
@@ -75,7 +78,7 @@ const removeFromCart = async (authToken, id) => {
     }
   } catch (e) {
     toast.error("Couldn't remove from cart! Please try again.");
-    console.log("removeFromCart : Error in removing product from cart", e);
+    console.error("removeFromCart : Error in removing product from cart", e);
   }
 };
 export { getCart, addToCart, updateQuantityInCart, removeFromCart };

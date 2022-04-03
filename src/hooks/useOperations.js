@@ -1,8 +1,6 @@
 //This file contains all the cart and wishlist operations using custom hooks
-
-import { WISHLIST_OPERATION, CART_OPERATION } from "../constants";
-import { useAuth, useData } from "contexts";
 import { useNavigate } from "react-router-dom";
+import { useAuth, useData } from "contexts";
 import {
   addToCart,
   addToWishlist,
@@ -10,6 +8,7 @@ import {
   removeFromWishlist,
   updateQuantityInCart,
 } from "services";
+import { WISHLIST_OPERATION, CART_OPERATION } from "../constants";
 
 function useOperations() {
   const { state, dispatch } = useData();

@@ -1,7 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useData } from "contexts";
-import "./productlist.css";
 import {
   CATEGORY_FILTER,
   ITEMS_FILTER,
@@ -11,6 +10,7 @@ import {
   CLEAR_FILTERS,
   PRICERANGE_FILTER,
 } from "../../constants";
+import "./productlist.css";
 
 function Filters() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);

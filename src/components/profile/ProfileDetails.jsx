@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth, useData } from "contexts";
-import "./profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   CART_OPERATION,
   WISHLIST_OPERATION,
   SET_ADDRESS,
 } from "../../constants";
+import "./profile.css";
 
 function ProfileDetails() {
   const { setAuthToken, authUser, setAuthUser } = useAuth();

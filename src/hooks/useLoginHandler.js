@@ -1,12 +1,12 @@
-import { WISHLIST_OPERATION, CART_OPERATION, SET_ADDRESS } from "../constants";
-import { useAuth, useData } from "contexts";
 import { useNavigate } from "react-router-dom";
+import { useAuth, useData } from "contexts";
 import {
   getAddressFromServer,
   getCart,
   getWishlist,
   loginService,
 } from "services";
+import { WISHLIST_OPERATION, CART_OPERATION, SET_ADDRESS } from "../constants";
 
 function useLoginHandler() {
   const { setAuthToken, setAuthUser } = useAuth();
@@ -45,9 +45,9 @@ function useLoginHandler() {
         type: SET_ADDRESS,
         payload: { address: response.address },
       });
-      navigate("/products");
+      navigate(-1);
     } catch (e) {
-      console.log("loginHandler: Error in Login", e);
+      console.error("loginHandler: Error in Login", e);
       setErrorData(true);
     }
   };

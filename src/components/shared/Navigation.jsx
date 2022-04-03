@@ -1,8 +1,8 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import "./nav.css";
-import logo from "assets/images/logo.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth, useData } from "contexts";
+import logo from "assets/images/logo.webp";
+import "./nav.css";
 
 function Navigation() {
   const { authToken } = useAuth();

@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useData } from "contexts";
-import "./cart.css";
-import { useCartSummary } from "hooks";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useData } from "contexts";
+import { useCartSummary } from "hooks";
+import "./cart.css";
 
 function CartSummary() {
   const { state } = useData();

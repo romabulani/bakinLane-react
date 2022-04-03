@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { useEditAddress } from "contexts";
 import { useAddress } from "hooks";
-import { useState } from "react";
 
 function AddressCard({ address }) {
   const { removeAddress } = useAddress();

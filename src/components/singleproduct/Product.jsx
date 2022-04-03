@@ -1,8 +1,8 @@
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useData } from "contexts";
 import { useCartSummary, useOperations } from "hooks";
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import "./product.css";
 
 function Product() {

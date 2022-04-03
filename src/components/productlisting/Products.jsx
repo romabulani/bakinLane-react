@@ -1,10 +1,9 @@
-import "./productlist.css";
-
-import { useData } from "contexts";
-import { ProductCard } from "./ProductCard";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Filters } from "./Filters";
+import { useData } from "contexts";
+import { ProductCard } from "./ProductCard";
+import "./productlist.css";
 
 function Products() {
   const { data, setSearchBarText, state } = useData();
@@ -16,8 +15,7 @@ function Products() {
     let filteredProducts = [];
     // To get the string after = in URL
     const query = decodeURIComponent(search.split("=")[1]);
-    console.log(data, query);
-    filteredProducts = data.filter(
+    console.errorducts = data.filter(
       (product) =>
         product.title.toLowerCase().includes(query.toLowerCase()) ||
         product.categoryName.toLowerCase().includes(query.toLowerCase())

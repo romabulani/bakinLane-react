@@ -12,7 +12,10 @@ const getAddressFromServer = async (authToken) => {
       throw new Error();
     }
   } catch (e) {
-    console.log("getAddressFromServer : Error in fetching address details", e);
+    console.error(
+      "getAddressFromServer : Error in fetching address details",
+      e
+    );
   }
 };
 
@@ -33,7 +36,7 @@ const addAddressInServer = async (authToken, address) => {
     }
   } catch (e) {
     toast.error("Couldn't add address! Please try again.");
-    console.log("addAddressInServer : Error in adding address", e);
+    console.error("addAddressInServer : Error in adding address", e);
   }
 };
 
@@ -54,7 +57,7 @@ const updateAddressInServer = async (authToken, id, address) => {
     }
   } catch (e) {
     toast.error("Couldn't update the address! Please try again.");
-    console.log("updateAddressInServer : Error in updating address", e);
+    console.error("updateAddressInServer : Error in updating address", e);
   }
 };
 
@@ -71,7 +74,7 @@ const removeAddressFromServer = async (authToken, id) => {
     }
   } catch (e) {
     toast.error("Couldn't delete address! Please try again.");
-    console.log("removeAddressFromServer : Error in removing address", e);
+    console.error("removeAddressFromServer : Error in removing address", e);
   }
 };
 export {
