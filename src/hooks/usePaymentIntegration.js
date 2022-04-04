@@ -5,13 +5,14 @@ import { useCartSummary } from "./useCartSummary";
 import { toast } from "react-toastify";
 
 function usePaymentIntegration() {
-  const { dispatch, deliveryAddress } = useData();
+  const { dispatch, deliveryAddress, setCoupon } = useData();
   const { getTotalPrice } = useCartSummary();
   const { authUser, authToken } = useAuth();
   const currentUser = JSON.parse(authUser);
 
   const paymentSuccessful = async () => {
     const response = await clearCartInServer(authToken);
+    setCoupon({});
     dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
   };
 
