@@ -16,3 +16,5 @@ export { ProfilePage } from "./profile/ProfilePage";
 export { Address } from "./profile/addresses/Address";
 export { OrderSummary } from "./profile/orders/OrderSummary";
 export { NotFound } from "./shared/NotFound";
+export { Checkout } from "./cart/Checkout";
+export { AddAddressModal } from "./profile/addresses/AddAddressModal";

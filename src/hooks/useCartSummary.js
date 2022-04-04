@@ -1,10 +1,10 @@
 import { useData } from "contexts";
 
 function useCartSummary() {
-  const { state } = useData();
+  const { state, coupon } = useData();
   const { cart } = state;
 
-  const getTotalPrice = (coupon) => {
+  const getTotalPrice = () => {
     let price = cart.reduce((prev, curr) => prev + curr.qty * curr.price, 0);
     if (coupon && coupon.discount) price -= coupon.discount;
     return price;

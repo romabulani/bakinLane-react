@@ -36,7 +36,7 @@ const initialState = {
   cart: [],
   wishlist: [],
   searchText: "",
-  address: []
+  address: [],
 };
 
 const getData = (state) => {
@@ -106,6 +106,8 @@ const DataContext = createContext();
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [searchBarText, setSearchBarText] = useState("");
+  const [coupon, setCoupon] = useState({});
+  const [deliveryAddress, setDeliveryAddress] = useState({});
   return (
     <DataContext.Provider
       value={{
@@ -113,7 +115,11 @@ const DataProvider = ({ children }) => {
         dispatch,
         searchBarText,
         setSearchBarText,
+        coupon,
+        setCoupon,
         data: getData(state),
+        deliveryAddress,
+        setDeliveryAddress,
       }}
     >
       {children}

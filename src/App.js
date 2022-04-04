@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import {
   Address,
   Cart,
+  Checkout,
   Footer,
   HeroSection,
   LoginForm,
@@ -41,6 +42,7 @@ function App() {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<ProfilePage />}>
             <Route path="/profile" element={<ProfileDetails />} />
             <Route path="/profile/address" element={<Address />} />
