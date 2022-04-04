@@ -81,4 +81,24 @@ const removeFromCart = async (authToken, id) => {
     console.error("removeFromCart : Error in removing product from cart", e);
   }
 };
-export { getCart, addToCart, updateQuantityInCart, removeFromCart };
+
+const clearCartInServer = async (authorization) => {
+  try {
+    const response = await axios.delete("/api/user/cart/all", {
+      headers: { authorization },
+    });
+    if (response.status === 200) {
+      return response.data;
+    } else throw new Error();
+  } catch (e) {
+    console.error("clearCartInServer : Error in clearing Cart", e);
+  }
+};
+
+export {
+  getCart,
+  addToCart,
+  updateQuantityInCart,
+  removeFromCart,
+  clearCartInServer,
+};
