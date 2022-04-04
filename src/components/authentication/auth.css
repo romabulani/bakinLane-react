@@ -84,10 +84,10 @@
 
 .input-icon-style {
   color: var(--default-color);
-  font-size: 1.2rem;
+  font-size: 1rem;
   position: absolute;
   right: 5px;
-  top: 4px;
+  top: 6px;
 }
 
 .input-icon-container {
