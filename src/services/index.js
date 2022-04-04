@@ -4,6 +4,7 @@ export {
   addToCart,
   updateQuantityInCart,
   removeFromCart,
+  clearCartInServer,
 } from "./cartService";
 export {
   getWishlist,

@@ -4,12 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useData } from "contexts";
 import { useCartSummary } from "hooks";
 import "./cart.css";
+import { CartPriceTable } from "./CartPriceTable";
+import { Link } from "react-router-dom";
 
 function CartSummary() {
-  const { state } = useData();
+  const { coupon, setCoupon } = useData();
   const [showCouponModal, setShowCouponModal] = useState(false);
-  const [coupon, setCoupon] = useState({});
-  const { getTotalPrice, getMRP, getDiscount } = useCartSummary();
+  const { getTotalPrice } = useCartSummary();
 
   const coupons = [
     {
@@ -42,33 +43,13 @@ function CartSummary() {
           <FontAwesomeIcon icon="tag" /> APPLY COUPON
         </button>
       </div>
-      <h5 className="heading5">PRICE DETAILS : ({state.cart.length} Items)</h5>
-      <div className="price-row">
-        <div className="display-left">Total MRP</div>
-        <div className="display-right">₹ {getMRP()}</div>
-      </div>
-      <div className="price-row">
-        <div className="display-left">Discount</div>
-        <div className="display-right">₹ {getDiscount()}</div>
-      </div>
-      {coupon.discount && (
-        <div className="price-row">
-          <div className="display-left">Coupon Discount</div>
-          <div className="display-right">₹ {coupon.discount}</div>
-        </div>
-      )}
-      <div className="price-row">
-        <div className="display-left">Delivery Charges</div>
-        <div className="display-right">
-          <span className="strikethrough">₹ 99</span>
-          <span className="keyword">{`  FREE`}</span>
-        </div>
-      </div>
-      <div className="price-row font-bold">
-        <div className="display-left">Total Amount</div>
-        <div className="display-right">₹ {getTotalPrice(coupon)}</div>
-      </div>
-      <button className="btn btn-primary order-button">PROCEED</button>
+      <CartPriceTable />
+      <Link
+        className="btn btn-primary order-button no-decoration inline-flex"
+        to="/checkout"
+      >
+        CHECKOUT
+      </Link>
       {showCouponModal && (
         <div className="address-modal-container">
           <div className="coupon-modal flex-column-center">

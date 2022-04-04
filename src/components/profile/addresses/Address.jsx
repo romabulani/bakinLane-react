@@ -9,7 +9,7 @@ function Address() {
   return (
     <div className="flex-row-start">
       <div className="flex-column-center">
-        <div className="addresses-container flex-column-center">
+        <div className="flex-column-center">
           {state.address.map((eachAddress) => {
             return (
               <AddressCard
