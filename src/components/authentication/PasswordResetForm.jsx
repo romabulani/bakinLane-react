@@ -1,5 +1,5 @@
-import "./auth.css";
 import { Link } from "react-router-dom";
+import "./auth.css";
 
 function PasswordResetForm() {
   return (

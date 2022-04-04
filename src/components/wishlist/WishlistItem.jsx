@@ -1,11 +1,11 @@
 import React from "react";
-import "./wishlist.css";
-import { useData } from "contexts";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useData } from "contexts";
 import { useCartSummary, useOperations } from "hooks";
 import { CLEAR_FILTERS } from "../../constants";
-import { useState } from "react";
+import "./wishlist.css";
 
 function WishlistItem() {
   const { state, dispatch } = useData();

@@ -15,7 +15,7 @@ async function loginService(email, password) {
     }
   } catch (e) {
     toast.error(`Couldn't Login! Please try again.`);
-    console.log("loginService: Error in Login", e);
+    console.error("loginService: Error in Login", e);
   }
 }
 

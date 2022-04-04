@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCartSummary, useOperations } from "hooks";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCartSummary, useOperations } from "hooks";
 import { useData } from "contexts";
 import "./cart.css";
-import { useState } from "react";
 
 function CartItem() {
   const { state } = useData();

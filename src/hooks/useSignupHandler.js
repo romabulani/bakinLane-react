@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import axios from "axios";
-import { useLoginHandler } from "./useLoginHandler";
 import { toast } from "react-toastify";
+import { useLoginHandler } from "./useLoginHandler";
 
 function useSignupHandler() {
   const { loginHandler } = useLoginHandler();
@@ -151,7 +151,7 @@ function useSignupHandler() {
         } else throw new Error();
       } catch (e) {
         toast.error("Error in signing up. Please try again.");
-        console.log("signUpHandler : Error in signing up", e);
+        console.error("signUpHandler : Error in signing up", e);
       }
     }
   };

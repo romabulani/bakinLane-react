@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App.js";
 import { makeServer } from "server";
-import { BrowserRouter } from "react-router-dom";
 import {
   AddressProvider,
   AuthProvider,
@@ -20,9 +20,9 @@ ReactDOM.render(
       <AddressProvider>
         <ProductsDataProvider>
           <DataProvider>
-            <BrowserRouter>
+            <Router>
               <App />
-            </BrowserRouter>
+            </Router>
           </DataProvider>
         </ProductsDataProvider>
       </AddressProvider>

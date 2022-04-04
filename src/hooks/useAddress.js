@@ -1,10 +1,10 @@
-import { SET_ADDRESS } from "../constants";
 import { useAuth, useData, useEditAddress } from "contexts";
 import {
   addAddressInServer,
   removeAddressFromServer,
   updateAddressInServer,
 } from "services";
+import { SET_ADDRESS } from "../constants";
 
 function useAddress() {
   const { dispatch } = useData();

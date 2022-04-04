@@ -10,6 +10,7 @@ import {
   LoginForm,
   MockAPI,
   Navigation,
+  NotFound,
   OrderSummary,
   PasswordResetForm,
   PrivateRoute,
@@ -46,6 +47,8 @@ function App() {
             <Route path="/profile/orders" element={<OrderSummary />} />
           </Route>
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

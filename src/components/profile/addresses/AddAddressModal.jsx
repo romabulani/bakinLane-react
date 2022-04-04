@@ -1,8 +1,8 @@
+import React from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEditAddress } from "contexts";
 import { useAddressHandler } from "hooks";
-import React from "react";
-import { useEffect, useState } from "react";
 
 function AddAddressModal() {
   const {

@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { categories } from "backend/db/categories";
 import { useData, useProductsData } from "contexts";
-import "./landingpage.css";
 import { CATEGORY_FILTER, CLEAR_FILTERS } from "../../constants";
+import "./landingpage.css";
 
 function HeroSection() {
   const { productsData } = useProductsData();

@@ -15,3 +15,4 @@ export { PrivateRoute } from "./authentication/PrivateRoute";
 export { ProfilePage } from "./profile/ProfilePage";
 export { Address } from "./profile/addresses/Address";
 export { OrderSummary } from "./profile/orders/OrderSummary";
+export { NotFound } from "./shared/NotFound";

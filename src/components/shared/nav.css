@@ -130,6 +130,20 @@
   padding: 2px;
 }
 
+.inline-flex {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-decoration {
+  text-decoration: none;
+}
+
+.input-icon-container:focus-within {
+  border: 1px solid var(--primary-color);
+}
+
 @media only screen and (max-width: 640px) {
   .nav-icon:hover {
     color: var(--default-color);

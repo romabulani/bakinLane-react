@@ -13,7 +13,7 @@ const ProductsDataProvider = ({ children }) => {
           const resp = await axios.get("/api/products");
           if (resp.status === 200) setProductsData(resp.data.products);
         } catch (e) {
-          console.log("Error in fetching Products", e);
+          console.error("Error in fetching Products", e);
         }
       })(),
     []

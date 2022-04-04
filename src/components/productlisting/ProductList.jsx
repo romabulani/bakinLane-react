@@ -1,5 +1,5 @@
-import "./productlist.css";
 import { Products } from "./Products";
+import "./productlist.css";
 import "styles/globalbakin.css";
 
 function ProductList() {

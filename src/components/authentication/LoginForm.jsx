@@ -1,12 +1,13 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useLoginHandler } from "hooks";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLoginHandler } from "hooks";
 import "./auth.css";
 
 function LoginForm() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [errorData, setErrorData] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { loginHandler } = useLoginHandler();
   return (
     <div className="auth-container flex-column-center middle-content">
@@ -36,20 +37,33 @@ function LoginForm() {
           <label htmlFor="password" className="input-label">
             Password *
           </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            className="input-primary border-box"
-            value={loginData.password}
-            onChange={(e) =>
-              setLoginData((loginData) => ({
-                ...loginData,
-                password: e.target.value,
-              }))
-            }
-            onFocus={() => setErrorData(false)}
-          />
+          <div className="input-primary input-icon-container border-box">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder="Enter password"
+              className="input-no-outline"
+              value={loginData.password}
+              onChange={(e) =>
+                setLoginData((loginData) => ({
+                  ...loginData,
+                  password: e.target.value,
+                }))
+              }
+              onFocus={() => setErrorData(false)}
+              required
+            />
+            <button
+              className="btn-no-decoration cursor-pointer"
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <FontAwesomeIcon
+                icon={showPassword ? "eye" : "eye-slash"}
+                className="input-icon-style"
+              />
+            </button>
+          </div>
         </div>
 
         <button
@@ -84,7 +98,11 @@ function LoginForm() {
         </div>
         <div>
           <span>Forgot Password?</span>
-          <Link to="/passwordReset" className="btn-link btn-link-primary">
+          <Link
+            to="/passwordReset"
+            className="btn-link btn-link-primary"
+            replace
+          >
             Reset here
           </Link>
         </div>

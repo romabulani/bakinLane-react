@@ -1,9 +1,12 @@
-import "./auth.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSignupHandler } from "hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSignupHandler } from "hooks";
+import "./auth.css";
 
 function SignupForm() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
     useSignupHandler();
 
@@ -120,26 +123,38 @@ function SignupForm() {
           <label htmlFor="password" className="input-label">
             Password *
           </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            className="input-primary border-box"
-            value={formData.password}
-            onChange={(e) =>
-              formDispatch({
-                type: "INPUT_PASSWORD",
-                payload: e.target.value,
-              })
-            }
-            onFocus={() =>
-              errorDispatch({
-                type: "ERROR_PASSWORD",
-                payload: "",
-              })
-            }
-            required
-          />
+          <div className="input-primary input-icon-container border-box">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder="Enter password"
+              className="input-no-outline"
+              value={formData.password}
+              onChange={(e) =>
+                formDispatch({
+                  type: "INPUT_PASSWORD",
+                  payload: e.target.value,
+                })
+              }
+              onFocus={() =>
+                errorDispatch({
+                  type: "ERROR_PASSWORD",
+                  payload: "",
+                })
+              }
+              required
+            />
+            <button
+              className="btn-no-decoration cursor-pointer"
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <FontAwesomeIcon
+                icon={showPassword ? "eye" : "eye-slash"}
+                className="input-icon-style"
+              />
+            </button>
+          </div>
         </div>
         {errorData.password.length > 0 && (
           <div className="error">
@@ -156,26 +171,38 @@ function SignupForm() {
           <label htmlFor="confirmpassword" className="input-label">
             Confirm Password *
           </label>
-          <input
-            type="password"
-            id="confirmpassword"
-            placeholder="Confirm password"
-            className="input-primary border-box"
-            value={formData.confirmPassword}
-            onChange={(e) =>
-              formDispatch({
-                type: "INPUT_CONFIRM_PASSWORD",
-                payload: e.target.value,
-              })
-            }
-            onFocus={() =>
-              errorDispatch({
-                type: "ERROR_CONFIRM_PASSWORD",
-                payload: "",
-              })
-            }
-            required
-          />
+          <div className="input-primary input-icon-container border-box">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              id="confirmpassword"
+              placeholder="Confirm password"
+              className="input-no-outline"
+              value={formData.confirmPassword}
+              onChange={(e) =>
+                formDispatch({
+                  type: "INPUT_CONFIRM_PASSWORD",
+                  payload: e.target.value,
+                })
+              }
+              onFocus={() =>
+                errorDispatch({
+                  type: "ERROR_CONFIRM_PASSWORD",
+                  payload: "",
+                })
+              }
+              required
+            />
+            <button
+              className="btn-no-decoration cursor-pointer"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              type="button"
+            >
+              <FontAwesomeIcon
+                icon={showConfirmPassword ? "eye" : "eye-slash"}
+                className="input-icon-style"
+              />
+            </button>
+          </div>
         </div>
         {errorData.confirmPassword.length > 0 && (
           <div className="error">

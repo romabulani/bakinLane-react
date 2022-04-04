@@ -207,7 +207,9 @@
   .coupon-modal {
     width: 70vw;
   }
+}
 
+@media only screen and (max-width: 550px) {
   .cart-horizontal-wide {
     width: 90vw;
   }

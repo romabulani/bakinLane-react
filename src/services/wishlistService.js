@@ -12,7 +12,7 @@ const getWishlist = async (authToken) => {
       throw new Error();
     }
   } catch (e) {
-    console.log("getWishlist : Error in fetching wishlist details", e);
+    console.error("getWishlist : Error in fetching wishlist details", e);
   }
 };
 
@@ -33,7 +33,7 @@ const addToWishlist = async (authToken, product) => {
     }
   } catch (e) {
     toast.error("Couldn't add to wishlist! Please try again.");
-    console.log("addToWishlist : Error in adding product to wishlist", e);
+    console.error("addToWishlist : Error in adding product to wishlist", e);
   }
 };
 
@@ -50,7 +50,7 @@ const removeFromWishlist = async (authToken, id) => {
     }
   } catch (e) {
     toast.error("Couldn't remove from wishlist! Please try again.");
-    console.log(
+    console.error(
       "removeFromWishlist : Error in removing product from wishlist",
       e
     );
