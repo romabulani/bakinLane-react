@@ -17,3 +17,4 @@ export {
   addAddressInServer,
   removeAddressFromServer,
 } from "./addressService";
+export { getOrdersFromServer, addToOrdersInServer } from "./ordersService";
