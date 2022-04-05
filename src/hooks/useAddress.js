@@ -5,10 +5,12 @@ import {
   updateAddressInServer,
 } from "services";
 import { SET_ADDRESS } from "../constants";
+import { useOperations } from "./useOperations";
 
 function useAddress() {
   const { dispatch } = useData();
   const { authToken } = useAuth();
+  const { resetFunction } = useOperations();
   const { setShowAddressModal, setEditAddress, editAddress } = useEditAddress();
 
   const addAddress = async (address, setDisable) => {
@@ -22,6 +24,7 @@ function useAddress() {
       setShowAddressModal(false);
       return response.data;
     } catch (e) {
+      resetFunction();
       setDisable(false);
     }
   };
@@ -39,6 +42,8 @@ function useAddress() {
         payload: { address: response.address },
       });
       return response.data;
+    } catch (e) {
+      resetFunction();
     } finally {
       setEditAddress(null);
       setDisable(false);
@@ -57,6 +62,7 @@ function useAddress() {
       return response.data;
     } catch (e) {
       setDisable(false);
+      resetFunction();
     }
   };
   return { addAddress, updateAddress, removeAddress };

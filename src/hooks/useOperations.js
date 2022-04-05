@@ -8,13 +8,29 @@ import {
   removeFromWishlist,
   updateQuantityInCart,
 } from "services";
-import { WISHLIST_OPERATION, CART_OPERATION } from "../constants";
+import {
+  WISHLIST_OPERATION,
+  CART_OPERATION,
+  SET_ADDRESS,
+  SET_ORDERS,
+} from "../constants";
 
 function useOperations() {
   const { state, dispatch } = useData();
-  const { authToken } = useAuth();
+  const { authToken, setAuthToken, setAuthUser } = useAuth();
   const navigate = useNavigate();
 
+  const resetFunction = () => {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("authUser");
+    setAuthToken("");
+    setAuthUser(null);
+    dispatch({ type: CART_OPERATION, payload: { cart: [] } });
+    dispatch({ type: WISHLIST_OPERATION, payload: { wishlist: [] } });
+    dispatch({ type: SET_ADDRESS, payload: { address: [] } });
+    dispatch({ type: SET_ORDERS, payload: { orders: [] } });
+    navigate("/login");
+  };
   // To increment or decrement cart quantity
   const updateQuantity = async (e, product, type, setDisable) => {
     e.preventDefault();
@@ -104,6 +120,8 @@ function useOperations() {
           dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
         } else navigate("/cart");
       }
+    } catch (e) {
+      resetFunction();
     } finally {
       setDisable(false);
     }
@@ -131,6 +149,8 @@ function useOperations() {
           payload: { wishlist: response.wishlist },
         });
       }
+    } catch (e) {
+      resetFunction();
     } finally {
       setDisable(false);
     }
@@ -149,6 +169,8 @@ function useOperations() {
           });
         } else navigate("/wishlist");
       }
+    } catch (e) {
+      resetFunction();
     } finally {
       setDisable(false);
     }
@@ -163,6 +185,7 @@ function useOperations() {
     isWishlisted,
     toggleWishlist,
     productWishlistHandler,
+    resetFunction,
   };
 }
 

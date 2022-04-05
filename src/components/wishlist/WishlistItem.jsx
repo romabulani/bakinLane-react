@@ -6,6 +6,7 @@ import { useData } from "contexts";
 import { useCartSummary, useOperations } from "hooks";
 import { CLEAR_FILTERS } from "../../constants";
 import "./wishlist.css";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 function WishlistItem() {
   const { state, dispatch } = useData();
@@ -27,7 +28,7 @@ function WishlistItem() {
               <div className="card-img-container wishlist-img-container">
                 <img src={product.imageUrl} alt="cake" className="card-img" />
                 <FontAwesomeIcon
-                  icon="circle-xmark"
+                  icon={faCircleXmark}
                   className="wishlist-close-btn gray-text"
                   onClick={(e) => wishlistHandler(e, product, setDisable)}
                 ></FontAwesomeIcon>
