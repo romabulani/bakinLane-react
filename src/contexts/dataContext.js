@@ -35,7 +35,6 @@ const initialState = {
   ratingCategory: "",
   cart: [],
   wishlist: [],
-  searchText: "",
   address: [],
 };
 

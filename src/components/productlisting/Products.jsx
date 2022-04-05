@@ -6,26 +6,22 @@ import { ProductCard } from "./ProductCard";
 import "./productlist.css";
 
 function Products() {
-  const { data, setSearchBarText, state } = useData();
-
+  const { data, setSearchBarText } = useData();
   const { search } = useLocation();
-  const [searchedProducts, setSearchedProducts] = useState([]);
+  const [query, setQuery] = useState("");
 
-  const getsearchedProducts = () => {
-    let filteredProducts = [];
-    // To get the string after = in URL
-    const query = decodeURIComponent(search.split("=")[1]);
-    console.errorducts = data.filter(
+  const getsearchedProducts = () =>
+    data.filter(
       (product) =>
         product.title.toLowerCase().includes(query.toLowerCase()) ||
         product.categoryName.toLowerCase().includes(query.toLowerCase())
     );
-    setSearchedProducts(filteredProducts);
-    setSearchBarText("");
-  };
 
   useEffect(() => {
-    if (search.length > 0) getsearchedProducts();
+    if (search.length > 0) {
+      setQuery(decodeURIComponent(search.split("=")[1]));
+      setSearchBarText("");
+    }
   }, [search]);
 
   return (
@@ -41,24 +37,26 @@ function Products() {
         </div>
       )}
 
-      {search && searchedProducts.length > 0 && (
+      {search && getsearchedProducts().length > 0 && (
         <>
           <div className="flex-column-center search-header">
-            {`Search Results for "${state.searchText}" - ${searchedProducts.length} products`}
+            {`Search Results for "${query}" - ${
+              getsearchedProducts().length
+            } products`}
           </div>
           <div className="product-cards">
-            {searchedProducts.map((product) => (
+            {getsearchedProducts().map((product) => (
               <ProductCard product={product} key={product._id} />
             ))}
           </div>
         </>
       )}
 
-      {search && searchedProducts.length === 0 && (
+      {search && getsearchedProducts().length === 0 && (
         <div className="flex-column-center padding-top-4">
-          {`No Search Results found for "${state.searchText}"`}
+          {`No Search Results found for "${query}"`}
           <Link
-            className="btn btn-primary no-link-decoration inline-flex-center"
+            className="btn btn-primary no-decoration inline-flex-center"
             to="/products"
           >
             ADD ITEMS

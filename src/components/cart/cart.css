@@ -251,6 +251,10 @@
   }
 
   .price-row > .display-left-large {
-    width: 25ch;
+    width: 20ch;
+  }
+
+  .cart-button {
+    font-size: 14px;
   }
 }

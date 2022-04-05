@@ -102,11 +102,6 @@ export const reducer = (state, action) => {
         ...state,
         wishlist: [...action.payload.wishlist],
       };
-    case SET_SEARCH_TEXT:
-      return {
-        ...state,
-        searchText: action.payload.searchText,
-      };
     case SET_ADDRESS:
       return {
         ...state,
