@@ -3,10 +3,16 @@ import { useAuth, useData } from "contexts";
 import {
   getAddressFromServer,
   getCart,
+  getOrdersFromServer,
   getWishlist,
   loginService,
 } from "services";
-import { WISHLIST_OPERATION, CART_OPERATION, SET_ADDRESS } from "../constants";
+import {
+  WISHLIST_OPERATION,
+  CART_OPERATION,
+  SET_ADDRESS,
+  SET_ORDERS,
+} from "../constants";
 
 function useLoginHandler() {
   const { setAuthToken, setAuthUser } = useAuth();
@@ -45,7 +51,9 @@ function useLoginHandler() {
         type: SET_ADDRESS,
         payload: { address: response.address },
       });
-      navigate(-1);
+      response = await getOrdersFromServer(tokenResponse);
+      dispatch({ type: SET_ORDERS, payload: { orders: response.orders } });
+      navigate("/products");
     } catch (e) {
       console.error("loginHandler: Error in Login", e);
       setErrorData(true);

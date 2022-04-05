@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
     localStorageAuth ? localStorageAuth : ""
   );
   const [authUser, setAuthUser] = useState(
-    localStorageUser ? localStorageUser : null
+    localStorageUser ? JSON.parse(localStorageUser) : null
   );
 
   return (
