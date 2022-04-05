@@ -41,6 +41,7 @@ export const signupHandler = function (schema, request) {
       cart: [],
       wishlist: [],
       address: [],
+      orders: [],
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = jwt.sign(
