@@ -18,6 +18,7 @@ import {
   faClose,
   faEye,
   faEyeSlash,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   fab,
@@ -37,7 +38,8 @@ library.add(
   faAddressBook,
   faClose,
   faEye,
-  faEyeSlash
+  faEyeSlash,
+  faCircleXmark
 );
 
 export { library };
