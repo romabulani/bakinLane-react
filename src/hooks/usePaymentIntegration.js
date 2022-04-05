@@ -1,19 +1,29 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth, useData } from "contexts";
-import { clearCartInServer } from "services";
-import { CART_OPERATION } from "../constants";
+import { addToOrdersInServer, clearCartInServer } from "services";
+import { CART_OPERATION, SET_ORDERS } from "../constants";
 import { useCartSummary } from "./useCartSummary";
 import { toast } from "react-toastify";
 
 function usePaymentIntegration() {
-  const { dispatch, deliveryAddress, setCoupon } = useData();
+  const navigate = useNavigate();
+  const { state, dispatch, deliveryAddress, setCoupon } = useData();
   const { getTotalPrice } = useCartSummary();
   const { authUser, authToken } = useAuth();
-  const currentUser = JSON.parse(authUser);
 
-  const paymentSuccessful = async () => {
-    const response = await clearCartInServer(authToken);
+  const paymentSuccessful = async (rzpResponse) => {
+    let response;
+    response = await addToOrdersInServer(authToken, {
+      items: state.cart,
+      paymentId: rzpResponse.razorpay_payment_id,
+      totalPrice: getTotalPrice(),
+      deliveryAddress: deliveryAddress,
+    });
+    dispatch({ type: SET_ORDERS, payload: { orders: response.orders } });
+    response = await clearCartInServer(authToken);
     setCoupon({});
     dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
+    navigate("/profile/orders");
   };
 
   const loadScript = async (url) => {
@@ -50,12 +60,11 @@ function usePaymentIntegration() {
       image:
         "https://res.cloudinary.com/dtrjdcrme/image/upload/v1649076577/ecommerce/logo_sr3h5w.webp",
       handler: function (response) {
-        console.log(response);
-        paymentSuccessful();
+        paymentSuccessful(response);
       },
       prefill: {
-        name: `${currentUser.firstName} ${currentUser.lastName}`,
-        email: `${currentUser.email}`,
+        name: `${authUser.firstName} ${authUser.lastName}`,
+        email: `${authUser.email}`,
         contact: deliveryAddress.mobile,
       },
       theme: {

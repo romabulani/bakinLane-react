@@ -36,6 +36,7 @@ const initialState = {
   cart: [],
   wishlist: [],
   address: [],
+  orders: [],
 };
 
 const getData = (state) => {

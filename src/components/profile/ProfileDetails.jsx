@@ -6,6 +6,7 @@ import {
   CART_OPERATION,
   WISHLIST_OPERATION,
   SET_ADDRESS,
+  SET_ORDERS,
 } from "../../constants";
 import "./profile.css";
 
@@ -24,6 +25,7 @@ function ProfileDetails() {
     dispatch({ type: CART_OPERATION, payload: { cart: [] } });
     dispatch({ type: WISHLIST_OPERATION, payload: { wishlist: [] } });
     dispatch({ type: SET_ADDRESS, payload: { address: [] } });
+    dispatch({ type: SET_ORDERS, payload: { orders: [] } });
     navigate("/products");
   }
 

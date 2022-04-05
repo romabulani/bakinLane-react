@@ -15,8 +15,8 @@ import {
   SORT,
   TOGGLE_STOCK,
   PRICERANGE_FILTER,
-  SET_SEARCH_TEXT,
   SET_ADDRESS,
+  SET_ORDERS,
 } from "../constants";
 
 export const reducer = (state, action) => {
@@ -106,6 +106,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         address: action.payload.address,
+      };
+    case SET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload.orders,
       };
     default:
       return state;
