@@ -59,7 +59,7 @@ function Products() {
             className="btn btn-primary no-decoration inline-flex-center"
             to="/products"
           >
-            ADD ITEMS
+            BROWSE
           </Link>
         </div>
       )}
