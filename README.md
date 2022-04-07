@@ -34,7 +34,7 @@ $ npm start
 - Manage your wishlist on a different page.
 - Manage your cart, update quantity, move to wishlist from cart, remove from cart, real time calculation of price in cart. Apply coupons on cart.
 - User Profile Page to display the user details.
-- Address Management from where user can add, edit and delete address.
+- Address Management with Validation where user can add, edit and delete address.
 - Checkout Page to select the delivery address and proceed for payment.
 - Payment Integration using Razorpay API.
 - Order Summary Page where user can see all the orders sorted by the latest orders.
