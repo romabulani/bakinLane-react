@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSignupHandler } from "hooks";
 import "./auth.css";
@@ -9,6 +9,7 @@ function SignupForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
     useSignupHandler();
+  const location = useLocation();
 
   return (
     <div className="auth-container flex-column-center signup-container middle-content">
@@ -218,14 +219,19 @@ function SignupForm() {
         <button
           type="submit"
           className="btn btn-primary btn-auth"
-          onClick={(e) => signUpHandler(e)}
+          onClick={(e) => signUpHandler(e, location)}
         >
           SIGN UP
         </button>
 
         <div className="flex-row-center">
           <span>Already have an account?</span>
-          <Link to="/login" className="btn-link btn-link-primary">
+          <Link
+            to="/login"
+            className="btn-link btn-link-primary"
+            state={location.state}
+            replace
+          >
             Login here
           </Link>
         </div>

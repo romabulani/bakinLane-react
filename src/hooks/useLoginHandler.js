@@ -19,7 +19,13 @@ function useLoginHandler() {
   const { dispatch } = useData();
   const navigate = useNavigate();
 
-  const loginHandler = async (e, setLoginData, setErrorData, loginData) => {
+  const loginHandler = async (
+    e,
+    setLoginData,
+    setErrorData,
+    loginData,
+    location
+  ) => {
     if (e) e.preventDefault();
     try {
       let response;
@@ -53,7 +59,8 @@ function useLoginHandler() {
       });
       response = await getOrdersFromServer(tokenResponse);
       dispatch({ type: SET_ORDERS, payload: { orders: response.orders } });
-      navigate("/products");
+      if (location.state) navigate(location.state?.from?.pathname);
+      else navigate("/products");
     } catch (e) {
       console.error("loginHandler: Error in Login", e);
       setErrorData(true);

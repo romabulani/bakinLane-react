@@ -24,7 +24,7 @@ function PasswordResetForm() {
         </button>
         <div className="flex-row-center">
           <span>Already have an account?</span>
-          <Link to="/login" className="btn-link btn-link-primary">
+          <Link to="/login" className="btn-link btn-link-primary" replace>
             Login here
           </Link>
         </div>

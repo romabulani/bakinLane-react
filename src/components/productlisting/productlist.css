@@ -215,6 +215,10 @@
   padding-top: 4rem;
 }
 
+.filter-items:last-child {
+  padding-bottom: 2rem;
+}
+
 /* Media for hover */
 @media only screen and (max-width: 640px) {
   .card-default-product:hover {
@@ -253,7 +257,6 @@
     border: 1px solid var(--gray-color);
     box-shadow: unset;
     height: 22rem;
-    /* margin: 2px; */
     width: 10rem;
   }
 

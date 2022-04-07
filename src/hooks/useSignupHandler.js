@@ -137,16 +137,22 @@ function useSignupHandler() {
     return signupFlag;
   };
 
-  const signUpHandler = async (e) => {
+  const signUpHandler = async (e, location) => {
     e.preventDefault();
     if (checkValidation()) {
       try {
         const response = await axios.post("/api/auth/signup", formData);
         if (response.status === 201) {
-          loginHandler(null, null, null, {
-            email: formData.email,
-            password: formData.password,
-          });
+          loginHandler(
+            null,
+            null,
+            null,
+            {
+              email: formData.email,
+              password: formData.password,
+            },
+            location
+          );
           toast.success("Signup successful!");
         } else throw new Error();
       } catch (e) {

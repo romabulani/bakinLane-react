@@ -31,7 +31,7 @@ function HeroSection() {
           <h2 className="heading2 keyword">Bakin Lane</h2>
           <h4 className="heading4 keyword">Every occasion deserves a cake!</h4>
           <h4 className="heading4 text-center">
-            Hurry!! Upto 30% OFF on most of the products!!
+            Hurry!! Upto 15% OFF on most of the products!!
           </h4>
           <button
             className="btn btn-primary hero-btn"

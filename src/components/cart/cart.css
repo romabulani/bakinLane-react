@@ -189,6 +189,11 @@
   cursor: not-allowed;
 }
 
+.disabled:hover {
+  background-color: unset;
+  color: unset;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

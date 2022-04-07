@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useData } from "contexts";
+import { useAuth, useData } from "contexts";
 import { useCartSummary, useOperations } from "hooks";
 import "./product.css";
 
@@ -9,6 +10,7 @@ function Product() {
   const params = useParams();
   const { data } = useData();
   const { getOriginalPrice } = useCartSummary();
+  const { authToken } = useAuth();
   const product = data.filter((product) => params.productId === product._id)[0];
   const { getButtonText, isWishlisted, cartHandler, productWishlistHandler } =
     useOperations();
@@ -59,7 +61,7 @@ function Product() {
               <div className="product-buttons">
                 {product.isOutOfStock ? (
                   <button
-                    className="btn btn-outline-primary product-btn"
+                    className="btn btn-outline-primary product-btn disabled"
                     disabled
                   >
                     OUT OF STOCK
@@ -67,7 +69,11 @@ function Product() {
                 ) : (
                   <button
                     className="btn btn-primary product-btn"
-                    onClick={(e) => cartHandler(e, product, setCartLoader)}
+                    onClick={(e) =>
+                      authToken
+                        ? cartHandler(e, product, setCartLoader)
+                        : toast.info("Please login to continue!")
+                    }
                     disabled={cartLoader}
                   >
                     {`${getButtonText(product).toUpperCase()}`}
@@ -79,7 +85,9 @@ function Product() {
                   } `}
                   disabled={wishlistLoader}
                   onClick={(e) =>
-                    productWishlistHandler(e, product, setWishlistLoader)
+                    authToken
+                      ? productWishlistHandler(e, product, setWishlistLoader)
+                      : toast.info("Please login to continue!")
                   }
                 >
                   {`${isWishlisted(product) ? "WISHLISTED" : "WISHLIST"}`}

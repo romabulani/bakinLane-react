@@ -53,13 +53,22 @@ function WishlistItem() {
                 )}
               </div>
               <div className="wishlist-card-buttons">
-                <button
-                  className="btn btn-outline-primary wishlist-card-button"
-                  onClick={(e) => cartHandler(e, product, setDisable)}
-                  disabled={disable}
-                >
-                  {getButtonText(product)}
-                </button>
+                {product.isOutOfStock ? (
+                  <button
+                    className="btn btn-outline-primary wishlist-card-button disabled"
+                    disabled
+                  >
+                    OUT OF STOCK
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-outline-primary wishlist-card-button"
+                    onClick={(e) => cartHandler(e, product, setDisable)}
+                    disabled={disable}
+                  >
+                    {getButtonText(product)}
+                  </button>
+                )}
               </div>
             </div>
           </Link>
