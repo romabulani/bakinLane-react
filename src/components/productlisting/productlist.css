@@ -62,6 +62,10 @@
   width: 100%;
 }
 
+.search-product-cards {
+  width: 95vw;
+}
+
 .card-default-product {
   border-radius: 5px;
   cursor: pointer;
@@ -219,6 +223,21 @@
   padding-bottom: 2rem;
 }
 
+.disabled-cursor {
+  cursor: not-allowed;
+}
+
+.page-btn {
+  width: 4rem;
+}
+
+.page-number {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  margin: 5px;
+  width: 1.6rem;
+}
 /* Media for hover */
 @media only screen and (max-width: 640px) {
   .card-default-product:hover {
@@ -235,6 +254,7 @@
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   }
 }
+
 /* Media Queries */
 @media only screen and (max-width: 768px) {
   .filters {
