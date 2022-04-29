@@ -72,7 +72,7 @@ function Products() {
           <div className="flex-column-center search-header">
             {`Search Results for "${query}" - ${searchedProducts.length} products`}
           </div>
-          <div className="product-cards">
+          <div className="product-cards search-product-cards">
             {searchedProducts
               .slice(
                 currPage * productsPerPage,
