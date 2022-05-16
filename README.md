@@ -38,6 +38,7 @@ $ npm start
 - Checkout Page to select the delivery address and proceed for payment.
 - Payment Integration using Razorpay API.
 - Order Summary Page where user can see all the orders sorted by the latest orders.
+- Pagination to show 8 products per page.
 - Alerts in the app to notify the users about success/failure operations.
 - All the screens are Responsive.
 
