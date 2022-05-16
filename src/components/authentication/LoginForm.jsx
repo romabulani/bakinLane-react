@@ -105,17 +105,7 @@ function LoginForm() {
             Create One
           </Link>
         </div>
-        <div>
-          <span>Forgot Password?</span>
-          <Link
-            to="/passwordReset"
-            className="btn-link btn-link-primary"
-            replace
-          >
-            Reset here
-          </Link>
-        </div>
-      </form>
+        </form>
     </div>
   );
 }

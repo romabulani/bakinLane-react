@@ -13,7 +13,6 @@ import {
   Navigation,
   NotFound,
   OrderSummary,
-  PasswordResetForm,
   PrivateRoute,
   Product,
   ProductList,
@@ -34,7 +33,6 @@ function App() {
         <Route path="/" element={<HeroSection />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/passwordreset" element={<PasswordResetForm />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<Product />} />
         <Route path="/mock-api" element={<MockAPI />} />
