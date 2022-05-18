@@ -22,7 +22,12 @@ function ProductCard({ product }) {
       >
         <div className="card-img-icon-container">
           <div className="card-img-container">
-            <img src={product.imageUrl} alt="cake" className="card-img" />
+            <img
+              src={product.imageUrl}
+              alt="cake"
+              className="card-img"
+              loading="lazy"
+            />
           </div>
           {product.isBestSeller && <span className="card-badge">Trending</span>}
           <FontAwesomeIcon
@@ -32,7 +37,7 @@ function ProductCard({ product }) {
             }`}
             style={{ pointerEvents: wishlistLoader ? "none" : "auto" }}
             onClick={(e) => toggleWishlist(e, product, setWishlistLoader)}
-          ></FontAwesomeIcon>
+          />
         </div>
         <div className="card-header">{product.title}</div>
         <div className="card-title">
@@ -52,10 +57,7 @@ function ProductCard({ product }) {
         <div className="card-content">
           <span>{product.rating} </span>
           <span>
-            <FontAwesomeIcon
-              icon="star"
-              className="rating-star"
-            ></FontAwesomeIcon>
+            <FontAwesomeIcon icon="star" className="rating-star" />
           </span>{" "}
           <span>| {product.totalRatings}</span>
         </div>

@@ -65,7 +65,12 @@ function HeroSection() {
             >
               <div className="card card-default zoom" key={product._id}>
                 <div className="card-img-container">
-                  <img src={product.imageUrl} alt="cake" className="card-img" />
+                  <img
+                    src={product.imageUrl}
+                    alt="cake"
+                    className="card-img"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="card-header">{product.title}</div>
                 <div className="card-title">₹ {product.price}</div>
@@ -85,7 +90,12 @@ function HeroSection() {
               onClick={() => routeChange(item)}
             >
               <div className="card-img-container">
-                <img src={item.imageUrl} alt="cake" className="card-img" />
+                <img
+                  src={item.imageUrl}
+                  alt="cake"
+                  className="card-img"
+                  loading="lazy"
+                />
                 <div className="card-header-bold">{item.title}</div>
               </div>
             </div>

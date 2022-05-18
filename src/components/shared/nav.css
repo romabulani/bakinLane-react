@@ -88,6 +88,30 @@
   padding: 6px;
   width: 22rem;
 }
+.suggestions {
+  position: absolute;
+  z-index: 8;
+  top: 3.5rem;
+  height: fit-content;
+  max-height: 60vh;
+  overflow-y: scroll;
+  width: 22rem;
+  background-color: var(--light-color);
+}
+
+.suggestion {
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  width: 21rem;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.suggestion:hover {
+  background-color: var(--gray-color);
+}
+
 .mobile-searchbar-container {
   align-items: center;
   background-color: var(--gray-color);
@@ -156,6 +180,16 @@
 @media only screen and (max-width: 1024px) {
   .searchbar-container {
     display: none;
+  }
+
+  .suggestions {
+    max-height: 40vh;
+    width: 100vw;
+    top: 3rem;
+  }
+
+  .suggestion {
+    width: 98%;
   }
 
   .mobile-searchbar-container {

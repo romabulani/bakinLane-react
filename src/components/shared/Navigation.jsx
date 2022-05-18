@@ -1,24 +1,51 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAuth, useData } from "contexts";
+import { useAuth, useData, useProductsData } from "contexts";
 import logo from "assets/images/logo.webp";
 import "./nav.css";
+import { useEffect, useRef, useState } from "react";
 
 function Navigation() {
   const { authToken } = useAuth();
   const { state, searchBarText, setSearchBarText, dispatch } = useData();
+  const [searchResult, setSearchResult] = useState([]);
+  const searchKeywords = [
+    "Red Velvet",
+    "Cake",
+    "Muffin",
+    "Chocolate",
+    "Pineapple",
+    "Vanilla",
+    "Strawberry",
+  ];
+  const timerId = useRef();
   const navigate = useNavigate();
 
-  const searchHandler = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    clearTimeout(timerId.current);
+    timerId.current = setTimeout(() => {
+      if (searchBarText)
+        setSearchResult(
+          searchKeywords.filter((word) =>
+            word.toLowerCase().includes(searchBarText.trim().toLowerCase())
+          )
+        );
+      else setSearchResult([]);
+    }, 300);
+
+    return () => clearTimeout(timerId.current);
+  }, [searchBarText]);
+
+  const searchHandler = (e, word) => {
+    if (e) e.preventDefault();
     if (searchBarText.trim().length > 0) {
       dispatch({
         type: "SET_SEARCH_TEXT",
-        payload: { searchText: searchBarText },
+        payload: { searchText: word ? word : searchBarText },
       });
       navigate({
         pathname: "/products",
-        search: `query=${searchBarText.trim()}`,
+        search: `query=${word ? word : searchBarText.trim()}`,
       });
     }
   };
@@ -59,11 +86,25 @@ function Navigation() {
               onChange={(e) => setSearchBarText(e.target.value)}
             />
             <button className="btn-no-decoration" type="submit">
-              <FontAwesomeIcon
-                icon="search"
-                className="search-icon"
-              ></FontAwesomeIcon>
+              <FontAwesomeIcon icon="search" className="search-icon" />
             </button>
+            <div className="suggestions">
+              {searchResult.length > 0
+                ? searchResult.map((word) => (
+                    <div
+                      className="suggestion"
+                      key={word}
+                      onClick={() => {
+                        searchHandler(null, word);
+                      }}
+                    >
+                      {word}
+                    </div>
+                  ))
+                : searchBarText && (
+                    <div className="suggestion">{`No results found for ${searchBarText}`}</div>
+                  )}
+            </div>
           </form>
 
           <div className="nav-icons-container">
@@ -73,7 +114,7 @@ function Navigation() {
                   icon="heart"
                   className="icon-style"
                   onClick={() => navigate("/wishlist")}
-                ></FontAwesomeIcon>
+                />
                 {authToken && state.wishlist.length > 0 && (
                   <span className="badge-icon badge-number badge-right badge-lg">
                     {state.wishlist.length}
@@ -87,7 +128,7 @@ function Navigation() {
                   icon="cart-shopping"
                   className="icon-style"
                   onClick={() => navigate("/cart")}
-                ></FontAwesomeIcon>
+                />
                 {authToken && state.cart.length > 0 && (
                   <span className="badge-icon badge-number badge-right badge-lg">
                     {state.cart.length}
@@ -100,7 +141,7 @@ function Navigation() {
                 icon="user"
                 className="icon-style"
                 onClick={() => navigate("/profile/")}
-              ></FontAwesomeIcon>
+              />
             </div>
           </div>
         </div>
@@ -118,11 +159,25 @@ function Navigation() {
           onChange={(e) => setSearchBarText(e.target.value)}
         />
         <button className="btn-no-decoration" type="submit">
-          <FontAwesomeIcon
-            icon="search"
-            className="search-icon"
-          ></FontAwesomeIcon>
+          <FontAwesomeIcon icon="search" className="search-icon" />
         </button>
+        <div className="suggestions">
+          {searchResult.length > 0
+            ? searchResult.map((word) => (
+                <div
+                  className="suggestion"
+                  key={word}
+                  onClick={() => {
+                    searchHandler(null, word);
+                  }}
+                >
+                  {word}
+                </div>
+              ))
+            : searchBarText && (
+                <div className="suggestion">{`No results found for ${searchBarText}`}</div>
+              )}
+        </div>
       </form>
     </>
   );
