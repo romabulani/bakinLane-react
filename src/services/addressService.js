@@ -1,9 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "utilities";
 
 const getAddressFromServer = async (authToken) => {
   try {
-    const response = await axios.get("/api/user/address", {
+    const response = await axios.get(`${API_URL}/api/user/address`, {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {
@@ -22,7 +23,7 @@ const getAddressFromServer = async (authToken) => {
 const addAddressInServer = async (authToken, address) => {
   try {
     const response = await axios.post(
-      "/api/user/address",
+      `${API_URL}/api/user/address`,
       { address },
       {
         headers: { authorization: authToken },
@@ -43,7 +44,7 @@ const addAddressInServer = async (authToken, address) => {
 const updateAddressInServer = async (authToken, id, address) => {
   try {
     const response = await axios.post(
-      `/api/user/address/${id}`,
+      `${API_URL}/api/user/address/${id}`,
       { address },
       {
         headers: { authorization: authToken },
@@ -63,7 +64,7 @@ const updateAddressInServer = async (authToken, id, address) => {
 
 const removeAddressFromServer = async (authToken, id) => {
   try {
-    const response = await axios.delete(`/api/user/address/${id}`, {
+    const response = await axios.delete(`${API_URL}/api/user/address/${id}`, {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {

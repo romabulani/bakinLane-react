@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "utilities";
 
 const ProductsDataContext = createContext();
 
@@ -10,7 +11,7 @@ const ProductsDataProvider = ({ children }) => {
     () =>
       (async () => {
         try {
-          const resp = await axios.get("/api/products");
+          const resp = await axios.get(`${API_URL}/api/products`);
           if (resp.status === 200) setProductsData(resp.data.products);
         } catch (e) {
           console.error("Error in fetching Products", e);
