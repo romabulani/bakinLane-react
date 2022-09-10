@@ -25,9 +25,11 @@ function useLoginHandler() {
     setLoginData,
     setErrorData,
     loginData,
-    location
+    location,
+    setDisableLogin
   ) => {
     if (e) e.preventDefault();
+    if (setDisableLogin) setDisableLogin(true);
     try {
       let response;
       if (e && e.target.innerText === "Login as Guest") {
@@ -76,6 +78,8 @@ function useLoginHandler() {
       if (setLoginData) toast.error(`Couldn't Login! Please try again.`);
       console.error("loginHandler: Error in Login", e);
       setErrorData(true);
+    } finally {
+      if (setDisableLogin) setDisableLogin(false);
     }
   };
   return { loginHandler };
