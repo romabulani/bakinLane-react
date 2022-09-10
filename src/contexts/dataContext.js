@@ -107,7 +107,7 @@ const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [searchBarText, setSearchBarText] = useState("");
   const [coupon, setCoupon] = useState({});
-  const [deliveryAddress, setDeliveryAddress] = useState({});
+  const [deliveryAddress, setDeliveryAddress] = useState(null);
   return (
     <DataContext.Provider
       value={{
