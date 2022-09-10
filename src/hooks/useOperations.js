@@ -38,12 +38,11 @@ function useOperations() {
     let response;
     try {
       if (type === "increment")
-        response = await updateQuantityInCart(authToken, product._id, type);
+        response = await updateQuantityInCart(authToken, product.id, type);
       else {
         if (product.qty === 1)
-          response = await removeFromCart(authToken, product._id);
-        else
-          response = await updateQuantityInCart(authToken, product._id, type);
+          response = await removeFromCart(authToken, product.id);
+        else response = await updateQuantityInCart(authToken, product.id, type);
       }
       dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
     } finally {
@@ -56,7 +55,7 @@ function useOperations() {
     setDisable(true);
     e.preventDefault();
     try {
-      const response = await removeFromCart(authToken, product._id);
+      const response = await removeFromCart(authToken, product.id);
       dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
     } finally {
       setDisable(false);
@@ -75,7 +74,7 @@ function useOperations() {
           payload: { wishlist: wishlistResponse.wishlist },
         });
       }
-      const cartResponse = await removeFromCart(authToken, product._id);
+      const cartResponse = await removeFromCart(authToken, product.id);
       dispatch({
         type: CART_OPERATION,
         payload: { cart: cartResponse.cart },
@@ -88,7 +87,7 @@ function useOperations() {
   // Button Text for displaying based on the product is present in cart or not
   const getButtonText = (product) => {
     const filteredProduct = state.cart.filter(
-      (cartProduct) => product._id === cartProduct._id
+      (cartProduct) => product.id === cartProduct.id
     );
     return filteredProduct.length > 0 ? "Go To Cart ->" : "Add To Cart";
   };
@@ -98,7 +97,7 @@ function useOperations() {
     setDisable(true);
     e.preventDefault();
     try {
-      const response = await removeFromWishlist(authToken, product._id);
+      const response = await removeFromWishlist(authToken, product.id);
       dispatch({
         type: WISHLIST_OPERATION,
         payload: { wishlist: response.wishlist },
@@ -129,9 +128,7 @@ function useOperations() {
 
   // to check if product is in wishlist
   const isWishlisted = (product) =>
-    state.wishlist.find(
-      (wishlistProduct) => wishlistProduct._id === product._id
-    );
+    state.wishlist.find((wishlistProduct) => wishlistProduct.id === product.id);
 
   // used on product listing page, too like/unlike the product in wishlist
   const toggleWishlist = async (e, product, setDisable) => {
@@ -141,7 +138,7 @@ function useOperations() {
       if (!authToken) navigate("/login");
       else {
         const response = isWishlisted(product)
-          ? await removeFromWishlist(authToken, product._id)
+          ? await removeFromWishlist(authToken, product.id)
           : await addToWishlist(authToken, product);
 
         dispatch({
