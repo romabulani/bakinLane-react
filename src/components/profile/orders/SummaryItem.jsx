@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SummaryItem({ _id, title, imageUrl, qty, price }) {
+function SummaryItem({ id, title, imageUrl, qty, price }) {
   return (
-    <Link to={`/products/${_id}`} className="no-link-decoration">
+    <Link to={`/products/${id}`} className="no-link-decoration">
       <div className="cart-horizontal-wide order-card">
         <div className="cart-img-and-content">
           <div className="order-img-container">

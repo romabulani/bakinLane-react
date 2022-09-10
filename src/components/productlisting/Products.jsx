@@ -61,7 +61,7 @@ function Products() {
                 currPage * productsPerPage + productsPerPage
               )
               .map((product) => (
-                <ProductCard product={product} key={product._id} />
+                <ProductCard product={product} key={product.id} />
               ))}
           </div>
         </div>
@@ -79,7 +79,7 @@ function Products() {
                 currPage * productsPerPage + productsPerPage
               )
               .map((product) => (
-                <ProductCard product={product} key={product._id} />
+                <ProductCard product={product} key={product.id} />
               ))}
           </div>
         </>
