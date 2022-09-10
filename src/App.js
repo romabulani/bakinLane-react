@@ -9,7 +9,6 @@ import {
   Footer,
   HeroSection,
   LoginForm,
-  MockAPI,
   Navigation,
   NotFound,
   OrderSummary,
@@ -22,8 +21,49 @@ import {
   SignupForm,
   Wishlist,
 } from "components";
+import { useEffect } from "react";
+import { useAuth, useData } from "contexts";
+import {
+  getAddressFromServer,
+  getCart,
+  getOrdersFromServer,
+  getWishlist,
+} from "services";
+import {
+  CART_OPERATION,
+  WISHLIST_OPERATION,
+  SET_ADDRESS,
+  SET_ORDERS,
+} from "constants/index";
 
 function App() {
+  const { authToken } = useAuth();
+  const { dispatch } = useData();
+
+  useEffect(() => {
+    (async () => {
+      if (authToken)
+        try {
+          let response = await getCart(authToken);
+          dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
+          response = await getWishlist(authToken);
+          dispatch({
+            type: WISHLIST_OPERATION,
+            payload: { wishlist: response.wishlist },
+          });
+          response = await getAddressFromServer(authToken);
+          dispatch({
+            type: SET_ADDRESS,
+            payload: { address: response.address },
+          });
+          response = await getOrdersFromServer(authToken);
+          dispatch({ type: SET_ORDERS, payload: { orders: response.orders } });
+        } catch (e) {
+          console.error(e);
+        }
+    })();
+  }, [authToken]);
+
   return (
     <div className="App pagewrapper ">
       <Navigation />
@@ -35,7 +75,6 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/products/:productId" element={<Product />} />
-        <Route path="/mock-api" element={<MockAPI />} />
 
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/wishlist" element={<Wishlist />} />
