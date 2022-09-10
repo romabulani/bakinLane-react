@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth, useData } from "contexts";
+import { toast } from "react-toastify";
 import {
   getAddressFromServer,
   getCart,
@@ -31,37 +32,48 @@ function useLoginHandler() {
       let response;
       if (e && e.target.innerText === "Login as Guest") {
         setLoginData({
-          email: "adarshbalika@gmail.com",
-          password: "adarshBalika123",
+          email: "johndoe@gmail.com",
+          password: "johndoe@123",
         });
-        response = await loginService(
-          "adarshbalika@gmail.com",
-          "adarshBalika123"
-        );
+        response = await loginService("johndoe@gmail.com", "johndoe@123");
       } else response = await loginService(loginData.email, loginData.password);
-      const user = JSON.stringify(response.foundUser);
-      const tokenResponse = response.encodedToken;
-      setAuthToken(tokenResponse);
-      setAuthUser(response.foundUser);
-      localStorage.setItem("authToken", tokenResponse);
-      localStorage.setItem("authUser", user);
-      response = await getCart(tokenResponse);
-      dispatch({ type: CART_OPERATION, payload: { cart: response.cart } });
-      response = await getWishlist(tokenResponse);
-      dispatch({
-        type: WISHLIST_OPERATION,
-        payload: { wishlist: response.wishlist },
-      });
-      response = await getAddressFromServer(tokenResponse);
-      dispatch({
-        type: SET_ADDRESS,
-        payload: { address: response.address },
-      });
-      response = await getOrdersFromServer(tokenResponse);
-      dispatch({ type: SET_ORDERS, payload: { orders: response.orders } });
-      if (location.state) navigate(location.state?.from?.pathname);
-      else navigate("/products");
+      const tokenResponse = response.user.token;
+      const foundUser = {
+        firstName: response.user.firstName,
+        lastName: response.user.lastName,
+        email: response.user.email,
+      };
+      if (e) toast.success("Log In successful");
+      if (response.user) {
+        setAuthToken(tokenResponse);
+        setAuthUser(foundUser);
+        localStorage.setItem("authToken", tokenResponse);
+        localStorage.setItem("authUser", JSON.stringify(foundUser));
+        response = await getCart(tokenResponse);
+        dispatch({
+          type: CART_OPERATION,
+          payload: { cart: response.cart },
+        });
+        response = await getWishlist(tokenResponse);
+        dispatch({
+          type: WISHLIST_OPERATION,
+          payload: { wishlist: response.wishlist },
+        });
+        response = await getAddressFromServer(tokenResponse);
+        dispatch({
+          type: SET_ADDRESS,
+          payload: { address: response.address },
+        });
+        response = await getOrdersFromServer(tokenResponse);
+        dispatch({
+          type: SET_ORDERS,
+          payload: { orders: response.orders },
+        });
+        if (location.state) navigate(location.state?.from?.pathname);
+        else navigate("/products");
+      }
     } catch (e) {
+      if (setLoginData) toast.error(`Couldn't Login! Please try again.`);
       console.error("loginHandler: Error in Login", e);
       setErrorData(true);
     }

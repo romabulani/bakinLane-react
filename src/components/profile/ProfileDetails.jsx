@@ -14,9 +14,7 @@ function ProfileDetails() {
   const { setAuthToken, authUser, setAuthUser } = useAuth();
   const { dispatch } = useData();
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.authUser) setAuthUser(JSON.parse(localStorage.authUser));
-  }, []);
+
   function logoutHandler() {
     localStorage.removeItem("authToken");
     localStorage.removeItem("authUser");
