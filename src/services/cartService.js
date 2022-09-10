@@ -85,7 +85,7 @@ const removeFromCart = async (authToken, id) => {
 
 const clearCartInServer = async (authorization) => {
   try {
-    const response = await axios.delete(`${API_URL}/api/user/cart/all`, {
+    const response = await axios.get(`${API_URL}/api/user/cart/all`, {
       headers: { authorization },
     });
     if (response.status === 200) {
