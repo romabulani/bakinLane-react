@@ -13,6 +13,7 @@ function Checkout() {
 
   useEffect(() => {
     if (state.address.length > 0) setDeliveryAddress(state.address[0]);
+    else setDeliveryAddress(null);
   }, [state.address]);
 
   const placeOrderHandler = () => {
