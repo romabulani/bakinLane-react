@@ -9,6 +9,7 @@ function LoginForm() {
   const [errorData, setErrorData] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { loginHandler } = useLoginHandler();
+  const [disableLogin, setDisableLogin] = useState(false);
   const location = useLocation();
 
   return (
@@ -70,16 +71,32 @@ function LoginForm() {
 
         <button
           className="btn btn-primary btn-auth"
+          disabled={disableLogin}
           onClick={(e) =>
-            loginHandler(e, setLoginData, setErrorData, loginData, location)
+            loginHandler(
+              e,
+              setLoginData,
+              setErrorData,
+              loginData,
+              location,
+              setDisableLogin
+            )
           }
         >
           Login
         </button>
         <button
           className="btn btn-outline-primary btn-auth guest-button"
+          disabled={disableLogin}
           onClick={(e) =>
-            loginHandler(e, setLoginData, setErrorData, null, location)
+            loginHandler(
+              e,
+              setLoginData,
+              setErrorData,
+              null,
+              location,
+              setDisableLogin
+            )
           }
         >
           Login as Guest
@@ -105,7 +122,7 @@ function LoginForm() {
             Create One
           </Link>
         </div>
-        </form>
+      </form>
     </div>
   );
 }
