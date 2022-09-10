@@ -17,7 +17,7 @@ function Checkout() {
 
   const placeOrderHandler = () => {
     setDisable(true);
-    deliveryAddress._id
+    deliveryAddress?._id
       ? displayRazorpay()
       : toast.error("Please Add Address to deliver");
     setDisable(false);
@@ -52,7 +52,7 @@ function Checkout() {
                 id={address._id}
                 name="delivery-address"
                 className="cursor-pointer"
-                checked={address._id === deliveryAddress._id}
+                checked={address._id === deliveryAddress?._id}
                 onChange={() => setDeliveryAddress(address)}
               />
               <label htmlFor={address._id}>
@@ -105,13 +105,13 @@ function Checkout() {
         <div className="cart-price">
           <h5 className="heading5 gray-text">DELIVER TO</h5>
           <div className="gray-text">
-            <p>{deliveryAddress.name}</p>
-            <p>{deliveryAddress.street}</p>
+            <p>{deliveryAddress?.name}</p>
+            <p>{deliveryAddress?.street}</p>
             <p>
-              {deliveryAddress.city} - {deliveryAddress.zipCode}
+              {deliveryAddress?.city} - {deliveryAddress?.zipCode}
             </p>
-            <p>{deliveryAddress.state}</p>
-            <p>{deliveryAddress.mobile}</p>
+            <p>{deliveryAddress?.state}</p>
+            <p>{deliveryAddress?.mobile}</p>
           </div>
         </div>
         <button
