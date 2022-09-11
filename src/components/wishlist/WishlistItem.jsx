@@ -20,11 +20,11 @@ function WishlistItem() {
       <div className="flex-row-center">
         {[...state.wishlist].reverse().map((product) => (
           <Link
-            to={`/products/${product._id}`}
-            key={product._id}
+            to={`/products/${product.id}`}
+            key={product.id}
             className="no-link-decoration"
           >
-            <div className="card card-default wishlist-card" key={product._id}>
+            <div className="card card-default wishlist-card" key={product.id}>
               <div className="card-img-container wishlist-img-container">
                 <img src={product.imageUrl} alt="cake" className="card-img" />
                 <FontAwesomeIcon

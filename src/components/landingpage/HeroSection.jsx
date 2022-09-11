@@ -1,15 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
-import { categories } from "backend/db/categories";
 import { useData, useProductsData } from "contexts";
 import { CATEGORY_FILTER, CLEAR_FILTERS } from "../../constants";
 import "./landingpage.css";
 
 function HeroSection() {
-  const { productsData } = useProductsData();
+  const { productsData, categoriesData } = useProductsData();
   const trendingItems = productsData
     .filter((item) => item.isBestSeller)
     .slice(0, 4);
-  const feauredCategories = categories;
   const { dispatch } = useData();
   let navigate = useNavigate();
 
@@ -59,11 +57,11 @@ function HeroSection() {
         <div className="cards">
           {trendingItems.map((product) => (
             <Link
-              to={`/products/${product._id}`}
-              key={product._id}
+              to={`/products/${product.id}`}
+              key={product.id}
               className="no-link-decoration"
             >
-              <div className="card card-default zoom" key={product._id}>
+              <div className="card card-default zoom" key={product.id}>
                 <div className="card-img-container">
                   <img
                     src={product.imageUrl}
@@ -83,7 +81,7 @@ function HeroSection() {
       <div className="container-main">
         <h3 className="align-center heading3">Featured Categories</h3>
         <div className="cards">
-          {feauredCategories.map((item) => (
+          {categoriesData?.map((item) => (
             <div
               className="card card-text-overlay zoom"
               key={item._id}

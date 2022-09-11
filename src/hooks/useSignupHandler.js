@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useLoginHandler } from "./useLoginHandler";
+import { API_URL } from "utilities";
 
 function useSignupHandler() {
   const { loginHandler } = useLoginHandler();
@@ -137,13 +138,17 @@ function useSignupHandler() {
     return signupFlag;
   };
 
-  const signUpHandler = async (e, location) => {
+  const signUpHandler = async (e, location, setDisableSignup) => {
+    setDisableSignup(true);
     e.preventDefault();
     if (checkValidation()) {
       try {
-        const response = await axios.post("/api/auth/signup", formData);
+        const response = await axios.post(
+          `${API_URL}/api/auth/signup`,
+          formData
+        );
         if (response.status === 201) {
-          loginHandler(
+          await loginHandler(
             null,
             null,
             null,
@@ -151,13 +156,16 @@ function useSignupHandler() {
               email: formData.email,
               password: formData.password,
             },
-            location
+            location,
+            null
           );
           toast.success("Signup successful!");
         } else throw new Error();
       } catch (e) {
         toast.error("Error in signing up. Please try again.");
         console.error("signUpHandler : Error in signing up", e);
+      } finally {
+        setDisableSignup(false);
       }
     }
   };

@@ -36,6 +36,9 @@
   width: 100%;
   margin: unset;
 }
+.btn-auth:disabled {
+  cursor: not-allowed !important;
+}
 
 .btn-link-primary,
 #terms-conditions {

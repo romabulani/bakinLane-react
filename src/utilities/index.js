@@ -9,3 +9,5 @@ export {
   funcRating3AndAbove,
   funcRating4AndAbove,
 } from "./filterFunctions";
+
+export { API_URL } from "./constants";

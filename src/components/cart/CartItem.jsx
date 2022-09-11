@@ -17,8 +17,8 @@ function CartItem() {
     <div>
       {[...state.cart].reverse().map((product) => (
         <Link
-          to={`/products/${product._id}`}
-          key={product._id}
+          to={`/products/${product.id}`}
+          key={product.id}
           className="no-link-decoration"
         >
           <div className="cart-items flex-column-center" key={product.id}>

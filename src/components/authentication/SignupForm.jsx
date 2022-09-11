@@ -9,6 +9,7 @@ function SignupForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
     useSignupHandler();
+  const [disableSignup, setDisableSignup] = useState(false);
   const location = useLocation();
 
   return (
@@ -219,7 +220,10 @@ function SignupForm() {
         <button
           type="submit"
           className="btn btn-primary btn-auth"
-          onClick={(e) => signUpHandler(e, location)}
+          disabled={disableSignup}
+          onClick={async (e) => {
+            await signUpHandler(e, location, setDisableSignup);
+          }}
         >
           SIGN UP
         </button>

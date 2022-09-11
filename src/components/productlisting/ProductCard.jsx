@@ -12,9 +12,9 @@ function ProductCard({ product }) {
   const [cartLoader, setCartLoader] = useState(false);
 
   return (
-    <div className="card-default-product" key={product._id}>
+    <div className="card-default-product" key={product.id}>
       <Link
-        to={`/products/${product._id}`}
+        to={`/products/${product.id}`}
         className="no-link-decoration"
         onClick={(e) => {
           if (wishlistLoader || cartLoader) e.preventDefault();

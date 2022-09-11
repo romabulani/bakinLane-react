@@ -1,9 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "utilities";
 
 const getWishlist = async (authToken) => {
   try {
-    const response = await axios.get("/api/user/wishlist", {
+    const response = await axios.get(`${API_URL}/api/user/wishlist`, {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {
@@ -19,7 +20,7 @@ const getWishlist = async (authToken) => {
 const addToWishlist = async (authToken, product) => {
   try {
     const response = await axios.post(
-      "/api/user/wishlist",
+      `${API_URL}/api/user/wishlist`,
       { product },
       {
         headers: { authorization: authToken },
@@ -39,7 +40,7 @@ const addToWishlist = async (authToken, product) => {
 
 const removeFromWishlist = async (authToken, id) => {
   try {
-    const response = await axios.delete(`/api/user/wishlist/${id}`, {
+    const response = await axios.delete(`${API_URL}/api/user/wishlist/${id}`, {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {

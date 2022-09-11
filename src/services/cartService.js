@@ -1,9 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "utilities";
 
 const getCart = async (authToken) => {
   try {
-    const response = await axios.get("/api/user/cart", {
+    const response = await axios.get(`${API_URL}/api/user/cart`, {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {
@@ -19,7 +20,7 @@ const getCart = async (authToken) => {
 const addToCart = async (authToken, product) => {
   try {
     const response = await axios.post(
-      "/api/user/cart",
+      `${API_URL}/api/user/cart`,
       { product },
       {
         headers: { authorization: authToken },
@@ -40,7 +41,7 @@ const addToCart = async (authToken, product) => {
 const updateQuantityInCart = async (authToken, id, type) => {
   try {
     const response = await axios.post(
-      `/api/user/cart/${id}`,
+      `${API_URL}/api/user/cart/${id}`,
       {
         action: {
           type: type,
@@ -67,7 +68,7 @@ const updateQuantityInCart = async (authToken, id, type) => {
 
 const removeFromCart = async (authToken, id) => {
   try {
-    const response = await axios.delete(`/api/user/cart/${id}`, {
+    const response = await axios.delete(`${API_URL}/api/user/cart/${id}`, {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {
@@ -84,7 +85,7 @@ const removeFromCart = async (authToken, id) => {
 
 const clearCartInServer = async (authorization) => {
   try {
-    const response = await axios.delete("/api/user/cart/all", {
+    const response = await axios.get(`${API_URL}/api/user/cart/all`, {
       headers: { authorization },
     });
     if (response.status === 200) {

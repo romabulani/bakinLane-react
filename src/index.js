@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App.js";
-import { makeServer } from "server";
 import {
   AddressProvider,
   AuthProvider,
@@ -10,9 +9,6 @@ import {
   ProductsDataProvider,
 } from "contexts";
 import "assets";
-
-// Call make Server
-makeServer();
 
 ReactDOM.render(
   <React.StrictMode>

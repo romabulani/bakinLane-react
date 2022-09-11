@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAuth, useData } from "contexts";
+import { useAuth, useProductsData } from "contexts";
 import { useCartSummary, useOperations } from "hooks";
 import "./product.css";
 
 function Product() {
   const params = useParams();
-  const { data } = useData();
+  const { productsData } = useProductsData();
   const { getOriginalPrice } = useCartSummary();
   const { authToken } = useAuth();
-  const product = data.filter((product) => params.productId === product._id)[0];
+  const product = productsData.filter(
+    (product) => params.productId === product.id
+  )[0];
   const { getButtonText, isWishlisted, cartHandler, productWishlistHandler } =
     useOperations();
   const [wishlistLoader, setWishlistLoader] = useState(false);

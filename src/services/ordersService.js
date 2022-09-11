@@ -1,9 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "utilities";
 
 const getOrdersFromServer = async (authToken) => {
   try {
-    const response = await axios.get("/api/user/orders", {
+    const response = await axios.get(`${API_URL}/api/user/orders`, {
       headers: { authorization: authToken },
     });
     if (response.status === 200) {
@@ -19,7 +20,7 @@ const getOrdersFromServer = async (authToken) => {
 const addToOrdersInServer = async (authToken, order) => {
   try {
     const response = await axios.post(
-      "/api/user/orders",
+      `${API_URL}/api/user/orders`,
       { order },
       {
         headers: { authorization: authToken },
