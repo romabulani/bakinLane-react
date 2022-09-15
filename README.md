@@ -2,7 +2,7 @@
 <div align="center">
   <img src="/public/logo.webp" height="100" width="100" alt="logo"/>
   <h1>Bakin Lane</h1>
-    <p>Are you also the foodie? Do you love Desserts? <a href="https://bakin-lane.netlify.app/">Bakin Lane</a> is for you! Its the E-Commerce Website for different varieties of Cakes and Muffins.</p>
+    <p>Are you also the foodie? Do you love Desserts? <a href="https://bakin-lane.netlify.app/">Bakin Lane</a> is for you! Its the E-Commerce Website for different varieties of Cakes and Muffins. Checkout the source code for backend <a href="https://github.com/romabulani/bakinlane-backend">here</a>.</p>
  </div>
 
 ## How to run the app locally?
