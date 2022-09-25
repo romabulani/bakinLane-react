@@ -1,1 +1,1 @@
-export const API_URL = "https://bakinlane-server.herokuapp.com";
+export const API_URL = "https://bakinlane-server.cyclic.app/";
