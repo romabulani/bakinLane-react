@@ -9,14 +9,14 @@ function OrderSummary() {
     <main className="flex-column-center">
       {state?.orders?.length > 0 && <div className="heading4">MY ORDERS</div>}
       {state.orders.length > 0 &&
-        [...state?.orders].reverse().map((order) => (
+        state?.orders?.map((order) => (
           <div
             className="order-container flex-row-wrap gray-text"
             key={order?.paymentId}
           >
             <div className="order-details flex-column">
               <p className="color-success font-bold">Order Confirmed</p>
-              <p>{new Date(order?.createdAt.split("T")[0]).toDateString()}</p>
+              <p>{new Date(order?.orderDate?.split("T")[0]).toDateString()}</p>
               <p>
                 <span className="font-bold">Payment ID :</span>{" "}
                 {order?.paymentId}

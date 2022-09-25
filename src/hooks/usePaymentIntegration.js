@@ -18,6 +18,7 @@ function usePaymentIntegration() {
       paymentId: rzpResponse.razorpay_payment_id,
       totalPrice: getTotalPrice(),
       deliveryAddress: deliveryAddress,
+      orderDate: new Date(),
     });
     dispatch({ type: SET_ORDERS, payload: { orders: response.orders } });
     response = await clearCartInServer(authToken);
